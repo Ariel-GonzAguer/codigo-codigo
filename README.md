@@ -1,46 +1,73 @@
-# Astro Starter Kit: Basics
+# Herramientas en Español
 
-```sh
-npm create astro@latest -- --template basics
+Este es un proyecto web que muestra cómo usar tecnologías y bibliotecas populares, pero explicado en español. El objetivo es ayudar a personas hispanohablantes a entender y aplicar estas herramientas mediante ejemplos concretos y documentación, sin tener que pasar por la barrera del idioma.
+
+Usamos [Astro](https://astro.build/) como metaframework, ya que permite integrar componentes en varios frameworks (React, Vue, Svelte, Preact, SolidJS), además de soportar MDX para documentación enriquecida y ser ligero y fácil de desplegar.
+
+## Qué encontrará aquí
+
+- Componentes en React, Vue, Svelte, Preact, SolidJS.
+- Explicaciones en español de muchas herramientas.
+- Ejemplos mínimos y patrones recomendados para integrarlas en proyectos.
+- Una colección de archivos en `coleccionHerramientas/` con guías por herramienta.
+
+## Estructura principal del repositorio
+
+- `src/` – Código del sitio (Astro + frameworks) y componentes de ejemplo.
+- `coleccionHerramientas/` – Documentación y ejemplos por herramienta en MDX.
+- `public/` – Activos públicos (imágenes, favicon, etc.).
+
+## Casos límite a considerar
+
+- Si una herramienta requiere credenciales (p. ej. Firebase), se documentará cómo configurar variables de entorno; no se incluyen credenciales en el repositorio.
+- Herramientas que requieren API keys/servicios externos: se muestran con variables de entorno y mocks.
+- Versiones incompatibles: cada guía indicará la versión probada.
+- Audiencia con distintos niveles: se incluye una sección "rápida" para usuarios avanzados y una sección "para comenzar" para principiantes.
+
+## Empezar (instalación local)
+
+1. Clona el repositorio:
+
+```bash
+git clone <url-del-repositorio>
+cd herramientasEnEspanol
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+2. Instala dependencias (ejemplo con npm):
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm install
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+3. Ejecuta el sitio en modo desarrollo:
 
-## 🧞 Commands
+```bash
+npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+4. Abre http://localhost:4321 (o el puerto que indique la salida) para ver la documentación y ejemplos.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Nota: Si usas otra herramienta (pnpm, yarn), reemplaza el comando de instalación y ejecución por el equivalente.
 
-## 👀 Want to learn more?
+## Cómo está organizada la colección de herramientas
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Cada herramienta tiene un archivo MDX en `coleccionHerramientas/` con la siguiente plantilla establecida:
+
+- Id
+- Titulo
+- Herramienta
+- Persona Encargada
+- Fecha de creación
+- Fecha de última actualización
+- Framework
+- Explicación de la herramienta
+
+---
+
+## Licencia
+
+El contenido está disponible bajo la licencia MIT.
+
+## Contacto
+
+Si tiene preguntas o sugerencias, abra un issue o PR en el repositorio.

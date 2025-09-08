@@ -6,9 +6,36 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint .",
+    "test": "vitest",
+    "prettierCheck": "npx prettier --check .",
+    "prettierFix": "npx prettier --write ."
   },
   "dependencies": {
-    "astro": "^5.13.5"
+    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/preact": "^4.1.0",
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.5.1",
+    "@astrojs/solid-js": "^5.1.0",
+    "@astrojs/svelte": "^7.1.0",
+    "@astrojs/vue": "^5.1.0",
+    "@midudev/tailwind-animations": "^0.2.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "astro": "^5.13.5",
+    "jsdom": "^26.1.0",
+    "preact": "^10.27.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "solid-js": "^1.9.9",
+    "svelte": "^5.38.7",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.21"
   }
 }
