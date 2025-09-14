@@ -1,0 +1,18 @@
+---
+import { getCollection, render } from 'astro:content';
+export async function getStaticPaths() {
+  const herramientas = await getCollection('herramientas');
+  return herramientas.map(herramienta => ({
+    params: { id: herramienta.data.id },
+    props: { herramienta },
+  }));
+}
+const { herramienta } = Astro.props;
+const { Content } = await render(herramienta);
+
+import Entrada from '../../layouts/Entrada.astro';
+---
+
+<Entrada frontmatter={herramienta.data}>
+  <Content />
+</Entrada>

@@ -1,0 +1,43 @@
+---
+const { frontmatter } = Astro.props;
+import Layout from './Layout.astro';
+---
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>{frontmatter?.titulo || 'Herramienta'}</title>
+  </head>
+  <body>
+    <Layout>
+      <section class="max-w-3xl mx-auto p-4">
+        <h1>{frontmatter?.titulo}</h1>
+        <p><strong>Herramienta:</strong> {frontmatter?.herramienta}</p>
+        <p><strong>Framework:</strong> {frontmatter?.framework}</p>
+        {
+          frontmatter?.personaEncargada && (
+            <p>
+              <strong>Encargado:</strong> {frontmatter.personaEncargada}
+            </p>
+          )
+        }
+        {
+          frontmatter?.fechaDeCreacion && (
+            <p>
+              <strong>Creado:</strong> {frontmatter.fechaDeCreacion}
+            </p>
+          )
+        }
+        {
+          frontmatter?.fechaDeUltimaActualizacion && (
+            <p>
+              <strong>Última actualización:</strong> {frontmatter.fechaDeUltimaActualizacion}
+            </p>
+          )
+        }
+        <slot />
+      </section>
+    </Layout>
+  </body>
+</html>

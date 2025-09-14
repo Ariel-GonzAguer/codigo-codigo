@@ -1,15 +1,12 @@
 ---
-import UseState, { frontmatter } from '../../coleccionHerramientas/UseState.mdx';
-import Layout from '../layouts/Layout.astro';
-import Counter from '../components/Vue/Counter.vue';
+import { getCollection } from 'astro:content';
+const herramientas = await getCollection('herramientas');
 ---
 
-<Layout>
-  <h1>{frontmatter.titulo}</h1>
-  <div>
-    <!-- Renderiza solo el cuerpo (y si contiene componentes React, puedes hidratarlos) -->
-    <UseState />
-  <h2>Ejemplo Vue</h2>
-  <Counter client:load />
-  </div>
-</Layout>
+{herramientas.length > 0 ? (
+  <ul>
+    {herramientas.map(herramienta => <li><a href={`/herramientas/${herramienta.data.id}`}>{herramienta.data.titulo}</a></li>)}
+  </ul>
+) : (
+  <p>No hay herramientas registradas en la colección <code>herramientas</code>.</p>
+)}
