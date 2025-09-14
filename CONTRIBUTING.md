@@ -1,6 +1,6 @@
 # Guía para Colaborar
 
-¡Gracias por su interés en contribuir a Herramientas en Español! Hay varias formas de colaborar: reportar bugs, proponer features, trabajar en features, crear/mejorar documentación y testear.
+¡Gracias por su interés en contribuir a Código - Código! Hay varias formas de colaborar: reportar bugs, proponer features, trabajar en features, crear/mejorar documentación y testear.
 
 ## Colaborar con código
 
@@ -17,8 +17,8 @@ Siga estos pasos para colaborar de manera efectiva y ordenada.
 - Abra su terminal y ejecute:
 
 ```bash
-  git clone https://github.com/{su-usuario}/herramientasEnEspanol.git
-  cd herramientasEnEspanol
+  git clone https://github.com/{su-usuario}/codigo-codigo.git
+  cd codigo-codigo
 ```
 
 ### 3. Cree una rama para su cambio
@@ -27,8 +27,8 @@ Siga estos pasos para colaborar de manera efectiva y ordenada.
   git checkout -b nombre-de-su-rama
 ```
 
-> [!TIP]
-> Se debe crear una rama específica para cada aporte. Use nombres descriptivos, por ejemplo: `arreglar-typo-zustand`, `agregar-ejemplo-react-query`.
+> [!IMPORTANT]
+> Debe crear una rama específica para cada aporte. Use nombres descriptivos, por ejemplo: `arreglar-typo-zustand`, `agregar-ejemplo-react-query`.
 
 ### 4. Instale las dependencias
 
@@ -38,7 +38,7 @@ npm install
 
 ### 5. Desarrolle su propuesta
 
-- Siga la guía de estilo en `STYLE_GUIDE.md`.
+- Siga la guía de estilo en [Guía de Estilo](STYLE_GUIDE.md).
 - Asegúrese de seguir las buenas prácticas y el estilo del proyecto.
 
 ### 6. Pruebe su código
@@ -51,7 +51,6 @@ npm install
 
 - Verifique que su cambio funciona y no rompe nada existente.
 - No olvide ejecutar `npm run lint` para verificar el **estilo** del código.
-- No olvide ejecutar `npm run test` para verificar que las pruebas pasen.
 - No olvide ejecutar `npm run prettierCheck` y `npm run prettierFix` para verificar y corregir el **formato** del código.
 
 ### 7. Haga commit y push
@@ -108,25 +107,24 @@ npm install
 
 ### ¿Cómo reportar un bug?
 
-- Diríjase a la sección de [Issues](https://github.com/Ariel-GonzAguer/comidaEmergencia/issues) del repositorio.
+- Diríjase a la sección de [Issues](https://github.com/Ariel-GonzAguer/codigo-codigo/issues) del repositorio.
 - Haga clic en **New Issue** y seleccione **Reporte de Bug**.
 - Llene la plantilla como se indica.
 - **No incluya información sensible o privada**.
 
 ### ¿Cómo proponer una nueva funcionalidad?
 
-- Vaya a la sección de [Issues](https://github.com/Ariel-GonzAguer/comidaEmergencia/issues).
+- Vaya a la sección de [Issues](https://github.com/Ariel-GonzAguer/codigo-codigo/issues).
 - Haga clic en **New Issue** y seleccione la plantilla **Solicitud de Feature**.
 - Llene la plantilla como se indica.
 
 ### Consejos
 
-- Lea el `CODE_OF_CONDUCT.md` antes de contribuir.
-- Lea los archivos en la carpeta `documentacion/`.
-- Lea `STYLE_GUIDE.md` antes de hacer PR.
+- Lea el [Código de Conducta](CODE_OF_CONDUCT.md) antes de contribuir.
+- Lea [Guía de Estilo](STYLE_GUIDE.md) antes de hacer PR.
 - Sea respetuoso y paciente en las discusiones.
 - Si tiene dudas, abra un issue o pregunte en el Pull Request.
 
 ---
 
-**¡Gracias por ayudar a mejorar ComidaEmergencia!**
+**¡Gracias por ayudar a mejorar Código-Código!**

@@ -2,7 +2,7 @@
   "Commit mensaje estándar": {
     "prefix": "ccm",
     "body": [
-      "${1|arreglar,agregar,documentacion,mejorar,estilos,refactor,test,otros|}(${2:área (opcional)}): ${3:descripción corta}",
+      "${1|arreglar,agregar,documentacion,mejorar,estilos,refactor,test,otros|}(${2:área | framework}): ${3:descripción corta}",
       "",
       "${4:Descripción más detallada.}",
     ],

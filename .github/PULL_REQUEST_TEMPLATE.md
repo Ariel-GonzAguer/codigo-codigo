@@ -1,35 +1,32 @@
 # Plantilla para Pull Request
 
-<!-- ¡Gracias por su contribución! Por favor, complete la siguiente información para ayudar a revisar su Pull Request. -->
+<!-- Gracias por contribuir. Por favor complete la siguiente información para facilitar la revisión. -->
 
 ## Descripción
 
-- ¿Qué issue resuelve este PR?
-  <!-- Ejemplo: #123 -->
+<!-- elija solo uno de los siguientes: -->
 
-## Cambios realizados
+- Título: Título de guía
+- Framework: React | Vue | Svelte | SolidJS | Preact | Astro
+- Herramienta: ...
 
-<!-- Borre las opciones que no use -->
+- Opcional:
 
-- [] Nuevo feature
-- [] Corrección de bug
-- [] Refactorización
-- [] Documentación
-- [] Agregar test
-- [] Otro (especifique):
+  - Resuelve algún issue o tarea? [ Ejemplo: `#123` ]
 
-## Checklist
+## Checklist (obligatorio)
 
-<!-- Todas las opciones deben estar marcadas para considerar el PR -->
+Marca todas las casillas antes de solicitar revisión:
 
-- [] El código sigue la guía de estilo del proyecto
-- [] Se agregaron pruebas o se verificó manualmente
-- [] La documentación fue actualizada/agregada (si aplica)
-- [] No se incluyen datos sensibles ni credenciales
-- [] Se ejecutó `npm run lint` antes de enviar el PR
-
-## Notas adicionales
-
-<!-- ¿Hay algo más que debamos saber para revisar este PR? -->
+- [] Trabajé sobre un Issue ya definido.
+- [] Leí y seguí las convenciones de estilo en STYLE_GUIDE.md
+- [] El código compila sin errores locales
+- [] El MDX sigue la plantilla establecida en PLANTILLA_MDX.mdx
+- [] Verifiqué que `npm run lint` y `npm run prettierCheck` pasen sin errores.
+- [] Las nuevas rutas funcionan al ejecutar `npm run dev`
+- [] No se incluyen secretos ni credenciales
+- [] Añadí pruebas o validación manual (si aplica)
 
 ---
+
+Gracias por su trabajo 🚀

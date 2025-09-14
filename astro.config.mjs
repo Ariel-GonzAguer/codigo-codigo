@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
 
@@ -20,20 +20,20 @@ export default defineConfig({
   integrations: [
     mdx(),
     react({
-      include: ['**/React/*']
+      include: ['**/React/*'],
     }),
     preact({
-      include: ['**/Preact/*']
+      include: ['**/Preact/*'],
     }),
     solidJs({
-      include: ['**/Solid/*']
+      include: ['**/Solid/*'],
     }),
     svelte({
-      include: ['**/Svelte/*']
+      include: ['**/Svelte/*'],
     }),
     vue({
-      include: ['**/Vue/*']
+      include: ['**/Vue/*'],
     }),
     sitemap(),
-  ]
+  ],
 });

@@ -1,15 +1,17 @@
-# Herramientas en Español
+# Código - Código
 
 Este es un proyecto web que muestra cómo usar tecnologías y bibliotecas populares, pero explicado en español. El objetivo es ayudar a personas hispanohablantes a entender y aplicar estas herramientas mediante ejemplos concretos y documentación, sin tener que pasar por la barrera del idioma.
 
-Usamos [Astro](https://astro.build/) como metaframework, ya que permite integrar componentes en varios frameworks (React, Vue, Svelte, Preact, SolidJS), además de soportar MDX para documentación enriquecida y ser ligero y fácil de desplegar.
+Usamos [Astro](https://astro.build/) como metaframework, ya que permite integrar componentes en varios frameworks (React, Vue, Svelte, Preact, SolidJS), además de soportar MDX para documentación enriquecida y ser ligero y fácil de desplegar. #TeamAstro 🚀
 
 ## Qué encontrará aquí
 
-- Componentes en React, Vue, Svelte, Preact, SolidJS.
+- Componentes en React, Vue, Svelte, Preact, SolidJS y Astro.
 - Explicaciones en español de muchas herramientas.
 - Ejemplos mínimos y patrones recomendados para integrarlas en proyectos.
 - Una colección de archivos en `coleccionHerramientas/` con guías por herramienta.
+
+Visite [el sitio en vivo aquí](https://codigo-codigo.vercel.app/) para ver la documentación y ejemplos.
 
 ## Estructura principal del repositorio
 
@@ -29,8 +31,8 @@ Usamos [Astro](https://astro.build/) como metaframework, ya que permite integrar
 1. Clona el repositorio:
 
 ```bash
-git clone <url-del-repositorio>
-cd herramientasEnEspanol
+git clone https://github.com/Ariel-GonzAguer/codigo-codigo
+cd codigo-codigo
 ```
 
 2. Instala dependencias (ejemplo con npm):
@@ -47,7 +49,8 @@ npm run dev
 
 4. Abre http://localhost:4321 (o el puerto que indique la salida) para ver la documentación y ejemplos.
 
-Nota: Si usas otra herramienta (pnpm, yarn), reemplaza el comando de instalación y ejecución por el equivalente.
+> [!TIP]
+> Si usa otra herramienta (pnpm, yarn), reemplaza el comando de instalación y ejecución por el equivalente.
 
 ## Cómo está organizada la colección de herramientas
 

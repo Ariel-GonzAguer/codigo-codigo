@@ -1,14 +1,14 @@
-import { useState } from "react"
+import { useState } from 'react';
 
 export default function UseState() {
-  const [contador, setContador] = useState(0)
+  const [contador, setContador] = useState(0);
 
   function incrementarContador() {
-    setContador(contador + 1)
+    setContador(contador + 1);
   }
 
   function decrementarContador() {
-    setContador(contador - 1)
+    setContador(contador - 1);
   }
 
   return (
@@ -18,5 +18,5 @@ export default function UseState() {
       <button onClick={incrementarContador}>Incrementar</button>
       <button onClick={decrementarContador}>Decrementar</button>
     </section>
-  )
+  );
 }

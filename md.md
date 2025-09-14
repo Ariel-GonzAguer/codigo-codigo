@@ -11,16 +11,17 @@ Las sentencias condicionales evalúan una condición booleana (`true` o `false`)
 - `else`: Se ejecuta si ninguna de las condiciones anteriores fue `true`.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de condicionales
 let edad = 17;
 
 if (edad >= 18) {
-  console.log("Puedes votar y tramitar tu licencia.");
+  console.log('Puedes votar y tramitar tu licencia.');
 } else if (edad >= 16) {
-  console.log("Puedes tramitar tu licencia de conducir con un adulto.");
+  console.log('Puedes tramitar tu licencia de conducir con un adulto.');
 } else {
-  console.log("Eres menor de edad. No puedes tramitar tu licencia.");
+  console.log('Eres menor de edad. No puedes tramitar tu licencia.');
 }
 ```
 
@@ -29,10 +30,11 @@ if (edad >= 18) {
 Este es un atajo para una sentencia `if/else` simple. Es ideal para asignar un valor a una variable basándose en una condición.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de operador ternario
 let tieneDinero = true;
-let resultado = tieneDinero ? "Puedes comprar el helado." : "No puedes comprar el helado.";
+let resultado = tieneDinero ? 'Puedes comprar el helado.' : 'No puedes comprar el helado.';
 console.log(resultado);
 ```
 
@@ -46,6 +48,7 @@ Los bucles se usan para ejecutar un bloque de código repetidamente.
 - `do...while`: Similar a `while`, pero el bloque de código se ejecuta al menos una vez antes de verificar la condición.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de bucles
 // Bucle for: imprime los números del 0 al 4
@@ -67,6 +70,7 @@ while (contador > 0) {
 - `continue`: Salta la iteración actual del bucle y pasa a la siguiente.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de break y continue
 for (let i = 0; i < 10; i++) {
@@ -93,10 +97,11 @@ Sirven para realizar cálculos.
 - `**`: Potencia.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de operadores matemáticos
 let resultado_math = 10 % 3; // El resultado es 1 (el resto de 10 / 3)
-let potencia_math = 2 ** 3;  // El resultado es 8 (2 * 2 * 2)
+let potencia_math = 2 ** 3; // El resultado es 8 (2 * 2 * 2)
 ```
 
 ## Operadores de comparación
@@ -108,11 +113,12 @@ Comparan dos valores y devuelven un booleano (`true` o `false`).
 - `<`, `<=`, `>`, `>=`: Menor que, menor o igual que, mayor que, mayor o igual que.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de operadores de comparación
-console.log(10 === "10"); // false (uno es número, el otro es string)
-console.log(10 == "10");  // true (compara solo el valor, no el tipo) - ¡Es mejor usar ===!
-console.log(5 > 3);       // true
+console.log(10 === '10'); // false (uno es número, el otro es string)
+console.log(10 == '10'); // true (compara solo el valor, no el tipo) - ¡Es mejor usar ===!
+console.log(5 > 3); // true
 ```
 
 ## Operadores lógicos
@@ -124,6 +130,7 @@ Combinan o manipulan valores booleanos.
 - `!` (NOT): Invierte el valor booleano. `!true` es `false` y viceversa.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de operadores lógicos
 let tieneBoleto = true;
@@ -154,9 +161,10 @@ Un array es una estructura de datos que almacena una colección de elementos, qu
 - `for...of`: Este bucle es más moderno y simple, ya que itera directamente sobre los valores del array, sin necesidad de usar el índice.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de recorrido de arrays
-let frutas = ["manzana", "banana", "naranja"];
+let frutas = ['manzana', 'banana', 'naranja'];
 
 // Recorrer con for tradicional
 for (let i = 0; i < frutas.length; i++) {
@@ -184,6 +192,7 @@ JavaScript tiene muchos métodos integrados en los arrays que facilitan su manip
   - `.every()`: Devuelve `true` si todos los elementos cumplen la condición.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de métodos de arrays
 const numeros = [1, 2, 3, 4, 5];
@@ -220,19 +229,20 @@ Una string es una secuencia de caracteres. Son inmutables, lo que significa que 
 - `.join()`: Este método es del array, pero es el opuesto a `split()`. Convierte un array de strings en una sola string.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de métodos de strings
-let saludo = "Hola Mundo";
+let saludo = 'Hola Mundo';
 
-console.log(saludo.length);              // 10
-console.log(saludo.toLowerCase());       // "hola mundo"
-console.log(saludo.includes("Mundo"));   // true
-console.log(saludo.slice(0, 4));         // "Hola"
+console.log(saludo.length); // 10
+console.log(saludo.toLowerCase()); // "hola mundo"
+console.log(saludo.includes('Mundo')); // true
+console.log(saludo.slice(0, 4)); // "Hola"
 
-let frase = "El gato es un animal genial";
-let palabras = frase.split(" ");
+let frase = 'El gato es un animal genial';
+let palabras = frase.split(' ');
 console.log(palabras); // ["El", "gato", "es", "un", "animal", "genial"]
-let nuevaFrase = palabras.join("-");
+let nuevaFrase = palabras.join('-');
 console.log(nuevaFrase); // "El-gato-es-un-animal-genial"
 ```
 
@@ -241,9 +251,10 @@ console.log(nuevaFrase); // "El-gato-es-un-animal-genial"
 Puedes usar un bucle `for` o `for...of` para iterar sobre cada carácter de la string.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de recorrido de strings
-let palabra = "Presentación";
+let palabra = 'Presentación';
 
 // Usando for...of
 for (const letra of palabra) {
@@ -261,6 +272,7 @@ Las funciones son bloques de código reutilizables que realizan una tarea espec�
 - Funciones flecha: Una sintaxis más corta para escribir funciones. Son especialmente útiles en métodos de arrays como `map`, `filter`, etc.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de funciones
 // Función normal
@@ -276,8 +288,8 @@ const restar = (a, b) => {
 // Si la función flecha tiene una sola línea, se puede abreviar
 const multiplicar = (a, b) => a * b;
 
-console.log(sumar(5, 3));      // 8
-console.log(multiplicar(5, 3));  // 15
+console.log(sumar(5, 3)); // 8
+console.log(multiplicar(5, 3)); // 15
 ```
 
 ## Parámetros con valores por defecto y retorno de valores
@@ -295,6 +307,7 @@ La recursividad ocurre cuando una función se llama a sí misma para resolver un
 - Paso recursivo: El factorial de `n` es `n` multiplicado por el factorial de `n - 1`.
 
 **Ejemplo (JavaScript):**
+
 ```javascript
 // Ejemplo de recursividad (factorial)
 function factorial(n) {

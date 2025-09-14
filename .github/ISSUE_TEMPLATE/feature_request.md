@@ -1,67 +1,27 @@
 ---
-name: 💡 Solicitud de Feature
-about: Sugerir una idea para este proyecto
-title: '[FEATURE] [ASTRO | MAIN] '
+nombre: Solicitud de Feature
+acerca: Sugerir una idea para este proyecto
+titulo: '[Arreglar | Agregar | Documentación | Mejorar | Estilos | Refactor | Test | Otros] ( Área | Framework): Descripción corta'
 labels: enhancement
-assignees: ''
 ---
 
-<!-- Agregue en el Título/Title para que rama es el BUG: ASTRO | MAIN. La rama MAIN es React -->
+<!-- Gracias por contribuir. Por favor complete la siguiente información para facilitar la revisión. -->
 
-## 💡 Describa su solicitud de feature/funcionalidad detalladamente. ¿Cuál es la mejora que quisiera agregar?
-
-<!-- Ej:
-Agregar [...] para [...]. -->
-
-## 🎯 ¿Cómo mejoraría su feature/funcionalidad el uso de este proyecto?
-
-<!-- Ej:
-Agregando esta funcionalidad se lograría [...]. -->
-
-## 🔄 ¿Cómo agregaría este feature/funcionalidad ?
-
-<!-- Ej:
-Creando un componente que [...]. -->
-
-## 📱 ¿En qué plataforma sería útil?
-
-<!-- Si es Ambas, solo marque esa opción. Borre las opciones que no use -->
-
-- [] Escritorio
-- [] Móvil
-- [] Ambas
+## 💡 Describa su solicitud detalladamente.
+<!-- Describa lo que quiere hacer o que se haga -->
 
 ## 🏷️ ¿A qué categoría pertenece esta feature?
 
 <!-- Borre las opciones que no use -->
 
-- [] 🔐 Autenticación/Seguridad
-- [] 🍕 Gestión de ítems
-- [] 📊 Dashboard/Estadísticas
-- [] 🎨 UI/UX
-- [] 📱 Responsividad
-- [] 🔔 Notificaciones
-- [] ⚡ Performance
-- [] 🌐 Internacionalización
-- [] 🔧 Configuración
-- [] 🏗️ Arquitectura
-- [] 🚀 Colaboración
-- [] 🧪 Test
-- [] 📋 Otra
-
-## 🎨 Mockups o Ejemplos (Opcional)
-
- <!-- Borre esta sección si no aplica -->
-
-Si tiene mockups, sketches, o ejemplos de otras apps, agréguelos aquí.
-
-## 📈 ¿Qué tan importante es esta feature para usted?
-
- <!-- Borre las opciones que no use -->
-
-- [] 🔴 Crítica - No puedo usar la app sin esto
-- [] 🟡 Importante - Mejoraría significativamente mi experiencia
-- [] 🟢 Nice to have - Sería cool tenerlo
+- [] Arreglar (bug)
+- [] Agregar (nueva herramienta)
+- [] Documentación (mejorar documentación existente o agregar nueva)
+- [] Mejorar (optimización o mejora de funcionalidad existente)
+- [] Estilos (CSS, UI/UX)
+- [] Refactor (cambios en la estructura del código sin cambiar funcionalidad)
+- [] Test (agregar o mejorar pruebas)
+- [] Otros (especifique)
 
 ## 🤝 ¿Estaría dispuesto/a a contribuir con esta feature?
 
@@ -74,6 +34,6 @@ Si tiene mockups, sketches, o ejemplos de otras apps, agréguelos aquí.
 
 ## 🔗 Contexto Adicional
 
- <!-- Borre esta sección si no aplica -->
+<!-- Borre esta sección si no aplica -->
 
-Agregue cualquier otro contexto o screenshots sobre la solicitud de feature aquí.
+<!-- Agregue cualquier otro contexto o screenshots sobre la solicitud de feature aquí. -->
