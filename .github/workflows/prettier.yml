@@ -18,9 +18,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Instalar dependencias
-        run: npm ci
+        run: pnpm install
       - name: Ejecutar Prettier Fix
-        run: npm run prettierFix
+        run: pnpm run prettierFix
       - name: Mostrar mensaje si se corrige el formato
         if: success()
         run: |

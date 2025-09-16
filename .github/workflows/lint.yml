@@ -20,15 +20,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install dependencies
-        run: npm ci
+      - name: Instalar dependencias
+        run: pnpm install
       - name: Ejecutar ESLint y mostrar ayuda si falla
         run: |
-          npm run lint || {
+          pnpm run lint || {
             echo "❌ Se detectaron errores de estilo o calidad en el código.";
             echo "Por favor, revise el reporte de ESLint en el log de este workflow.";
             echo "Para corregir los problemas, ejecute en su entorno local:";
-            echo "  npm run lint";
+            echo "  pnpm run lint";
             echo "y siga las recomendaciones para corregir los errores y advertencias.";
             echo "Si necesita ayuda, consulte la documentación oficial de ESLint o abra un issue en el repositorio.";
             exit 1;
