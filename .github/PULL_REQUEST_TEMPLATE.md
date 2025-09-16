@@ -11,7 +11,6 @@
 - Herramienta: ...
 
 - Opcional:
-
   - Resuelve algún issue o tarea? [ Ejemplo: `#123` ]
 
 ## Checklist (obligatorio)

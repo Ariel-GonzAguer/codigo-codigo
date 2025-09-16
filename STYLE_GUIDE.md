@@ -80,7 +80,6 @@ Descripción más detallada (opcional).
 ```
 
 - **tipos**:
-
   - `agregar`: nueva herramienta, función o componente
   - `arreglar`: corrección de bug/_typo_(error ortográfico)
   - `documentacion`: cambios en documentación

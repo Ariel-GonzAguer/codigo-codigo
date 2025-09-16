@@ -8,6 +8,7 @@ labels: enhancement
 <!-- Gracias por contribuir. Por favor complete la siguiente información para facilitar la revisión. -->
 
 ## 💡 Describa su solicitud detalladamente.
+
 <!-- Describa lo que quiere hacer o que se haga -->
 
 ## 🏷️ ¿A qué categoría pertenece esta feature?
