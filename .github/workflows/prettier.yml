@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Setup pnpm
+        run: |
+          npm install -g pnpm
+          pnpm --version
       - name: Instalar dependencias
         run: pnpm install
       - name: Ejecutar Prettier Fix
