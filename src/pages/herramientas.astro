@@ -1,12 +1,23 @@
 ---
 import { getCollection } from 'astro:content';
 const herramientas = await getCollection('herramientas');
+import Layout from '../layouts/Layout.astro';
 ---
 
-{herramientas.length > 0 ? (
-  <ul>
-    {herramientas.map(herramienta => <li><a href={`/herramientas/${herramienta.data.id}`}>{herramienta.data.titulo}</a></li>)}
-  </ul>
-) : (
-  <p>No hay herramientas registradas en la colección <code>herramientas</code>.</p>
-)}
+<Layout>
+  {
+    herramientas.length > 0 ? (
+      <ul>
+        {herramientas.map(herramienta => (
+          <li>
+            <a href={`/herramientas/${herramienta.data.id}`}>{herramienta.data.titulo}</a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>
+        No hay herramientas registradas en la colección <code>herramientas</code>.
+      </p>
+    )
+  }
+</Layout>

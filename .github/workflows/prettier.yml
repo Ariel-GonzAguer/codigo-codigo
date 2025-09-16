@@ -27,7 +27,9 @@ jobs:
             echo "ℹ️ approved-builds.json no encontrado, se continuará sin aprobaciones preconfiguradas"
           fi
       - name: Instalar dependencias
-        run: pnpm ci
+        run: |
+          npm install -g pnpm
+          pnpm ci
       - name: Ejecutar Prettier Fix
         run: pnpm run prettierFix
       - name: Mostrar mensaje si se corrige el formato
