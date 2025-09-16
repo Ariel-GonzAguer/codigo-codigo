@@ -21,8 +21,12 @@ jobs:
         with:
           node-version: '20'
       - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Show versions
         run: |
-          npm install -g pnpm
+          node --version
           pnpm --version
       - name: Instalar dependencias
         run: pnpm install
