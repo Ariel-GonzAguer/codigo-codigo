@@ -1,0 +1,6 @@
+{
+  "approvedBuilds": {
+    "sharp@0.34.3": true,
+    "esbuild@0.25.9": true
+  }
+}
