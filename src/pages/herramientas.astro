@@ -5,9 +5,11 @@ import {
   herramientasPorFramework,
   herramientas,
 } from '../../scripts/filtroPorFramework';
+import PagefindSearch from '../components/utils/PagefindSearch';
 ---
 
 <Layout>
+  <PagefindSearch client:load />
   <section class="text-center mx-auto my-8 px-4">
     {
       herramientas.length > 0 ? (
