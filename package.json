@@ -9,8 +9,8 @@
     "astro": "astro",
     "lint": "eslint .",
     "test": "vitest",
-    "prettierCheck": "pnpm dlx prettier --check .",
-    "prettierFix": "pnpm dlx prettier --write ."
+    "prettierCheck": "pnpm dlx prettier --check",
+    "prettierFix": "pnpm dlx prettier --write"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",

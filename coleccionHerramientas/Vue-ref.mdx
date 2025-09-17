@@ -12,18 +12,13 @@ import Ref from '../src/components/Vue/Ref.vue';
 
 Este artículo cubre todo lo que necesita saber sobre `ref` en Vue 3: desde lo básico hasta casos avanzados.
 
-
 ## ¿Qué es `ref`?
 
 `ref` es la función principal para crear **estado reactivo** en Vue 3. Es el equivalente más cercano a `useState` de React, pero con una API diferente. Devuelve un objeto con una propiedad `.value` que contiene el valor y activa la reactividad cuando cambia.
 
-<div className='bloqueCodigo'>
-```js
-import { ref } from 'vue';
-const count = ref(0);
-console.log(count.value); // 0
-count.value++; // Dispara reactividad
-```
+<div className="bloqueCodigo">
+  ```js import {ref} from 'vue'; const count = ref(0); console.log(count.value); // 0 count.value++;
+  // Dispara reactividad ```
 </div>
 
 <Ref client:load />
@@ -31,6 +26,7 @@ count.value++; // Dispara reactividad
 ## 1. Ref con Primitivas
 
 ### Números, strings y booleanos
+
 <div className='bloqueCodigo'>
 ```vue
 <script setup>
@@ -42,6 +38,7 @@ const isVisible = ref(true);
 
 const increment = () => count.value++;
 const toggle = () => isVisible.value = !isVisible.value;
+
 </script>
 
 <template>
@@ -61,29 +58,31 @@ const toggle = () => isVisible.value = !isVisible.value;
 ## 2. Ref con Objetos y Arrays
 
 ### Objetos simples
+
 <div className='bloqueCodigo'>
 ```vue
 <script setup>
 import { ref } from 'vue';
 
 const user = ref({
-  name: 'Ana',
-  age: 25,
-  email: 'ana@example.com'
+name: 'Ana',
+age: 25,
+email: 'ana@example.com'
 });
 
 const updateName = () => {
-  user.value.name = 'Ana García'; // Vue detecta este cambio
+user.value.name = 'Ana García'; // Vue detecta este cambio
 };
 
 const updateUser = () => {
-  // Reemplazar todo el objeto también funciona
-  user.value = {
-    name: 'Carlos',
-    age: 30,
-    email: 'carlos@example.com'
-  };
+// Reemplazar todo el objeto también funciona
+user.value = {
+name: 'Carlos',
+age: 30,
+email: 'carlos@example.com'
 };
+};
+
 </script>
 
 <template>
@@ -98,6 +97,7 @@ const updateUser = () => {
 </div>
 
 ### Arrays y mutaciones
+
 <div className='bloqueCodigo'>
 ```vue
 <script setup>
@@ -107,19 +107,20 @@ const items = ref(['Manzana', 'Banana', 'Naranja']);
 const newItem = ref('');
 
 const addItem = () => {
-  if (newItem.value.trim()) {
-    items.value.push(newItem.value); // Mutación detectada
-    newItem.value = '';
-  }
+if (newItem.value.trim()) {
+items.value.push(newItem.value); // Mutación detectada
+newItem.value = '';
+}
 };
 
 const removeItem = (index) => {
-  items.value.splice(index, 1); // Mutación detectada
+items.value.splice(index, 1); // Mutación detectada
 };
 
 const sortItems = () => {
-  items.value.sort(); // Mutación detectada
+items.value.sort(); // Mutación detectada
 };
+
 </script>
 
 <template>
@@ -142,12 +143,14 @@ const sortItems = () => {
 ## 3. Ref vs Reactive
 
 ### Cuándo usar `ref`
+
 - Valores primitivos (string, number, boolean)
 - Cuando necesitas reemplazar toda la referencia
 - Para consistencia en APIs de composables
 - Variables que pueden ser `null` o `undefined`
 
 ### Cuándo usar `reactive`
+
 - Objetos complejos que no cambiarán su referencia
 - Cuando quiere sintaxis más limpia (sin `.value`)
 - Estados con múltiples propiedades relacionadas
@@ -163,20 +166,21 @@ const user = ref(null); // Puede ser null inicialmente
 
 // Reactive: ideal para objetos estables
 const state = reactive({
-  loading: false,
-  error: null,
-  data: []
+loading: false,
+error: null,
+data: []
 });
 
 // Comparación de uso
 const updateWithRef = () => {
-  user.value = { name: 'Juan', age: 28 }; // Reemplaza toda la referencia
+user.value = { name: 'Juan', age: 28 }; // Reemplaza toda la referencia
 };
 
 const updateWithReactive = () => {
-  state.loading = true; // Sin .value
-  state.data = ['item1', 'item2'];
+state.loading = true; // Sin .value
+state.data = ['item1', 'item2'];
 };
+
 </script>
 ```
 </div>
@@ -195,24 +199,25 @@ const lastName = ref('García');
 
 // Computed de solo lectura
 const fullName = computed(() => {
-  return `${firstName.value} ${lastName.value}`;
+return `${firstName.value} ${lastName.value}`;
 });
 
 // Computed con getter y setter
 const fullNameEditable = computed({
-  get() {
-    return `${firstName.value} ${lastName.value}`;
-  },
-  set(value) {
-    const parts = value.split(' ');
-    firstName.value = parts[0] || '';
-    lastName.value = parts[1] || '';
-  }
+get() {
+return `${firstName.value} ${lastName.value}`;
+},
+set(value) {
+const parts = value.split(' ');
+firstName.value = parts[0] || '';
+lastName.value = parts[1] || '';
+}
 });
 
 const items = ref([1, 2, 3, 4, 5]);
 const evenItems = computed(() => items.value.filter(n => n % 2 === 0));
 const itemCount = computed(() => items.value.length);
+
 </script>
 
 <template>
@@ -245,41 +250,42 @@ const searchTerm = ref('');
 
 // Watch básico
 watch(count, (newValue, oldValue) => {
-  console.log(`Count cambió de ${oldValue} a ${newValue}`);
+console.log(`Count cambió de ${oldValue} a ${newValue}`);
 });
 
 // Watch múltiples fuentes
 watch([count, searchTerm], ([newCount, newSearch], [oldCount, oldSearch]) => {
-  console.log('Múltiples valores cambiaron');
+console.log('Múltiples valores cambiaron');
 });
 
 // Watch profundo para objetos
 watch(user, (newUser, oldUser) => {
-  console.log('Usuario cambió:', newUser);
+console.log('Usuario cambió:', newUser);
 }, { deep: true });
 
 // Watch inmediato (se ejecuta al montar)
 watch(searchTerm, (term) => {
-  // Simular búsqueda API
-  console.log(`Buscando: ${term}`);
+// Simular búsqueda API
+console.log(`Buscando: ${term}`);
 }, { immediate: true });
 
 // WatchEffect (detecta dependencias automáticamente)
 watchEffect(() => {
-  // Se ejecuta inmediatamente y cuando count o searchTerm cambien
-  console.log(`Efecto: count=${count.value}, search=${searchTerm.value}`);
+// Se ejecuta inmediatamente y cuando count o searchTerm cambien
+console.log(`Efecto: count=${count.value}, search=${searchTerm.value}`);
 });
 
 // Watch con cleanup
 watchEffect((onInvalidate) => {
-  const timeoutId = setTimeout(() => {
-    console.log('Timeout ejecutado');
-  }, 1000);
-  
-  onInvalidate(() => {
-    clearTimeout(timeoutId); // Limpia el timeout si el efecto se reinicia
-  });
+const timeoutId = setTimeout(() => {
+console.log('Timeout ejecutado');
+}, 1000);
+
+onInvalidate(() => {
+clearTimeout(timeoutId); // Limpia el timeout si el efecto se reinicia
 });
+});
+
 </script>
 ```
 </div>
@@ -301,32 +307,33 @@ const divRef = ref(null);
 const itemRefs = ref([]);
 
 const focusInput = () => {
-  inputRef.value?.focus();
+inputRef.value?.focus();
 };
 
 const scrollToBottom = () => {
-  divRef.value?.scrollTo(0, divRef.value.scrollHeight);
+divRef.value?.scrollTo(0, divRef.value.scrollHeight);
 };
 
 const getItemDimensions = () => {
-  itemRefs.value.forEach((el, index) => {
-    if (el) {
-      console.log(`Item ${index}:`, el.getBoundingClientRect());
-    }
-  });
+itemRefs.value.forEach((el, index) => {
+if (el) {
+console.log(`Item ${index}:`, el.getBoundingClientRect());
+}
+});
 };
 
 onMounted(() => {
-  // El DOM está disponible
-  console.log('Input element:', inputRef.value);
+// El DOM está disponible
+console.log('Input element:', inputRef.value);
 });
 
 // Función para asignar refs en v-for
 const setItemRef = (el) => {
-  if (el) {
-    itemRefs.value.push(el);
-  }
+if (el) {
+itemRefs.value.push(el);
+}
 };
+
 </script>
 
 <template>
@@ -350,7 +357,7 @@ const setItemRef = (el) => {
   </div>
 </template>
 ```
-</div>  
+</div>
 
 ## 7. Composables con Refs
 
@@ -363,21 +370,21 @@ import { ref, computed } from 'vue';
 
 export function useCounter(initialValue = 0) {
   const count = ref(initialValue);
-  
+
   const increment = () => count.value++;
   const decrement = () => count.value--;
-  const reset = () => count.value = initialValue;
-  
+  const reset = () => (count.value = initialValue);
+
   const isEven = computed(() => count.value % 2 === 0);
   const isPositive = computed(() => count.value > 0);
-  
+
   return {
     count: readonly(count), // Opcional: hacer read-only
     increment,
     decrement,
     reset,
     isEven,
-    isPositive
+    isPositive,
   };
 }
 
@@ -387,11 +394,15 @@ import { ref, watch } from 'vue';
 export function useLocalStorage(key, defaultValue) {
   const storedValue = localStorage.getItem(key);
   const value = ref(storedValue ? JSON.parse(storedValue) : defaultValue);
-  
-  watch(value, (newValue) => {
-    localStorage.setItem(key, JSON.stringify(newValue));
-  }, { deep: true });
-  
+
+  watch(
+    value,
+    newValue => {
+      localStorage.setItem(key, JSON.stringify(newValue));
+    },
+    { deep: true }
+  );
+
   return value;
 }
 
@@ -436,8 +447,8 @@ const { count, increment, decrement, isEven } = useCounter(10);
 
 // Persistencia en localStorage
 const preferences = useLocalStorage('user-preferences', {
-  theme: 'light',
-  language: 'es'
+theme: 'light',
+language: 'es'
 });
 
 // Fetch de datos
@@ -445,6 +456,7 @@ const { data: users, loading, execute: fetchUsers } = useFetch('/api/users');
 
 // Ejecutar fetch al montar
 onMounted(fetchUsers);
+
 </script>
 
 <template>
@@ -486,8 +498,8 @@ console.log(nested.value.count); // Es un número, no un ref
 
 // Utilidades para trabajar con refs
 const checkIfRef = () => {
-  console.log('count es ref:', isRef(count)); // true
-  console.log('valor de count:', unref(count)); // 0 (siempre devuelve el valor)
+console.log('count es ref:', isRef(count)); // true
+console.log('valor de count:', unref(count)); // 0 (siempre devuelve el valor)
 };
 
 // toRef: crea ref desde propiedad de objeto reactivo
@@ -496,6 +508,7 @@ const nameRef = toRef(user, 'name'); // ref que apunta a user.name
 
 // toRefs: convierte todas las propiedades a refs
 const { name, age } = toRefs(user); // Ahora son refs individuales
+
 </script>
 ```
 </div>
@@ -509,29 +522,30 @@ import { customRef } from 'vue';
 
 // Ref con debounce personalizado
 function useDebouncedRef(value, delay = 300) {
-  let timeoutId;
-  
-  return customRef((track, trigger) => ({
-    get() {
-      track(); // Registra la dependencia
-      return value;
-    },
-    set(newValue) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        value = newValue;
-        trigger(); // Dispara la reactividad
-      }, delay);
-    }
-  }));
+let timeoutId;
+
+return customRef((track, trigger) => ({
+get() {
+track(); // Registra la dependencia
+return value;
+},
+set(newValue) {
+clearTimeout(timeoutId);
+timeoutId = setTimeout(() => {
+value = newValue;
+trigger(); // Dispara la reactividad
+}, delay);
+}
+}));
 }
 
 const searchQuery = useDebouncedRef('');
 
 // El efecto solo se ejecuta después del delay
 watchEffect(() => {
-  console.log('Búsqueda:', searchQuery.value);
+console.log('Búsqueda:', searchQuery.value);
 });
+
 </script>
 ```
 </div>
@@ -545,20 +559,21 @@ import { ref, shallowRef, triggerRef, markRaw } from 'vue';
 
 // shallowRef: solo reactivo en el primer nivel
 const largeObject = shallowRef({
-  data: new Array(10000).fill(0).map((_, i) => ({ id: i, value: i * 2 }))
+data: new Array(10000).fill(0).map((\_, i) => ({ id: i, value: i \* 2 }))
 });
 
 // Para actualizar después de mutar el objeto interno
 const updateLargeObject = () => {
-  largeObject.value.data[0].value = 999;
-  triggerRef(largeObject); // Fuerza actualización manual
+largeObject.value.data[0].value = 999;
+triggerRef(largeObject); // Fuerza actualización manual
 };
 
 // markRaw: marca objeto como no reactivo
 const nonReactiveObject = markRaw({
-  expensiveData: new Map(),
-  heavyComputation: () => { /* ... */ }
+expensiveData: new Map(),
+heavyComputation: () => {/* ... */}
 });
+
 </script>
 ```
 </div>
@@ -577,6 +592,7 @@ const selectedUser = ref(null);
 // ❌ Evitar nombres confusos
 const data = ref({}); // ¿Qué tipo de data?
 const flag = ref(true); // ¿Qué flag?
+
 ```
 </div>
 
@@ -594,11 +610,12 @@ const config = ref({
 
 // ✅ Validación en computed
 const isValidUser = computed(() => {
-  return currentUser.value && 
-         currentUser.value.email && 
+  return currentUser.value &&
+         currentUser.value.email &&
          currentUser.value.email.includes('@');
 });
 ```
+
 </div>
 
 ### 3. Cleanup y memoria
@@ -612,15 +629,16 @@ const data = ref([]);
 let cleanup;
 
 watchEffect(() => {
-  cleanup = setInterval(() => {
-    // Alguna lógica
-  }, 1000);
+cleanup = setInterval(() => {
+// Alguna lógica
+}, 1000);
 });
 
 // Cleanup automático en unmount
 onUnmounted(() => {
-  if (cleanup) clearInterval(cleanup);
+if (cleanup) clearInterval(cleanup);
 });
+
 </script>
 ```
 </div>
@@ -628,6 +646,7 @@ onUnmounted(() => {
 ## 10. Debugging Refs
 
 ### DevTools
+
 Vue DevTools muestra el valor de los refs y permite editarlos en tiempo real.
 
 ### Console debugging
@@ -639,17 +658,18 @@ import { ref } from 'vue';
 const count = ref(0);
 
 // Ver el objeto ref completo
-console.log(count); // RefImpl { _value: 0, ... }
+console.log(count); // RefImpl { \_value: 0, ... }
 
 // Ver solo el valor
 console.log(count.value); // 0
 
 // Agregar debug a computed
 const doubleCount = computed(() => {
-  const result = count.value * 2;
-  console.log(`doubleCount calculado: ${result}`);
-  return result;
+const result = count.value \* 2;
+console.log(`doubleCount calculado: ${result}`);
+return result;
 });
+
 ```
 </div>
 
@@ -668,3 +688,4 @@ const doubleCount = computed(() => {
 - **Performance**: `shallowRef`, `triggerRef`, `markRaw` para casos especiales
 
 La clave está en entender cuándo usar `ref` vs `reactive`, y aprovechar el ecosistema de composables para crear código mantenible y reutilizable.
+```

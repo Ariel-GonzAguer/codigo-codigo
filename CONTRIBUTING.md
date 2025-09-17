@@ -33,7 +33,7 @@ Siga estos pasos para colaborar de manera efectiva y ordenada.
 ### 4. Instale las dependencias
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 5. Desarrolle su propuesta
@@ -46,12 +46,12 @@ npm install
 - Ejecute la app localmente:
 
 ```bash
-  npm run dev
+  pnpm run dev
 ```
 
 - Verifique que su cambio funciona y no rompe nada existente.
-- No olvide ejecutar `npm run lint` para verificar el **estilo** del código.
-- No olvide ejecutar `npm run prettierCheck` y `npm run prettierFix` para verificar y corregir el **formato** del código.
+- No olvide ejecutar `pnpm lint` para verificar el **estilo** del código.
+- No olvide ejecutar `pnpm prettierCheck <su-archivo>` y `pnpm prettierFix <su-archivo>` para verificar y corregir el **formato** de su código. Ejemplo: `pnpm prettierCheck -- src/components/React/UseState.tsx`
 
 ### 7. Haga commit y push
 

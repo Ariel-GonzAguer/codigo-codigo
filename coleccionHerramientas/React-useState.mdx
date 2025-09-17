@@ -21,15 +21,16 @@ Este artículo cubre todo lo que necesita saber sobre `useState` en React: desde
 import { useState } from 'react';
 
 function Contador() {
-  const [count, setCount] = useState(0);
-  
-  return (
-    <div>
-      <p>Contador: {count}</p>
-      <button onClick={() => setCount(count + 1)}>+1</button>
-    </div>
-  );
+const [count, setCount] = useState(0);
+
+return (
+<div>
+<p>Contador: {count}</p>
+<button onClick={() => setCount(count + 1)}>+1</button>
+</div>
+);
 }
+
 ```
 </div>
 
@@ -47,12 +48,12 @@ function MiComponente() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState('');
   const [isVisible, setIsVisible] = useState(true);
-  
+
   return (
     <div>
       <p>Contador: {count}</p>
-      <input 
-        value={name} 
+      <input
+        value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Escribe tu nombre"
       />
@@ -64,15 +65,18 @@ function MiComponente() {
   );
 }
 ```
+
 </div>
 
 ### Convenciones de nomenclatura
+
 - Estado: `[algo, setAlgo]`
 - Ejemplos: `[user, setUser]`, `[isLoading, setIsLoading]`, `[items, setItems]`
 
 ## 2. Tipos de valores de estado
 
 ### Primitivos
+
 <div className='bloqueCodigo'>
 ```jsx
 function EjemplosPrimitivos() {
@@ -94,6 +98,7 @@ function EjemplosPrimitivos() {
 </div>
 
 ### Objetos
+
 <div className='bloqueCodigo'>
 ```jsx
 function EjemploObjeto() {
@@ -138,6 +143,7 @@ function EjemploObjeto() {
 </div>
 
 ### Arrays
+
 <div className='bloqueCodigo'>
 ```jsx
 function ListaTareas() {
@@ -190,6 +196,7 @@ function ListaTareas() {
 ## 3. Actualizaciones funcionales
 
 ### ¿Por qué usar funciones?
+
 Cuando el nuevo estado depende del estado anterior, use funciones para evitar problemas de concurrencia:
 
 <div className='bloqueCodigo'>
@@ -221,6 +228,7 @@ function Contador() {
 </div>
 
 ### Patrones comunes
+
 <div className='bloqueCodigo'>
 ```jsx
 // Toggle boolean
@@ -239,6 +247,7 @@ const addItem = (item) => setItems(prev => [...prev, item]);
 // Resetear estado
 const [form, setForm] = useState({ name: '', email: '' });
 const resetForm = () => setForm({ name: '', email: '' });
+
 ```
 </div>
 
@@ -252,23 +261,23 @@ No almacene en estado lo que puede calcularse:
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState('');
-  
+
   // ✅ Estado derivado - se calcula en cada render
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(filter.toLowerCase())
   );
-  
+
   // ❌ No hacer esto - estado redundante
   // const [filteredProducts, setFilteredProducts] = useState([]);
-  
+
   return (
     <div>
-      <input 
+      <input
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder="Filtrar productos..."
       />
-      
+
       <ul>
         {filteredProducts.map(product => (
           <li key={product.id}>{product.name}</li>
@@ -278,47 +287,51 @@ function ProductList() {
   );
 }
 ```
+
 </div>
 
 ### Sincronización con useEffect
+
 <div className='bloqueCodigo'>
 ```jsx
 import { useState, useEffect } from 'react';
 
 function UserProfile({ userId }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await fetch(`/api/users/${userId}`);
-        const userData = await response.json();
-        setUser(userData);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchUser();
-  }, [userId]); // Se ejecuta cuando userId cambia
-  
-  if (loading) return <div>Cargando...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!user) return <div>Usuario no encontrado</div>;
-  
-  return (
-    <div>
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-    </div>
-  );
+const [user, setUser] = useState(null);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
+
+useEffect(() => {
+const fetchUser = async () => {
+try {
+setLoading(true);
+setError(null);
+const response = await fetch(`/api/users/${userId}`);
+const userData = await response.json();
+setUser(userData);
+} catch (err) {
+setError(err.message);
+} finally {
+setLoading(false);
 }
+};
+
+    fetchUser();
+
+}, [userId]); // Se ejecuta cuando userId cambia
+
+if (loading) return <div>Cargando...</div>;
+if (error) return <div>Error: {error}</div>;
+if (!user) return <div>Usuario no encontrado</div>;
+
+return (
+<div>
+<h2>{user.name}</h2>
+<p>{user.email}</p>
+</div>
+);
+}
+
 ```
 </div>
 
@@ -339,7 +352,7 @@ function TodoApp() {
     loading: false,
     error: null
   });
-  
+
   // Muchas funciones de actualización...
   const addTodo = (text) => {
     setState(prev => ({
@@ -347,14 +360,16 @@ function TodoApp() {
       todos: [...prev.todos, { id: Date.now(), text, completed: false }]
     }));
   };
-  
+
   // ✅ Mejor con useReducer para lógica compleja
   // const [state, dispatch] = useReducer(todoReducer, initialState);
 }
 ```
+
 </div>
 
 ### Estado compartido con Context
+
 <div className='bloqueCodigo'>
 ```jsx
 import { createContext, useContext, useState } from 'react';
@@ -363,16 +378,12 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light');
-  
+
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
-  
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
@@ -388,42 +399,45 @@ export function useTheme() {
 ## 6. Optimización y rendimiento
 
 ### Evitar renders innecesarios
+
 <div className='bloqueCodigo'>
 ```jsx
 import { useState, memo, useCallback, useMemo } from 'react';
 
 const ExpensiveComponent = memo(({ data, onUpdate }) => {
-  console.log('ExpensiveComponent renderizado');
-  return <div>{/* contenido costoso */}</div>;
+console.log('ExpensiveComponent renderizado');
+return <div>{/* contenido costoso */}</div>;
 });
 
 function Parent() {
-  const [count, setCount] = useState(0);
-  const [items, setItems] = useState([]);
-  
-  // ✅ useCallback para funciones estables
-  const handleUpdate = useCallback((newItem) => {
-    setItems(prev => [...prev, newItem]);
-  }, []);
-  
-  // ✅ useMemo para cálculos costosos
-  const expensiveData = useMemo(() => {
-    return items.filter(item => item.active).length;
-  }, [items]);
-  
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(c => c + 1)}>Increment</button>
-      
+const [count, setCount] = useState(0);
+const [items, setItems] = useState([]);
+
+// ✅ useCallback para funciones estables
+const handleUpdate = useCallback((newItem) => {
+setItems(prev => [...prev, newItem]);
+}, []);
+
+// ✅ useMemo para cálculos costosos
+const expensiveData = useMemo(() => {
+return items.filter(item => item.active).length;
+}, [items]);
+
+return (
+<div>
+<p>Count: {count}</p>
+<button onClick={() => setCount(c => c + 1)}>Increment</button>
+
       {/* No se re-renderiza cuando count cambia */}
-      <ExpensiveComponent 
+      <ExpensiveComponent
         data={expensiveData}
         onUpdate={handleUpdate}
       />
     </div>
-  );
+
+);
 }
+
 ```
 </div>
 
@@ -443,9 +457,11 @@ items.push(4); // Mutación directa - NO funciona
 setUser({ ...user, name: 'Carlos' });
 setItems([...items, 4]);
 ```
+
 </div>
 
 ### Estado desactualizado en closures
+
 <div className='bloqueCodigo'>
 ```jsx
 function Timer() {
@@ -475,31 +491,33 @@ function Timer() {
 ## 8. Testing
 
 ### Pruebas básicas
+
 <div className='bloqueCodigo'>
 ```jsx
 import { render, fireEvent, screen } from '@testing-library/react';
 import Contador from './Contador';
 
 test('incrementa el contador al hacer click', () => {
-  render(<Contador />);
-  
-  const button = screen.getByText('+1');
-  const counter = screen.getByText(/contador: 0/i);
-  
-  fireEvent.click(button);
-  
-  expect(screen.getByText(/contador: 1/i)).toBeInTheDocument();
+render(<Contador />);
+
+const button = screen.getByText('+1');
+const counter = screen.getByText(/contador: 0/i);
+
+fireEvent.click(button);
+
+expect(screen.getByText(/contador: 1/i)).toBeInTheDocument();
 });
 
 test('actualiza el input correctamente', () => {
-  render(<FormularioNombre />);
-  
-  const input = screen.getByPlaceholderText('Escribe tu nombre');
-  
-  fireEvent.change(input, { target: { value: 'Juan' } });
-  
-  expect(input.value).toBe('Juan');
+render(<FormularioNombre />);
+
+const input = screen.getByPlaceholderText('Escribe tu nombre');
+
+fireEvent.change(input, { target: { value: 'Juan' } });
+
+expect(input.value).toBe('Juan');
 });
+
 ```
 </div>
 
@@ -516,3 +534,4 @@ test('actualiza el input correctamente', () => {
 - **Testing**: Pruebe las interacciones y cambios de estado
 
 La clave está en entender que React re-renderiza cuando el estado cambia, y que siempre debe tratar el estado como inmutable.
+```

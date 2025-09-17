@@ -109,7 +109,7 @@ agregar(React): agregar guía para Redux Toolkit
 > Antes de abrir un PR asegúrese de abrir un issue relacionado, si no existe uno. **No se aceptarán PRs sin un issue asociado**.
 
 - Complete la plantilla de PR.
-- Verifique que `npm run lint` y `npm run prettierCheck` pasen sin errores.
+- Verifique que `pnpm run lint` y `pnpm run prettierCheck <su-archivo>` pasen sin errores.
 - Asegúrese de que la documentación se actualice si es necesario.
 
 ---

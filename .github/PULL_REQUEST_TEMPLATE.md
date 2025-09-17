@@ -21,8 +21,8 @@ Marca todas las casillas antes de solicitar revisión:
 - [] Leí y seguí las convenciones de estilo en STYLE_GUIDE.md
 - [] El código compila sin errores locales
 - [] El MDX sigue la plantilla establecida en PLANTILLA_MDX.mdx
-- [] Verifiqué que `npm run lint` y `npm run prettierCheck` pasen sin errores.
-- [] Las nuevas rutas funcionan al ejecutar `npm run dev`
+- [] Verifiqué que `pnpm lint` y `pnpm prettierCheck` pasen sin errores.
+- [] Las nuevas rutas funcionan al ejecutar `pnpm dev`
 - [] No se incluyen secretos ni credenciales
 - [] Añadí pruebas o validación manual (si aplica)
 

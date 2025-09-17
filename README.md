@@ -35,16 +35,16 @@ git clone https://github.com/Ariel-GonzAguer/codigo-codigo
 cd codigo-codigo
 ```
 
-2. Instala dependencias (ejemplo con npm):
+2. Instala dependencias (ejemplo con pnpm):
 
 ```bash
-npm install
+pnpm install
 ```
 
 3. Ejecuta el sitio en modo desarrollo:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 4. Abre http://localhost:4321 (o el puerto que indique la salida) para ver la documentación y ejemplos.

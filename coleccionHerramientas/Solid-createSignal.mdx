@@ -24,6 +24,7 @@ const [count, setCount] = createSignal(0);
 console.log(count()); // 0 - el getter es una función
 setCount(1); // setter directo
 setCount(c => c + 1); // setter con función
+
 ```
 </div>
 
@@ -35,7 +36,7 @@ setCount(c => c + 1); // setter con función
 - **React**: `count` (variable directa)
 - **SolidJS**: `count()` (función getter)
 
-### Sintaxis del setter  
+### Sintaxis del setter
 - **React**: `setCount(newValue)` o `setCount(prev => prev + 1)`
 - **SolidJS**: `setCount(newValue)` o `setCount(c => c + 1)` (igual)
 
@@ -50,7 +51,7 @@ import { createSignal } from 'solid-js';
 
 export default function UseStateDemo() {
   const [count, setCount] = createSignal(0);
-  
+
   return (
     <div class="solid-usestate">
       <h3>useState (SolidJS) — demo</h3>
@@ -64,20 +65,20 @@ export default function UseStateDemo() {
   );
 }
 ```
+
 </div>
 
 ## Casos de uso comunes
 
 ### Valores primitivos
-<div className='bloqueCodigo'>
-```js
-const [name, setName] = createSignal('');
-const [isVisible, setIsVisible] = createSignal(false);
-const [items, setItems] = createSignal([]);
-```
+
+<div className="bloqueCodigo">
+  ```js const [name, setName] = createSignal(''); const [isVisible, setIsVisible] =
+  createSignal(false); const [items, setItems] = createSignal([]); ```
 </div>
 
 ### Actualizaciones funcionales
+
 <div className='bloqueCodigo'>
 ```js
 // Incrementar contador
@@ -88,7 +89,9 @@ setItems(prev => [...prev, newItem]);
 
 // Toggle boolean
 setIsVisible(prev => !prev);
+
 ```
 </div>
 
 La clave está en recordar que en SolidJS los getters son funciones: `count()` en lugar de `count`.
+```

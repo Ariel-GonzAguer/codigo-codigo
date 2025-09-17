@@ -12,12 +12,21 @@ export default function UseState() {
   }
 
   return (
-    <section className='p-4 border rounded-md'>
+    <section className="p-4 border rounded-md">
       <p>Contador: {contador}</p>
-      <div className='flex gap-2 mt-4'>
-        <button onClick={incrementarContador} className='bg-gray-500 text-white px-4 py-2 rounded-md'>Incrementar</button>
-        <button onClick={decrementarContador} className='bg-gray-500 text-white px-4 py-2 rounded-md'>Decrementar</button>
-
+      <div className="flex gap-2 mt-4">
+        <button
+          onClick={incrementarContador}
+          className="bg-gray-500 text-white px-4 py-2 rounded-md"
+        >
+          Incrementar
+        </button>
+        <button
+          onClick={decrementarContador}
+          className="bg-gray-500 text-white px-4 py-2 rounded-md"
+        >
+          Decrementar
+        </button>
       </div>
     </section>
   );
