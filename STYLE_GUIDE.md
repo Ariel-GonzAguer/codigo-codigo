@@ -14,7 +14,7 @@ Esta guía de estilo tiene como objetivo unificar convenciones de código, nombr
 
 ---
 
-## 2. Convenciones de JavaScript/TypeScript
+## 2. Convenciones de Componentes y Código
 
 - Use **2 espacios** para indentación.
 - Finalice líneas con punto y coma (`;`).
@@ -32,6 +32,9 @@ Esta guía de estilo tiene como objetivo unificar convenciones de código, nombr
   export default MiComponente;
   ```
 - Hooks deben comenzar con `use`: `useEmergencyFoodStore`, `useAuthStore`.
+- Para estilos, use Tailwind CSS y evite CSS en línea. Si es necesario, use `className` o `:class` con clases de Tailwind.
+- De momento no hay restricciones sobre elección de colores y demás para componentes de UI.
+- Use comentarios para secciones complejas del código.
 
 ---
 
@@ -43,10 +46,10 @@ Esta guía de estilo tiene como objetivo unificar convenciones de código, nombr
 // código
 ```
 
-Ver ejemplo de `Componentes funcionales` arriba.
-
 - Encabezados en **Mayúscula Inicial** y sin punto final.
 - Líneas en blanco entre párrafos y secciones.
+- Use tono de "usted" para dirigirse al lector.
+- Negritas con `**texto**` y cursivas con `_texto_`.
 - Listas con guión (`-`) y espacio.
 - Enlaces relativos: `[Texto](./RUTA)`.
 - Imágenes relativas: `![Alt](./RUTA/imagen.png)`.

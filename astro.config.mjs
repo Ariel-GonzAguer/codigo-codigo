@@ -15,6 +15,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   vite: {
+    // @ts-ignore
     plugins: [tailwindcss()],
   },
   integrations: [
@@ -26,7 +27,8 @@ export default defineConfig({
       include: ['**/Preact/*'],
     }),
     solidJs({
-      include: ['**/Solid/*'],
+      // Aceptar tanto `Solid` como `SolidJS` para evitar colisiones por nombre de carpeta
+      include: ['**/SolidJS/**', '**/Solid/**'],
     }),
     svelte({
       include: ['**/Svelte/*'],

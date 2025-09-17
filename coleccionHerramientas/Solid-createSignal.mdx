@@ -1,0 +1,94 @@
+---
+id: solid-createsignal
+titulo: createSignal → estado reactivo en SolidJS
+herramienta: createSignal
+personaEncargada: Ariel GonzAgüer
+fechaDeCreacion: 16-9-2025
+fechaDeUltimaActualizacion: 16-9-2025
+framework: SolidJS
+---
+
+import CreateSignal from '../src/components/SolidJS/CreateSignal.jsx';
+
+Este artículo explica cómo usar `createSignal` para manejar estado reactivo en SolidJS.
+
+## ¿Qué es createSignal?
+
+`createSignal` es la primitiva fundamental para crear estado reactivo en SolidJS. Es similar a `useState` de React, pero con diferencias importantes en su API y comportamiento.
+
+<div className='bloqueCodigo'>
+```js
+import { createSignal } from 'solid-js';
+
+const [count, setCount] = createSignal(0);
+console.log(count()); // 0 - el getter es una función
+setCount(1); // setter directo
+setCount(c => c + 1); // setter con función
+```
+</div>
+
+<CreateSignal client:load />
+
+## Diferencias clave con React useState
+
+### Sintaxis del getter
+- **React**: `count` (variable directa)
+- **SolidJS**: `count()` (función getter)
+
+### Sintaxis del setter  
+- **React**: `setCount(newValue)` o `setCount(prev => prev + 1)`
+- **SolidJS**: `setCount(newValue)` o `setCount(c => c + 1)` (igual)
+
+### Reactividad granular
+SolidJS tiene reactividad granular - solo se actualizan los elementos DOM que dependen del signal que cambió, no todo el componente.
+
+## Ejemplo del componente demo
+
+<div className='bloqueCodigo'>
+```jsx
+import { createSignal } from 'solid-js';
+
+export default function UseStateDemo() {
+  const [count, setCount] = createSignal(0);
+  
+  return (
+    <div class="solid-usestate">
+      <h3>useState (SolidJS) — demo</h3>
+      <p>Contador sencillo usando <code>createSignal</code>.</p>
+      <div>
+        <button onClick={() => setCount(c => c - 1)}>-</button>
+        <strong style={{ margin: '0 1rem' }}>{count()}</strong>
+        <button onClick={() => setCount(c => c + 1)}>+</button>
+      </div>
+    </div>
+  );
+}
+```
+</div>
+
+## Casos de uso comunes
+
+### Valores primitivos
+<div className='bloqueCodigo'>
+```js
+const [name, setName] = createSignal('');
+const [isVisible, setIsVisible] = createSignal(false);
+const [items, setItems] = createSignal([]);
+```
+</div>
+
+### Actualizaciones funcionales
+<div className='bloqueCodigo'>
+```js
+// Incrementar contador
+setCount(prev => prev + 1);
+
+// Agregar elemento a array
+setItems(prev => [...prev, newItem]);
+
+// Toggle boolean
+setIsVisible(prev => !prev);
+```
+</div>
+
+La clave está en recordar que en SolidJS los getters son funciones: `count()` en lugar de `count`.

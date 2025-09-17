@@ -1,12 +1,35 @@
 ---
-import { getCollection } from 'astro:content';
-const herramientas = await getCollection('herramientas');
+import Layout from '../layouts/Layout.astro';
+import {
+  frameworksFiltrados,
+  herramientasPorFramework,
+  herramientas,
+} from '../../scripts/filtroPorFramework';
 ---
 
-{herramientas.length > 0 ? (
-  <ul>
-    {herramientas.map(herramienta => <li><a href={`/herramientas/${herramienta.data.id}`}>{herramienta.data.titulo}</a></li>)}
-  </ul>
-) : (
-  <p>No hay herramientas registradas en la colección <code>herramientas</code>.</p>
-)}
+<Layout>
+  <section class="text-center mx-auto my-8 px-4">
+    {
+      herramientas.length > 0 ? (
+        <div>
+          {frameworksFiltrados.map(framework => (
+            <section class="mb-8" >
+              <h2>{framework}</h2>
+              <ul class="list-none!">
+                {herramientasPorFramework.get(framework)!.map((h: any) => (
+                  <li class="text-center">
+                    <a href={`/herramientas/${h.data.id}`} class="hover:underline">{h.data.titulo}</a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <p>
+          No hay herramientas registradas en la colección <code>herramientas</code>.
+        </p>
+      )
+    }
+  </section>
+</Layout>

@@ -1,1 +1,31 @@
 @import 'tailwindcss';
+
+h1 {
+  @apply text-4xl font-bold mb-6 mt-8;
+}
+h2 {
+  @apply text-3xl font-bold mb-4 mt-8;
+}
+h3 {
+  @apply text-xl font-semibold mb-3 mt-6;
+}
+h4 {
+  @apply text-lg font-medium mb-2 mt-4;
+}
+ul {
+  @apply list-disc pl-5 mb-4 text-left;
+}
+
+/* Estilos para código inline - elementos como `computed`, `ref`, etc. */
+code {
+  @apply bg-gray-300 text-black px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+/* Asegurar que los bloques de código no hereden estos estilos */
+pre code {
+  @apply bg-transparent text-inherit px-0 py-0 rounded-none;
+}
+
+.bloqueCodigo {
+  @apply text-left p-6 bg-[#24292e] rounded-lg border shadow-sm my-4;
+}
