@@ -28,29 +28,29 @@ Visite [el sitio en vivo aquí](https://codigo-codigo.vercel.app/) para ver la d
 
 ## Empezar (instalación local)
 
-1. Clona el repositorio:
+1. Clone el repositorio:
 
 ```bash
 git clone https://github.com/Ariel-GonzAguer/codigo-codigo
 cd codigo-codigo
 ```
 
-2. Instala dependencias (ejemplo con pnpm):
+2. Instale dependencias (ejemplo con pnpm):
 
 ```bash
 pnpm install
 ```
 
-3. Ejecuta el sitio en modo desarrollo:
+3. Ejecute el sitio en modo desarrollo:
 
 ```bash
 pnpm dev
 ```
 
-4. Abre http://localhost:4321 (o el puerto que indique la salida) para ver la documentación y ejemplos.
+4. Abra http://localhost:4321 (o el puerto que indique la salida) para ver la documentación y ejemplos.
 
 > [!TIP]
-> Si usa otra herramienta (pnpm, yarn), reemplaza el comando de instalación y ejecución por el equivalente.
+> Si usa otra herramienta (npm, yarn), reemplace el comando de instalación y ejecución por el equivalente.
 
 ### Nota sobre dependencias peer
 
