@@ -52,6 +52,15 @@ pnpm dev
 > [!TIP]
 > Si usa otra herramienta (pnpm, yarn), reemplaza el comando de instalación y ejecución por el equivalente.
 
+### Nota sobre dependencias peer
+
+Si al ejecutar `pnpm install` aparecen warnings o errores sobre "unmet peer dependencies" relacionados con `vite` y `@sveltejs/vite-plugin-svelte`, es porque hay plugins que esperan una versión distinta de `vite` (p. ej. `^6.0.0`) mientras que otras dependencias resuelven `vite@7.x`.
+
+Solución rápida (temporal): crea un archivo `.npmrc` en la raíz del proyecto con el contenido `strict-peer-dependencies=false` para evitar que la instalación falle en entornos locales o CI donde se acepta la diferencia de versiones.
+
+Solución recomendada (largo plazo): alinear las versiones de `vite` y de los plugins compatibles (actualizar plugins a versiones que soporten `vite@7` o fijar `vite@6` si es necesario) y regenerar el lockfile con `pnpm install`.
+
+
 ---
 
 ## Licencia
