@@ -52,19 +52,6 @@ pnpm dev
 > [!TIP]
 > Si usa otra herramienta (pnpm, yarn), reemplaza el comando de instalación y ejecución por el equivalente.
 
-## Cómo está organizada la colección de herramientas
-
-Cada herramienta tiene un archivo MDX en `coleccionHerramientas/` con la siguiente plantilla establecida:
-
-- Id
-- Titulo
-- Herramienta
-- Persona Encargada
-- Fecha de creación
-- Fecha de última actualización
-- Framework
-- Explicación de la herramienta
-
 ---
 
 ## Licencia
