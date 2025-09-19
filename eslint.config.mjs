@@ -4,6 +4,8 @@ const tsPlugin = (await import('@typescript-eslint/eslint-plugin')).default;
 
 export default [
   {
+    // Archivos/dirs a ignorar (migrado desde .eslintignore)
+    ignores: ['dist/**', 'build/**', 'node_modules/**'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

@@ -10,13 +10,9 @@ on:
   push:
     branches:
       - main
-      - versionAstro
   pull_request:
     branches:
       - main
-      - versionAstro
-  schedule:
-    - cron: '17 13 * * 3'
 
 jobs:
   analyze:

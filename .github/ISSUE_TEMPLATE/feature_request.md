@@ -7,11 +7,11 @@ labels: enhancement
 
 <!-- Gracias por contribuir. Por favor complete la siguiente información para facilitar la revisión. -->
 
-## 💡 Describa su solicitud detalladamente.
+## Describa su solicitud detalladamente.
 
 <!-- Describa lo que quiere hacer o que se haga -->
 
-## 🏷️ ¿A qué categoría pertenece esta feature?
+## ¿A qué categoría pertenece esta feature?
 
 <!-- Borre las opciones que no use -->
 
@@ -19,12 +19,14 @@ labels: enhancement
 - [] Agregar (nueva herramienta)
 - [] Documentación (mejorar documentación existente o agregar nueva)
 - [] Mejorar (optimización o mejora de funcionalidad existente)
-- [] Estilos (CSS, UI/UX)
+- [] Estilos (CSS)
+- [] UX
+- [] DX (Developer Experience)
 - [] Refactor (cambios en la estructura del código sin cambiar funcionalidad)
 - [] Test (agregar o mejorar pruebas)
 - [] Otros (especifique)
 
-## 🤝 ¿Estaría dispuesto/a a contribuir con esta feature?
+## ¿Estaría dispuesto/a a contribuir con esta feature?
 
  <!-- Borre las opciones que no use -->
 

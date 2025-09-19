@@ -6,11 +6,15 @@ Esta guía de estilo tiene como objetivo unificar convenciones de código, nombr
 
 ## 1. Estructura y nombres de archivos
 
+Para que todo funcione bien, desde el despliegue hasta los test, se deben seguir estas convenciones:
+
 - Cada herramienta tiene un archivo MDX en `coleccionHerramientas/` siguiendo la plantilla en `PLANTILLA_MDX.mdx`.
-- Los nombres de archivos MDX deben ser en **PascalCase** y coincidir con el nombre de la herramienta, por ejemplo: `UseState.mdx`, `VueRouter.mdx`.
-- Los componentes React, Vue, etc., deben estar en `src/components/<Framework>/` y usar **PascalCase**: `UseState.jsx`, `VueRouter.vue`.
-- Los archivos de estilo deben estar en `src/styles/` y usar **kebab-case**: `boton.css`, `tarjeta.vue`. En general no es necesario agregar más archivos de estilos.
-- Los archivos de prueba deben estar en `src/__tests__/` y usar **PascalCase**: `UseState.test.jsx`, `VueRouter.test.vue`.
+- Los nombres de archivos MDX deben ser en **PascalCase** y coincidir con el nombre de la herramienta, llevando como prefijo el framework correspondiente. Ejemplo: `React-ReduxToolkit.mdx`, `Vue-VueRouter.mdx`.
+- Los componentes deben estar en `src/components/<Framework>/` y usar **PascalCase**. Ejemplo: `UseState.jsx`, `VueRouter.vue`.
+- En general no es necesario ni se recomienda agregar más archivos de estilos, pero si necesita agregar alguno, los archivos de estilo deben estar en `src/estilos/` y usar **kebab-case**, teniendo el framework como prefijo + el nombre del componente. Ejemplo: `react-UseState-boton.css`, `vue-VueRouter-boton.css`.
+- Los archivos de prueba deben estar en `src/__tests__/`, usar **PascalCase**, y usar el framework correspondiente como prefijo + el nombre del componente. Ejemplo: `Preact-UseState.test.jsx`, `Solid-CreateSignal.test.vue`.  
+El proyecto ya incluye configuración para cada framework. Puede ver los comandos disponibles en `package.json`.
+- Las imágenes deben estar en `public/img/` y usar **kebab-case**, usando el framework correspondiente como prefijo + el nombre del componente. Ejemplo: `react-ReduxToolkit-foto.png`, `vue-VueRouter-imagen-gato-rojo.png`.
 
 ---
 
@@ -40,20 +44,31 @@ Esta guía de estilo tiene como objetivo unificar convenciones de código, nombr
 
 ## 3. Formato de MDX
 
-- Para bloques de código use:
+- Para bloques de código:
+  - No olvide la clase `bloqueCodigo` en el `div`.
+  - Por favor vea [PLANTILLA_MDX.mdx](PLANTILLA_MDX.mdx) para tener una idea más clara, ya que la sintaxis exacta no se puede mostrar bien acá.
 
-```js / jsx
-// código
+```mdx
+<div className="bloqueCodigo">
+```jsx
+// Código acá 
+``` 
+</div>
 ```
 
 - Encabezados en **Mayúscula Inicial** y sin punto final.
 - Líneas en blanco entre párrafos y secciones.
-- Use tono de "usted" para dirigirse al lector.
+- Use tono de "usted" para dirigirse a la persona lectora.
 - Negritas con `**texto**` y cursivas con `_texto_`.
 - Listas con guión (`-`) y espacio.
+- Listas numeradas con número, punto y espacio (`1. `).
 - Enlaces relativos: `[Texto](./RUTA)`.
-- Imágenes relativas: `![Alt](./RUTA/imagen.png)`.
-- Use componentes importados para ejemplos interactivos, p. ej. `<UseState client:load />`.
+- Imágenes relativas: `![Alt](/imagen.png)`.
+- Use componentes importados para ejemplos interactivos, por ejemplo: 
+  ```jsx
+  <UseState client:load />
+  ```
+  - No olvide usar la directiva `client:load` para cargar el componente en el cliente:
 - Metadatos al inicio del archivo MDX:
 
   ```mdx
@@ -77,7 +92,7 @@ Esta guía de estilo tiene como objetivo unificar convenciones de código, nombr
 Usa el siguiente estilo para mensajes de commit:
 
 ```
-<tipo>(<área | framework>): descripción corta
+<tipo>(<framework | otra: <nombre de la herramienta>>): descripción corta
 
 Descripción más detallada (opcional).
 ```
@@ -92,11 +107,19 @@ Descripción más detallada (opcional).
   - `test`: agregar o actualizar pruebas
   - `otros`: cambios que no encajan en las categorías anteriores
 
+- **framework | otra**: indique el framework afectado (React, Vue, Svelte, SolidJS, Preact, Astro) u `otra` si no es una herramienta agnóstica.
+
 Ejemplo:
 
-```
+```md
 agregar(React): agregar guía para Redux Toolkit
 ```
+
+```md
+arreglar(otra: pnpm): agregar introducción a pnpm
+```
+
+---
 
 > [!TIP]
 > Si usa la interfaz de VS Code para hacer el commit, escriba `ccm` y presione `ctrl` + `barra de espacio`, esto generará una plantilla con la convención de commit.
@@ -119,3 +142,9 @@ agregar(React): agregar guía para Redux Toolkit
 - Mantenga pequeñas y atómicas sus PRs.
 - Añada pruebas manuales o automáticas cuando sea posible.
 - Consulte `SECURITY.md` antes de exponer secretos.
+
+## 7. Uso de IA
+
+- Puede usar IA para ayudar a escribir código, test o documentación, pero **siempre revise y entienda** lo que la IA genera.
+- No dependa exclusivamente de la IA para tareas críticas.
+- Asegúrese de que el código generado por IA cumpla con esta guía de estilo.

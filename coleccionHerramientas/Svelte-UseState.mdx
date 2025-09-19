@@ -1,0 +1,511 @@
+---
+id: svelte-usestate
+titulo: Variables reactivas → estado local en Svelte
+herramienta: Variables reactivas
+personaEncargada: Ariel GonzAgüer
+fechaDeCreacion: 19-9-2025
+fechaDeUltimaActualizacion: 19-9-2025
+framework: Svelte
+---
+
+import UseState from '../src/components/Svelte/UseState.svelte';
+
+Este artículo cubre todo lo que necesita saber sobre el manejo de estado local en Svelte: desde variables reactivas básicas hasta patrones avanzados.
+
+## ¿Qué son las variables reactivas en Svelte?
+
+En Svelte, el estado local se maneja de forma muy directa con variables reactivas. A diferencia de otros frameworks, no necesita hooks especiales - simplemente declare variables con `let` y Svelte se encarga de la reactividad automáticamente.
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  let count = 0;
+  
+  function increment() {
+    count = count + 1; // Svelte detecta este cambio automáticamente
+  }
+</script>
+
+<div>
+  <p>Contador: {count}</p>
+  <button on:click={increment}>+1</button>
+</div>
+```
+</div>
+
+<UseState client:load />
+
+## 1. Sintaxis básica
+
+### Declaración y uso
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  // Variables reactivas simples
+  let count = 0;
+  let name = '';
+  let isVisible = true;
+  
+  function toggleVisibility() {
+    isVisible = !isVisible;
+  }
+</script>
+
+<div>
+  <p>Contador: {count}</p>
+  <input bind:value={name} placeholder="Escribe tu nombre" />
+  {#if isVisible}
+    <p>¡Hola {name}!</p>
+  {/if}
+  <button on:click={toggleVisibility}>
+    {isVisible ? 'Ocultar' : 'Mostrar'} saludo
+  </button>
+</div>
+```
+</div>
+
+### Convenciones en Svelte
+
+- Variables reactivas: simplemente `let variable`
+- Binding bidireccional: `bind:value={variable}`
+- Eventos: `on:click={función}`
+
+## 2. Tipos de valores de estado
+
+### Primitivos
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  let count = 0;           // número
+  let message = 'Hola';    // string
+  let isActive = false;    // boolean
+  let data = null;         // null/undefined
+</script>
+
+<div>
+  <p>Contador: {count}</p>
+  <p>Mensaje: {message}</p>
+  <p>Activo: {isActive ? 'Sí' : 'No'}</p>
+  <p>Datos: {data ? 'Cargados' : 'Sin datos'}</p>
+</div>
+```
+</div>
+
+### Objetos
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  let user = {
+    name: '',
+    email: '',
+    age: 0
+  };
+  
+  // ✅ Correcto - reasignación completa
+  function updateName() {
+    user = {
+      ...user,
+      name: 'Juan'
+    };
+  }
+  
+  // ✅ También correcto - modificación directa + reasignación
+  function updateAge() {
+    user.age = user.age + 1;
+    user = user; // Fuerza reactividad
+  }
+  
+  // ✅ Más elegante - usar assignment
+  function incrementAge() {
+    user.age += 1;
+  }
+</script>
+
+<div>
+  <p>Nombre: {user.name}</p>
+  <p>Email: {user.email}</p>
+  <p>Edad: {user.age}</p>
+  <button on:click={updateName}>Cambiar nombre</button>
+  <button on:click={incrementAge}>Incrementar edad</button>
+</div>
+```
+</div>
+
+### Arrays
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  let tasks = [];
+  let newTask = '';
+  
+  function addTask() {
+    if (newTask.trim()) {
+      // ✅ Agregar al final
+      tasks = [...tasks, { id: Date.now(), text: newTask }];
+      newTask = '';
+    }
+  }
+  
+  function removeTask(id) {
+    // ✅ Filtrar elemento
+    tasks = tasks.filter(task => task.id !== id);
+  }
+  
+  function updateTask(id, newText) {
+    // ✅ Mapear y actualizar
+    tasks = tasks.map(task => 
+      task.id === id ? { ...task, text: newText } : task
+    );
+  }
+</script>
+
+<div>
+  <input 
+    bind:value={newTask}
+    placeholder="Nueva tarea"
+  />
+  <button on:click={addTask}>Agregar</button>
+  
+  <ul>
+    {#each tasks as task (task.id)}
+      <li>
+        {task.text}
+        <button on:click={() => removeTask(task.id)}>Eliminar</button>
+      </li>
+    {/each}
+  </ul>
+</div>
+```
+</div>
+
+## 3. Declaraciones reactivas
+
+### $: para cálculos derivados
+
+En Svelte, use `$:` para crear valores que se recalculan automáticamente cuando sus dependencias cambian:
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  let firstName = '';
+  let lastName = '';
+  
+  // ✅ Se recalcula automáticamente cuando firstName o lastName cambian
+  $: fullName = `${firstName} ${lastName}`.trim();
+  
+  let numbers = [1, 2, 3, 4, 5];
+  let filter = 'all';
+  
+  // ✅ Array filtrado reactivo
+  $: filteredNumbers = filter === 'even' 
+    ? numbers.filter(n => n % 2 === 0)
+    : filter === 'odd'
+    ? numbers.filter(n => n % 2 === 1)
+    : numbers;
+</script>
+
+<div>
+  <input bind:value={firstName} placeholder="Nombre" />
+  <input bind:value={lastName} placeholder="Apellido" />
+  <p>Nombre completo: {fullName}</p>
+  
+  <select bind:value={filter}>
+    <option value="all">Todos</option>
+    <option value="even">Pares</option>
+    <option value="odd">Impares</option>
+  </select>
+  
+  <p>Números: {filteredNumbers.join(', ')}</p>
+</div>
+```
+</div>
+
+### Efectos reactivos
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  let count = 0;
+  
+  // ✅ Efecto que se ejecuta cuando count cambia
+  $: {
+    console.log(`El contador cambió a: ${count}`);
+    if (count > 10) {
+      alert('¡Has superado 10!');
+    }
+  }
+  
+  // ✅ También puedes usar funciones
+  $: updateTitle(count);
+  
+  function updateTitle(value) {
+    if (typeof document !== 'undefined') {
+      document.title = `Contador: ${value}`;
+    }
+  }
+</script>
+
+<div>
+  <p>Contador: {count}</p>
+  <button on:click={() => count++}>Incrementar</button>
+</div>
+```
+</div>
+
+## 4. Stores para estado global
+
+### Stores escribibles
+
+<div className='bloqueCodigo'>
+```javascript
+// stores.js
+import { writable } from 'svelte/store';
+
+export const count = writable(0);
+export const user = writable(null);
+
+// En el componente
+```
+```svelte
+<script>
+  import { count } from './stores.js';
+  
+  // ✅ Auto-suscripción con $
+  // $count se actualiza automáticamente
+</script>
+
+<div>
+  <p>Contador global: {$count}</p>
+  <button on:click={() => $count++}>Incrementar</button>
+  <button on:click={() => count.set(0)}>Reset</button>
+</div>
+```
+</div>
+
+### Stores derivados
+
+<div className='bloqueCodigo'>
+```javascript
+// stores.js
+import { writable, derived } from 'svelte/store';
+
+export const numbers = writable([1, 2, 3, 4, 5]);
+
+export const evenNumbers = derived(
+  numbers,
+  $numbers => $numbers.filter(n => n % 2 === 0)
+);
+
+export const sum = derived(
+  numbers,
+  $numbers => $numbers.reduce((a, b) => a + b, 0)
+);
+```
+</div>
+
+## 5. Patrones avanzados
+
+### Componentes con props reactivas
+
+<div className='bloqueCodigo'>
+```svelte
+<!-- Child.svelte -->
+<script>
+  export let initialValue = 0;
+  
+  let count = initialValue;
+  
+  // ✅ Reaccionar a cambios en props
+  $: if (initialValue !== undefined) {
+    count = initialValue;
+  }
+</script>
+
+<div>
+  <p>Contador: {count}</p>
+  <button on:click={() => count++}>+</button>
+</div>
+```
+</div>
+
+### Binding bidireccional personalizado
+
+<div className='bloqueCodigo'>
+```svelte
+<!-- CustomInput.svelte -->
+<script>
+  export let value = '';
+  
+  function handleInput(event) {
+    value = event.target.value;
+  }
+</script>
+
+<input {value} on:input={handleInput} />
+
+<!-- Uso -->
+<script>
+  import CustomInput from './CustomInput.svelte';
+  let text = '';
+</script>
+
+<CustomInput bind:value={text} />
+<p>Texto: {text}</p>
+```
+</div>
+
+## 6. Ciclo de vida y efectos
+
+### onMount y onDestroy
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  
+  let count = 0;
+  let interval;
+  
+  onMount(() => {
+    console.log('Componente montado');
+    interval = setInterval(() => {
+      count++;
+    }, 1000);
+    
+    // ✅ Cleanup automático cuando se desmonta
+    return () => {
+      clearInterval(interval);
+    };
+  });
+  
+  onDestroy(() => {
+    console.log('Componente desmontado');
+    if (interval) {
+      clearInterval(interval);
+    }
+  });
+</script>
+
+<div>
+  <p>Contador automático: {count}</p>
+</div>
+```
+</div>
+
+## 7. Optimización y rendimiento
+
+### Keyed each blocks
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  let items = [
+    { id: 1, name: 'Ana' },
+    { id: 2, name: 'Carlos' },
+    { id: 3, name: 'María' }
+  ];
+  
+  function shuffleItems() {
+    items = items.sort(() => Math.random() - 0.5);
+  }
+</script>
+
+<!-- ✅ Con key para optimización -->
+{#each items as item (item.id)}
+  <div>
+    <input bind:value={item.name} />
+    <span>{item.name}</span>
+  </div>
+{/each}
+
+<button on:click={shuffleItems}>Mezclar</button>
+```
+</div>
+
+## 8. Errores comunes
+
+### Reactividad con arrays y objetos
+
+<div className='bloqueCodigo'>
+```svelte
+<script>
+  let items = [1, 2, 3];
+  let user = { name: 'Ana' };
+  
+  // ❌ No reactivo - Svelte no detecta el cambio
+  function addItemWrong() {
+    items.push(4); // Mutación directa
+  }
+  
+  // ✅ Reactivo - reasignación
+  function addItemCorrect() {
+    items = [...items, 4];
+  }
+  
+  // ❌ No reactivo
+  function updateUserWrong() {
+    user.name = 'Carlos'; // Sin reasignación
+  }
+  
+  // ✅ Reactivo
+  function updateUserCorrect() {
+    user.name = 'Carlos';
+    user = user; // Fuerza reactividad
+  }
+  
+  // ✅ Más elegante
+  function updateUserBest() {
+    user = { ...user, name: 'Carlos' };
+  }
+</script>
+```
+</div>
+
+## 9. Testing
+
+### Pruebas con Svelte Testing Library
+
+<div className='bloqueCodigo'>
+```javascript
+import { render, fireEvent, screen } from '@testing-library/svelte';
+import Contador from './Contador.svelte';
+
+test('incrementa el contador al hacer click', async () => {
+  render(Contador);
+  
+  const button = screen.getByText('+1');
+  const counter = screen.getByText(/contador: 0/i);
+  
+  await fireEvent.click(button);
+  
+  expect(screen.getByText(/contador: 1/i)).toBeInTheDocument();
+});
+
+test('binding funciona correctamente', async () => {
+  render(FormularioNombre);
+  
+  const input = screen.getByPlaceholderText('Escribe tu nombre');
+  
+  await fireEvent.input(input, { target: { value: 'Juan' } });
+  
+  expect(input.value).toBe('Juan');
+});
+```
+</div>
+
+## Resumen
+
+El manejo de estado en Svelte es:
+
+- **Simple**: Variables con `let`, sin hooks especiales
+- **Reactivo**: Cambios automáticos con reasignación
+- **Declarativo**: `$:` para valores derivados y efectos
+- **Bidireccional**: `bind:` para sincronización automática
+- **Global**: Stores para estado compartido
+- **Optimizado**: Cambios granulares y eficientes
+- **Intuitivo**: Sintaxis cercana a JavaScript vanilla
+
+La clave está en recordar que Svelte usa **reasignación** para detectar cambios. Cuando modifique objetos o arrays, siempre reasigne la variable para activar la reactividad.

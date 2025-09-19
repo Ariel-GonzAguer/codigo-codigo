@@ -41,12 +41,18 @@ pnpm install
 - Siga la guía de estilo en [Guía de Estilo](STYLE_GUIDE.md).
 - Asegúrese de seguir las buenas prácticas y el estilo del proyecto.
 
+#### 5.1 Archivos mínimos requeridos
+- MDX para la documentación/tutorial. Colocarlo en `/colleccionHerramientas`
+- Componente según corresponda el framework. Colocarlo en `/src/components/{Framework}`
+- Por favor revisar [Guía de Estilo](STYLE_GUIDE.md) para más detalles.
+  - Opcional pero altamente sugerido: Test unitario para el componente. Colocarlo en `/src/__tests__`.
+
 ### 6. Pruebe su código
 
 - Ejecute la app localmente:
 
 ```bash
-  pnpm run dev
+  pnpm dev
 ```
 
 - Verifique que su cambio funciona y no rompe nada existente.
@@ -59,7 +65,7 @@ pnpm install
 
 ```bash
   git add .
-  git commit -m "Descripción clara de su cambio"
+  git commit -m "tipo( framework | otra): descripción corta"
   git push origin nombre-de-su-rama
 ```
 

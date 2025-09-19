@@ -14,7 +14,7 @@ export default defineConfig({
   ],
   test: {
     environment: 'jsdom',
-    include: ['src/__tests__/CreateSignal.test.jsx'],
+    include: ['src/__tests__/Solid-*.test.{js,jsx,ts,tsx}'],
     setupFiles: ['./src/__tests__/setup.ts'],
     globals: true,
   },

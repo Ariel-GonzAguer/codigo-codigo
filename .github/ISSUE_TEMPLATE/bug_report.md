@@ -53,5 +53,5 @@ Pasos para reproducir el comportamiento:
 <!-- Si hay mensajes de error en la consola, inclúyalos aquí: -->
 
 ```bash
-Pegue los logs acá
+# Pegue los logs acá
 ```
