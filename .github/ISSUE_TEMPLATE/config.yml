@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: 💬 Discusión General
-    url: https://github.com/Ariel-GonzAguer/codigo-codigo/discussions
-    about: Para preguntas generales, ideas y discusiones sobre el proyecto
+    url: https://github.com/Ariel-GonzAguer/codigo-codigo/issues
+    about: Para preguntas generales, ideas y discusiones sobre el proyecto (usa Issues si Discussions está deshabilitado)
   - name: 🆘 Soporte
-    url: https://github.com/Ariel-GonzAguer/codigo-codigo/discussions/categories/q-a
-    about: Para obtener ayuda con el uso o configuración del proyecto
+    url: https://github.com/Ariel-GonzAguer/codigo-codigo/issues/new/choose
+    about: Abrir un issue para pedir ayuda o soporte

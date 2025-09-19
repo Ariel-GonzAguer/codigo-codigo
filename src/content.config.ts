@@ -14,13 +14,13 @@ const herramientas = defineCollection({
   }),
   schema: z.object({
     // definir el esquema/forma de los datos que se van a cargar
-    id: z.string().optional(),
-    titulo: z.string().optional(),
-    herramienta: z.string().optional(),
-    personaEncargada: z.string().optional(),
-    fechaDeCreacion: z.string().optional(),
-    fechaDeUltimaActualizacion: z.string().optional(),
-    framework: z.string().optional(),
+    id: z.string(),
+    titulo: z.string(),
+    herramienta: z.string(),
+    personaEncargada: z.string(),
+    fechaDeCreacion: z.string(),
+    fechaDeUltimaActualizacion: z.string(),
+    framework: z.enum(['React', 'Vue', 'Svelte', 'SolidJS', 'Preact', 'Astro', 'Otras']),
   }),
 });
 // Export a single `collections` object to register your collection(s)

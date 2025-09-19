@@ -1,8 +1,8 @@
 @import 'tailwindcss';
-
+@plugin "@midudev/tailwind-animations";
 
 h1 {
-  @apply text-4xl font-bold mb-6 mt-8;
+  @apply text-6xl font-bold mb-6 mt-8;
 }
 h2 {
   @apply text-3xl font-bold mb-4 mt-8;
@@ -16,6 +16,15 @@ h4 {
 ul {
   @apply list-disc pl-5 mb-4 text-left;
 }
+a {
+  @apply text-pink-300 hover:underline;
+
+  &:visited {
+    @apply text-purple-400;
+  }
+}
+
+
 
 /* Estilos para código inline - elementos como `computed`, `ref`, etc. */
 code {
@@ -27,6 +36,26 @@ pre code {
   @apply bg-transparent text-inherit px-0 py-0 rounded-none;
 }
 
+/* Estilos para bloques de código */
 .bloqueCodigo {
   @apply text-left p-6 bg-[#24292e] rounded-lg border shadow-sm my-4;
+}
+
+/* Asegurar que las utilidades de delay de Tailwind apliquen sobre animaciones del plugin
+   Algunos plugins definen la propiedad `animation` mediante el shorthand, lo que puede
+   sobrescribir `animation-delay`. Esta regla específica fuerza el delay cuando se usa
+   la combinación `animate-tada delay-500`. Cambia o añade más selectores si necesitas
+   soportar otras combinaciones. */
+.delay500 {
+  animation-delay: 500ms !important;
+}
+
+/* Clase utilitaria para centrar listas puntadas en bloques de contenido
+   - `w-max` hace que el <ul> tenga el ancho mínimo necesario
+   - `mx-auto` lo centra horizontalmente como bloque
+   - `text-left` mantiene el texto de cada <li> alineado a la izquierda
+   - conserva los bullets con `list-disc` y el padding estándar `pl-5` */
+.centered-list {
+  /* bullets inside para que se centren con el texto y mantener espaciado limpio */
+  @apply mx-auto text-center list-inside pl-0 mb-4;
 }

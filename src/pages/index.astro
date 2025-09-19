@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CrearIssue from '../components/utils/CrearIssue.astro';
 ---
 
 <Layout>
   <section class="flex flex-col justify-center items-center h-full text-center gap-4 home">
-    <h1 class="text-5xl font-bold text-center">¡Código - Código!</h1>
+    <h1 class="text-center animate-tada delay500">¡Código - Código!</h1>
     <h2>
       Aprenda en español a utilizar herramientas de React, Vue, Svelte, Preact, SolidJS y Astro 🚀
     </h2>
@@ -13,6 +14,13 @@ import Layout from '../layouts/Layout.astro';
       Este proyecto nace de la necesidad de aprender sin tener que atravesar barreras idiomáticas.
     </p>
     <p class="text-lg mb-8">Aprenda más rápido, de manera contextualizada y en su idioma.</p>
-    <a href="./herramientas/" class="text-2xl mb-8 bg-amber-300 text-black rounded-4xl py-6 px-4 border-2 border-white hover:bg-black hover:text-amber-300 transition-all duration-300">Ir al catálogo de herramientas</a>
+    <a
+      href="./herramientas/"
+      class="text-2xl mb-8 bg-amber-300! text-black! rounded-4xl py-6 px-4 border-2 border-white hover:bg-black hover:text-amber-300 transition-all duration-300"
+      >Ir al catálogo de herramientas</a
+    >
+
+    <CrearIssue />
+    <p><a href="https://github.com/Ariel-GonzAguer/codigo-codigo" target="_blank" rel="noopener noreferrer" class="text-amber-300! hover:underline">Dele una ⭐ en Github</a></p>
   </section>
 </Layout>

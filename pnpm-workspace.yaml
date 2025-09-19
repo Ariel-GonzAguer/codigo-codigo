@@ -1,8 +1,2 @@
 # la siguiente configuración garantiza que solo se puedan instalar los paquetes publicados hace al menos un día
 minimumReleaseAge: 1440
-
-# Define los paquetes que forman parte del monorepo
-packages:
-  - 'packages/**'
-  - 'apps/**'
-  - 'src/**'

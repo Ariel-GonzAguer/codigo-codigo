@@ -9,7 +9,7 @@ Esta guía de estilo tiene como objetivo unificar convenciones de código, nombr
 Para que todo funcione bien, desde el despliegue hasta los test, se deben seguir estas convenciones:
 
 - Cada herramienta tiene un archivo MDX en `coleccionHerramientas/` siguiendo la plantilla en `PLANTILLA_MDX.mdx`.
-- Los nombres de archivos MDX deben ser en **PascalCase** y coincidir con el nombre de la herramienta, llevando como prefijo el framework correspondiente. Ejemplo: `React-ReduxToolkit.mdx`, `Vue-VueRouter.mdx`.
+- Los nombres de archivos MDX deben ser en **PascalCase** y coincidir con el nombre de la herramienta, llevando como prefijo el framework correspondiente. Ejemplo: `React-ReduxToolkit.mdx`, `Vue-VueRouter.mdx`, `Pnpm.mdx` ( herramienta agnóstica).
 - Los componentes deben estar en `src/components/<Framework>/` y usar **PascalCase**. Ejemplo: `UseState.jsx`, `VueRouter.vue`.
 - En general no es necesario ni se recomienda agregar más archivos de estilos, pero si necesita agregar alguno, los archivos de estilo deben estar en `src/estilos/` y usar **kebab-case**, teniendo el framework como prefijo + el nombre del componente. Ejemplo: `react-UseState-boton.css`, `vue-VueRouter-boton.css`.
 - Los archivos de prueba deben estar en `src/__tests__/`, usar **PascalCase**, y usar el framework correspondiente como prefijo + el nombre del componente. Ejemplo: `Preact-UseState.test.jsx`, `Solid-CreateSignal.test.vue`.  

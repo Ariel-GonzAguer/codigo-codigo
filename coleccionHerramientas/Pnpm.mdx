@@ -1,0 +1,135 @@
+---
+id: pnpm
+titulo: Introducción a PNPM
+herramienta: PNPM
+personaEncargada: Ariel GonzAgüer
+fechaDeCreacion: 2025-9-19
+fechaDeUltimaActualizacion: 2025-9-19
+framework: Otras
+---
+
+`pnpm` es un gestor de paquetes para el ecosistema Node.js, compatible con el registro de npm, pero diseñado para ser más rápido y eficiente en el uso del disco. Si viene de `npm`, la transición suele ser sencilla porque la mayoría de los comandos tienen equivalentes directos.
+
+## Ventajas principales frente a npm
+
+<ul class="centered-list">
+	<li>Eficiencia en disco: `pnpm` usa un store global y crea enlaces (hard links / symlinks) en lugar de duplicar dependencias en cada proyecto. Esto reduce **muchísimo** el espacio ocupado cuando se trabaja con muchos proyectos o monorepos.</li>
+	<li>Velocidad: gracias a su almacenamiento centralizado y a una red de caché más agresiva, las instalaciones suelen ser más rápidas.</li>
+	<li>Determinismo: `pnpm` hace cumplir una estructura de árbol de dependencias más estricta (hoisting controlado), lo que ayuda a reproducir instalaciones y a detectar errores donde el código dependía de módulos no declarados.</li>
+	<li>Soporte sólido para monorepos: `pnpm` tiene características nativas para monorepos (`pnpm workspaces`) muy competentes.</li>
+</ul>
+
+## Comparativa de comandos (npm vs pnpm)
+
+- Instalar dependencias:
+
+	- npm: `npm install`
+	- pnpm: `pnpm install` (o `pnpm i`)
+
+- Instalar una dependencia y guardarla en package.json:
+
+	- npm: `npm install lodash --save`
+	- pnpm: `pnpm add lodash`
+
+- Instalar una dependencia de desarrollo:
+
+	- npm: `npm install -D jest`
+	- pnpm: `pnpm add -D jest`
+
+- Desinstalar:
+
+	- npm: `npm uninstall left-pad`
+	- pnpm: `pnpm remove left-pad`
+
+- Ejecutar un script definido en package.json:
+
+	- npm: `npm run build`
+	- pnpm: `pnpm build` (pnpm ejecuta scripts directamente)
+
+- Usar workspaces / monorepos:
+
+	- npm: `npm install` (con configuración en package.json o npm workspaces)
+	- pnpm: `pnpm -w install` o `pnpm install` desde la raíz con `pnpm-workspace.yaml`
+
+## Cómo empezar en un proyecto existente (migración rápida)
+
+1. Instale pnpm globalmente (opcional pero sugerido):
+
+<div className="bloqueCodigo">
+```bash
+npm i -g pnpm
+```
+</div>
+
+2. En un proyecto existente, simplemente ejecute:
+
+<div className="bloqueCodigo">
+```bash
+pnpm install
+```
+</div>
+
+pnpm detectará `package-lock.json`/`node_modules` y migrará el cache/instalación. Si quiere regenerar desde cero, elimine `node_modules` y el lockfile de npm (`package-lock.json`) y ejecute `pnpm install`.
+
+3. (Opcional) Añadir un archivo `pnpm-workspace.yaml` para monorepos:
+
+<div className="bloqueCodigo">
+```yaml
+packages:
+	- 'packages/*'
+	- 'apps/*'
+```
+</div>
+
+## Notas sobre diferencias importantes
+
+<ul class="centered-list">
+	<li>Hoisting y acceso a dependencias: pnpm crea una estructura de dependencias más estricta. Si un paquete 'A' usa un paquete 'B' que no está declarado en sus `dependencies` pero aparece en `node_modules` por hoisting en npm, con pnpm fallará. Esto es bueno: revela dependencias faltantes.</li>
+	<li>Scripts y `node_modules/.bin`: pnpm mantiene compatibilidad con la mayoría de scripts de npm. Si algún script hace suposiciones raras sobre la estructura de `node_modules`, puede requerir ajustes.</li>
+	<li>lockfile: pnpm usa `pnpm-lock.yaml`. Puede seguir incluyéndolo en su repo para instalaciones reproducibles.</li>
+</ul>
+
+## Comandos útiles y flags
+
+- Forzar reintento de instalación limpia:
+<div className="bloqueCodigo">
+```bash
+pnpm install --force
+```
+</div>
+
+- Limpiar store global (caché):
+<div className="bloqueCodigo">
+```bash
+pnpm store prune
+```
+</div>
+
+- Instalar en modo global (instalar paquetes globales):
+<div className="bloqueCodigo">
+```bash
+pnpm add -g typescript
+```
+</div>
+
+- Ejecutar en workspace (desde la raíz):
+<div className="bloqueCodigo">
+```bash
+pnpm -w add -D eslint
+```
+</div>
+
+## Problemas comunes y soluciones rápidas
+
+<ul class="centered-list">
+	<li> `Error: "module not found"` después de migrar a pnpm: <br />
+	Asegúrese de que la dependencia está declarada en `package.json` del paquete que la usa. Con pnpm la omisión de declaraciones que en npm pasaban desapercibidas ahora falla.</li>
+
+	<li> Problema con binarios o scripts que buscan módulos en rutas absolutas: <br />
+		Revise los scripts y evita hardcodear rutas dentro de `node_modules`. Usa `pnpm dlx` o `pnpm exec` cuando necesites ejecutar paquetes efímeros.</li>
+</ul>
+
+## Recursos y lectura adicional
+
+- [Documentación oficial](https://pnpm.io/)
+- [Guía de migración npm → pnpm](https://pnpm.io/migration)
