@@ -1,8 +1,9 @@
 ---
-nombre: Solicitud de Feature
-acerca: Sugerir una idea para este proyecto
-titulo: '[Arreglar | Agregar | Documentación | Mejorar | Estilos | Refactor | Test | Otros] ( Área | Framework): Descripción corta'
-labels: enhancement
+name: Solicitud de Feature
+about: Sugerir una idea para este proyecto
+title: '[Arreglar | Agregar | Documentación | Mejorar | Estilos | Refactor | Test | Otros] ( Área | Framework): Descripción corta'
+labels: [ 'enhancement ']
+assignees: []
 ---
 
 <!-- Gracias por contribuir. Por favor complete la siguiente información para facilitar la revisión. -->

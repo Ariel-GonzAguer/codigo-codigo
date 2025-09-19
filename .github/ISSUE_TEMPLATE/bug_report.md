@@ -1,8 +1,9 @@
 ---
-nombre: Reporte de Bug
-acerca: Crear un reporte para ayudarnos a mejorar
-titulo: '[BUG | TYPO] (FRAMEWORK): Descripción corta del bug o typo'
-labels: bug
+name: Reporte de bug
+about: Crear un reporte para ayudarnos a mejorar
+title: '[BUG | TYPO] (FRAMEWORK): Descripción corta del bug o typo'
+labels: ['bug']
+assignees: []
 ---
 
 <!-- Gracias por contribuir. Por favor complete la siguiente información para facilitar la revisión. -->
