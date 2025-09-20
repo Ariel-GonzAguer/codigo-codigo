@@ -29,32 +29,7 @@ function esPar(num) {
 }
 ```
 
-**1.2 Expresar con switch:**
-
-```js
-// JavaScript
-function describirGato(color) {
-  switch (color) {
-    case "rojo":
-      console.log("El gato es rojo");
-      break;
-    case "amarillo":
-      console.log("El gato es amarillo");
-      break;
-    case "negro":
-      console.log("El gato es negro");
-      break;
-    case "blanco":
-      console.log("El gato es blanco");
-      break;
-    default:
-      console.log("No hay gato");
-      break;
-  }
-}
-```
-
-**1.3 Bucle for con números impares del 1 al 20:**
+**1.2 Bucle for con números impares del 1 al 20:**
 
 ```js
 for (let i = 1; i <= 20; i += 2) {
@@ -69,7 +44,7 @@ for (let i = 1; i <= 20; i++) {
 }
 ```
 
-**1.4 Convertir while a for:**
+**1.3 Convertir while a for:**
 
 ```js
 // Versión original (while)
@@ -85,7 +60,7 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-**1.5 ¿Qué imprime el código con continue y break?**
+**1.4 ¿Qué imprime el código con continue y break?**
 
 ```js
 for (let i = 0; i < 5; i++) {

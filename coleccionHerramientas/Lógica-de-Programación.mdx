@@ -1,4 +1,14 @@
-# 0. Lógica de programación
+---
+id: logica-de-programacion
+titulo: Lógica de Programación
+herramienta: Lógica de Programación
+personaEncargada: Ariel GonzAgüer
+fechaDeCreacion: 2025-9-20
+fechaDeUltimaActualizacion: 2025-9-20
+framework: Otras
+---
+
+## 0. Lógica de programación
 
 La lógica de programación es el conjunto de reglas, razonamientos y estructuras que permiten resolver problemas mediante instrucciones que una computadora puede entender y ejecutar.  
 Es la base para crear algoritmos: secuencias ordenadas de pasos que transforman datos de entrada en resultados deseados.
@@ -7,7 +17,7 @@ En otras palabras, la lógica de programación nos ayuda a pensar de manera estr
 
 Se puede expresar en cualquier lenguaje de programación, pues los conceptos son universales.
 
-## Algunos beneficios de practicarla
+### Algunos beneficios de practicarla
 
 - Mejora la capacidad de resolver problemas.
 - Facilita el aprendizaje de nuevos lenguajes de programación.
@@ -15,57 +25,62 @@ Se puede expresar en cualquier lenguaje de programación, pues los conceptos son
 - Fomenta el pensamiento crítico y analítico.
 - Reduce errores y facilita el debugging: un razonamiento claro evita suposiciones implícitas que suelen causar bugs difíciles.
 
-# 1. Control de flujo
+## 1. Control de flujo
 
 El control de flujo es la base de la programación. Nos permite decidir qué bloques de código se ejecutan y cuántas veces lo hacen.
 
-## Condicionales: if, else if, else
+### Condicionales: if, else if, else
 
 Las sentencias condicionales evalúan una condición booleana (`true` o `false`) y ejecutan un bloque de código si la condición es verdadera.
 
 - `if`: Se ejecuta solo si la condición es `true`.
-- `else if`: Se evalúa si la condición del `if` anterior fue `false`. Puedes tener múltiples `else if`.
+- `else if`: Se evalúa si la condición del `if` anterior fue `false`. Puede tener múltiples `else if`.
 - `else`: Se ejecuta si ninguna de las condiciones anteriores fue `true`.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de condicionales
 let edad = 17;
 
 if (edad >= 18) {
-  console.log('Puedes votar y tramitar tu licencia.');
+  console.log('Puede votar y tramitar su licencia.');
 } else if (edad >= 16) {
-  console.log('Puedes tramitar tu licencia de conducir con un adulto.');
+  console.log('Puede tramitar su licencia de conducir con un adulto.');
 } else {
-  console.log('Eres menor de edad. No puedes tramitar tu licencia.');
+  console.log('Es menor de edad. No puede tramitar su licencia.');
 }
 ```
+</div>
 
-## Operador ternario: condición ? valorSiTrue : valorSiFalse
+### Operador ternario: condición ? valorSiTrue : valorSiFalse
 
 Este es un atajo para una sentencia `if/else` simple. Es ideal para asignar un valor a una variable basándose en una condición.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de operador ternario
 let tieneDinero = true;
-let resultado = tieneDinero ? 'Puedes comprar el helado.' : 'No puedes comprar el helado.';
+let resultado = tieneDinero ? 'Puede comprar el helado.' : 'No puede comprar el helado.';
 console.log(resultado);
 ```
+</div>
 
-## Bucles: for, while, do...while
+### Bucles: for, while, do...while
 
 Los bucles se usan para ejecutar un bloque de código repetidamente.
 
 - `for`: Es el más común cuando se sabe el número exacto de iteraciones.
   - Estructura: `for (inicialización; condición; actualización)`
-- `while`: Se repite mientras una condición sea `true`. Útil cuando no sabes de antemano cuántas veces se ejecutará el bucle.
+- `while`: Se repite mientras una condición sea `true`. Útil cuando no se sabe de antemano cuántas veces se ejecutará el bucle.
 - `do...while`: Similar a `while`, pero el bloque de código se ejecuta al menos una vez antes de verificar la condición.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de bucles
 // Bucle for: imprime los números del 0 al 4
@@ -80,14 +95,16 @@ while (contador > 0) {
   contador--;
 }
 ```
+</div>
 
-## break y continue
+### break y continue
 
 - `break`: Termina la ejecución del bucle por completo.
 - `continue`: Salta la iteración actual del bucle y pasa a la siguiente.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de break y continue
 for (let i = 0; i < 10; i++) {
@@ -100,12 +117,13 @@ for (let i = 0; i < 10; i++) {
   console.log(i); // Imprime 0, 1, 2, 4, 5, 6
 }
 ```
+</div>
 
-# 2. Operadores
+## 2. Operadores
 
 Los operadores son símbolos especiales que nos permiten realizar operaciones con valores y variables.
 
-## Operadores matemáticos
+### Operadores matemáticos
 
 Sirven para realizar cálculos.
 
@@ -115,13 +133,15 @@ Sirven para realizar cálculos.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de operadores matemáticos
 let resultado_math = 10 % 3; // El resultado es 1 (el resto de 10 / 3)
 let potencia_math = 2 ** 3; // El resultado es 8 (2 * 2 * 2)
 ```
+</div>
 
-## Operadores de comparación
+### Operadores de comparación
 
 Comparan dos valores y devuelven un booleano (`true` o `false`).
 
@@ -130,15 +150,16 @@ Comparan dos valores y devuelven un booleano (`true` o `false`).
 - `<`, `<=`, `>`, `>=`: Menor que, menor o igual que, mayor que, mayor o igual que.
 
 **Ejemplo (JavaScript):**
-
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de operadores de comparación
 console.log(10 === '10'); // false (uno es número, el otro es string)
 console.log(10 == '10'); // true (compara solo el valor, no el tipo) - ¡Es mejor usar ===!
 console.log(5 > 3); // true
 ```
+</div>
 
-## Operadores lógicos
+### Operadores lógicos
 
 Combinan o manipulan valores booleanos.
 
@@ -148,6 +169,7 @@ Combinan o manipulan valores booleanos.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de operadores lógicos
 let tieneBoleto = true;
@@ -160,25 +182,39 @@ let haceBuenTiempo = true;
 let podemosSalir = esDiaLibre || haceBuenTiempo; // true
 console.log(podemosSalir);
 ```
+</div>
 
-## Operadores de asignación
+### Operadores de asignación
 
 Asignan un valor a una variable.
 
 - `=`: Asignación simple.
 - `+=`, `-=`, `*=`, `/=`, etc.: Asignan un nuevo valor a la variable basándose en su valor actual. Por ejemplo, `x += 5` es lo mismo que `x = x + 5`.
 
-# 3. Arrays (Arreglos)
+**Ejemplo (JavaScript):**
+
+<div className="bloqueCodigo">
+```javascript
+// Ejemplo de operadores de asignación
+let puntos = 10;
+puntos += 5; // puntos ahora es 15
+puntos *= 2; // puntos ahora es 30
+console.log(puntos);
+```
+</div>
+
+## 3. Arrays (Arreglos)
 
 Un array es una estructura de datos que almacena una colección de elementos, que pueden ser de cualquier tipo.
 
-## Cómo recorrer arrays
+### Cómo recorrer arrays
 
 - `for`: El bucle `for` tradicional es útil para acceder al índice de cada elemento.
 - `for...of`: Este bucle es más moderno y simple, ya que itera directamente sobre los valores del array, sin necesidad de usar el índice.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de recorrido de arrays
 let frutas = ['manzana', 'banana', 'naranja'];
@@ -193,8 +229,9 @@ for (const fruta of frutas) {
   console.log(fruta);
 }
 ```
+</div>
 
-## Métodos útiles de arrays
+### Métodos útiles de arrays
 
 JavaScript tiene muchos métodos integrados en los arrays que facilitan su manipulación.
 
@@ -210,6 +247,7 @@ JavaScript tiene muchos métodos integrados en los arrays que facilitan su manip
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de métodos de arrays
 const numeros = [1, 2, 3, 4, 5];
@@ -230,12 +268,13 @@ console.log(sumaTotal); // 15
 const tieneNumeroGrande = numeros.some(num => num > 4); // true (el 5 cumple la condición)
 console.log(tieneNumeroGrande);
 ```
+</div>
 
-# 4. Strings (Cadenas de texto)
+## 4. Strings (Cadenas de texto)
 
-Una string es una secuencia de caracteres. Son inmutables, lo que significa que no se pueden modificar directamente, pero sus métodos nos permiten crear nuevas strings a partir de ellas.
+Una string es una secuencia de caracteres. Son inmutables, lo que significa que no se pueden modificar directamente, pero sus métodos le permiten crear nuevas strings a partir de ellas.
 
-## Propiedad .length y métodos comunes
+### Propiedad .length y métodos comunes
 
 - `.length`: Devuelve el número de caracteres de la string.
 - `.toLowerCase()`, `.toUpperCase()`: Convierten la string a minúsculas o mayúsculas.
@@ -247,6 +286,7 @@ Una string es una secuencia de caracteres. Son inmutables, lo que significa que 
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de métodos de strings
 let saludo = 'Hola Mundo';
@@ -262,13 +302,15 @@ console.log(palabras); // ["El", "gato", "es", "un", "animal", "genial"]
 let nuevaFrase = palabras.join('-');
 console.log(nuevaFrase); // "El-gato-es-un-animal-genial"
 ```
+</div>
 
-## Recorrer letra por letra
+### Recorrer letra por letra
 
-Puedes usar un bucle `for` o `for...of` para iterar sobre cada carácter de la string.
+Puede usar un bucle `for` o `for...of` para iterar sobre cada carácter de la string.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de recorrido de strings
 let palabra = 'Presentación';
@@ -278,18 +320,20 @@ for (const letra of palabra) {
   console.log(letra); // Imprime 'P', 'r', 'e', 's', etc.
 }
 ```
+</div>
 
-# 5. Funciones
+## 5. Funciones
 
 Las funciones son bloques de código reutilizables que realizan una tarea específica. Nos ayudan a organizar el código y evitar la repetición.
 
-## Funciones normales y funciones flecha (arrow functions)
+### Funciones normales y funciones flecha (arrow functions)
 
 - Funciones normales: Declaradas con la palabra clave `function`.
 - Funciones flecha: Una sintaxis más corta para escribir funciones. Son especialmente útiles en métodos de arrays como `map`, `filter`, etc.
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de funciones
 // Función normal
@@ -308,13 +352,14 @@ const multiplicar = (a, b) => a * b;
 console.log(sumar(5, 3)); // 8
 console.log(multiplicar(5, 3)); // 15
 ```
+</div>
 
-## Parámetros con valores por defecto y retorno de valores
+### Parámetros con valores por defecto y retorno de valores
 
-- Parámetros por defecto: Puedes asignar un valor a un parámetro en la declaración de la función. Si no se le pasa un valor al llamarla, usará el valor por defecto.
+- Parámetros por defecto: Puede asignar un valor a un parámetro en la declaración de la función. Si no se le pasa un valor al llamarla, usará el valor por defecto.
 - `return`: La palabra clave `return` se usa para devolver un valor desde la función. Cuando la función encuentra un `return`, su ejecución termina inmediatamente.
 
-## Recursividad básica
+### Recursividad básica
 
 La recursividad ocurre cuando una función se llama a sí misma para resolver un problema. Es útil para problemas que se pueden dividir en subproblemas más pequeños del mismo tipo. Es crucial tener un caso base que detenga la recursión para evitar un bucle infinito.
 
@@ -325,6 +370,7 @@ La recursividad ocurre cuando una función se llama a sí misma para resolver un
 
 **Ejemplo (JavaScript):**
 
+<div className="bloqueCodigo">
 ```javascript
 // Ejemplo de recursividad (factorial)
 function factorial(n) {
@@ -338,43 +384,48 @@ function factorial(n) {
 
 console.log(factorial(4)); // 4 * 3 * 2 * 1 = 24
 ```
+</div>
 
-# 6. Algoritmos (pensar en pasos)
+## 6. Algoritmos (pensar en pasos)
 
 Un algoritmo es una secuencia de instrucciones para resolver un problema. Antes de escribir código, es fundamental pensar en la lógica.
 
-## 1. Leer el enunciado y ejemplos
+### 1. Leer el enunciado y ejemplos
 
-Comprende exactamente lo que se te pide. ¿Qué entradas recibe? ¿Qué salida se espera?
+Comprenda exactamente lo que se le pide. ¿Qué entradas recibe? ¿Qué salida se espera?
 
-Analiza los ejemplos para entender el comportamiento deseado, incluyendo casos límite (como un array vacío o un número cero).
+Analice los ejemplos para entender el comportamiento deseado, incluyendo casos límite (como un array vacío o un número cero).
 
-## 2. Dividir en pasos simples (pseudocódigo)
+### 2. Dividir en pasos simples (pseudocódigo)
 
-No pienses en código, piensa en lenguaje humano. Escribe la solución paso a paso.
+No piense en código, piense en lenguaje humano. Escriba la solución paso a paso.
 
-**Ejemplo**: Si quieres encontrar el número más grande en un array.
+**Ejemplo**: Si quiere encontrar el número más grande en un array.
 
-1. Crea una variable para guardar el número más grande. Inicia con el primer elemento del array.
-2. Recorre el array desde el segundo elemento.
-3. En cada elemento, pregunta si es más grande que el número que tienes guardado.
-4. Si es más grande, actualiza tu variable.
-5. Al final, devuelve la variable.
+1. Cree una variable para guardar el número más grande. Inicie con el primer elemento del array.
+2. Recorra el array desde el segundo elemento.
+3. En cada elemento, pregunte si es más grande que el número que tiene guardado.
+4. Si es más grande, actualice su variable.
+5. Al final, devuelva la variable.
 
-## 3. Traducir los pasos a código
+### 3. Traducir los pasos a código
 
-Una vez que tienes el pseudocódigo, la traducción a un lenguaje de programación es mucho más sencilla.
+Una vez que tiene el pseudocódigo, la traducción a un lenguaje de programación es mucho más sencilla.
 
-Usa los conceptos que hemos revisado: bucles para recorrer, condicionales para comparar, variables para guardar.
+Use los conceptos que hemos revisado: bucles para recorrer, condicionales para comparar, variables para guardar.
 
-## 4. Probar con distintos casos
+### 4. Probar con distintos casos
 
-Prueba tu código con los ejemplos del enunciado.
+Pruebe su código con los ejemplos del enunciado.
 
-Prueba con casos límite que podrían fallar:
+Pruebe con casos límite que podrían fallar:
 
 - Arrays vacíos o con un solo elemento.
 - Números negativos o cero.
 - Strings vacías.
 
-Esto asegura que tu solución es robusta y funciona en todas las situaciones.
+Esto asegura que su solución es robusta y funciona en todas las situaciones.
+
+[Encuentre acá un archivo con preguntas para practicar](https://github.com/Ariel-GonzAguer/codigo-codigo/blob/main/logica/preguntas.md)
+y  
+[Encuentre acá las respuestas a esas preguntas](https://github.com/Ariel-GonzAguer/codigo-codigo/blob/main/logica/respuestas.md).
