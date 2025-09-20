@@ -1,3 +1,20 @@
+# 0. Lógica de programación
+
+La lógica de programación es el conjunto de reglas, razonamientos y estructuras que permiten resolver problemas mediante instrucciones que una computadora puede entender y ejecutar.  
+Es la base para crear algoritmos: secuencias ordenadas de pasos que transforman datos de entrada en resultados deseados.
+
+En otras palabras, la lógica de programación nos ayuda a pensar de manera estructurada y clara para que podamos comunicarle a la computadora qué hacer en diferentes situaciones.
+
+Se puede expresar en cualquier lenguaje de programación, pues los conceptos son universales.
+
+## Algunos beneficios de practicarla
+
+- Mejora la capacidad de resolver problemas.
+- Facilita el aprendizaje de nuevos lenguajes de programación.
+- Ayuda a escribir código más limpio y eficiente.
+- Fomenta el pensamiento crítico y analítico.
+- Reduce errores y facilita el debugging: un razonamiento claro evita suposiciones implícitas que suelen causar bugs difíciles.
+
 # 1. Control de flujo
 
 El control de flujo es la base de la programación. Nos permite decidir qué bloques de código se ejecutan y cuántas veces lo hacen.
