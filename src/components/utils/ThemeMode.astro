@@ -1,0 +1,79 @@
+---
+const { width = 25, height = 25 } = Astro.props;
+---
+
+<button
+  id="theme-toggle"
+  aria-label="Cambiar tema"
+  type="button"
+  class="text-sand-light-12 hover:text-sand-light-10 dark:text-sand-dark-12 dark:hover:text-sand-dark-10 focus:shadow-outline relative flex size-8 items-center justify-center transition duration-100 focus:outline-none"
+>
+  <!-- Sistema -->
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="theme-icon system" height={height} width={width} viewBox="0 0 24 24"><path fill-rule="evenodd" d="M20.5 12c0 4.69-3.81 8.5-8.5 8.5v-17c4.69 0 8.5 3.81 8.5 8.5M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10" clip-rule="evenodd"/></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" class="theme-icon light" height={height} width={width} viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5" d="M12 3.29V1.77M5.84 18.16l-1.08 1.08M12 22.23v-1.52m7.24-15.95-1.08 1.08M20.71 12h1.52m-4.07 6.16 1.08 1.08M1.77 12h1.52m1.47-7.24 1.08 1.08m9.87 2.45a5.245 5.245 0 0 1 0 7.42 5.245 5.245 0 0 1-7.42 0 5.245 5.245 0 0 1 0-7.42 5.245 5.245 0 0 1 7.42 0Z"/></svg>
+
+  <!-- Oscuro -->
+  <svg
+    class="theme-icon dark"
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M20.25 14.199A8.5 8.5 0 0 1 9.802 3.75A8.534 8.534 0 1 0 20.25 14.198"></path>
+    <path d="M16.333 5.333 17.5 3l1.167 2.333L21 6.5l-2.333 1.167L17.5 10l-1.167-2.333L14 6.5z"
+    ></path>
+  </svg>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+
+    const html = document.documentElement;
+    const iconSystem = btn.querySelector('.theme-icon.system') as HTMLElement;
+    const iconLight = btn.querySelector('.theme-icon.light') as HTMLElement;
+    const iconDark = btn.querySelector('.theme-icon.dark') as HTMLElement;
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function obtenerTemaActual() {
+      const saved = localStorage.getItem('theme');
+      return saved || 'system';
+    }
+
+    function aplicartema(theme: string) {
+      if (theme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+      } else if (theme === 'light') {
+        html.setAttribute('data-theme', 'light');
+      } else {
+        html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      }
+
+      iconSystem.style.display = theme === 'system' ? 'block' : 'none';
+      iconLight.style.display = theme === 'light' ? 'block' : 'none';
+      iconDark.style.display = theme === 'dark' ? 'block' : 'none';
+    }
+
+    let currentTheme = obtenerTemaActual();
+    aplicartema(currentTheme);
+
+    btn.addEventListener('click', () => {
+      if (currentTheme === 'system') {
+        currentTheme = 'light';
+      } else if (currentTheme === 'light') {
+        currentTheme = 'dark';
+      } else {
+        currentTheme = 'system';
+      }
+
+      localStorage.setItem('theme', currentTheme);
+      aplicartema(currentTheme);
+    });
+  });
+</script>

@@ -1,10 +1,12 @@
 # la siguiente configuración garantiza que solo se puedan instalar los paquetes publicados hace al menos un día
 minimumReleaseAge: 1440
-
 # Define los paquetes que forman parte del monorepo.
 # Nota: 'src/**' se ha omitido a propósito porque aquí `src/` contiene la aplicación
 # y no sub-paquetes con su propio package.json. Si en el futuro conviertes subcarpetas
 # de `src/` en paquetes, añade el glob correspondiente.
 packages:
-  - 'packages/**'
-  - 'apps/**'
+  - packages/**
+  - apps/**
+ignoredBuiltDependencies:
+  - esbuild
+  - sharp

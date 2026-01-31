@@ -14,7 +14,25 @@ import Footer from '../components/utils/Footer.astro';
     <meta name="generator" content={Astro.generator} />
     <title>¡Código - Código!</title>
   </head>
-  <body class="h-dvh bg-neutral-900 text-white font-sans text-lg flex flex-col">
+  <script is:inline>
+      (function() {
+        const userPreference = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        let theme;
+        if (userPreference === 'dark') {
+          theme = 'dark';
+        } else if (userPreference === 'light') {
+          theme = 'light';
+        } else {
+          // system o no definido
+          theme = prefersDark ? 'dark' : 'light';
+        }
+        
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  <body class="h-dvh  font-sans text-lg flex flex-col">
     <Analytics />
     <main class="flex-1">
       <slot />

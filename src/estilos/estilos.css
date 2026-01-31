@@ -1,6 +1,8 @@
 @import 'tailwindcss';
-@plugin "@midudev/tailwind-animations";
-
+@import '@midudev/tailwind-animations';
+[data-theme='dark'] {
+  color-scheme: dark;
+}
 h1 {
   @apply text-6xl font-bold mb-6 mt-8;
 }
@@ -23,8 +25,6 @@ a {
     @apply text-purple-400;
   }
 }
-
-
 
 /* Estilos para código inline - elementos como `computed`, `ref`, etc. */
 code {
