@@ -3,17 +3,48 @@ const { width = 25, height = 25 } = Astro.props;
 ---
 
 <button
-  id="theme-toggle"
+  id="cambiar-tema"
   aria-label="Cambiar tema"
   type="button"
   class="text-sand-light-12 hover:text-sand-light-10 dark:text-sand-dark-12 dark:hover:text-sand-dark-10 focus:shadow-outline relative flex size-8 items-center justify-center transition duration-100 focus:outline-none"
 >
   <!-- Sistema -->
-  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="theme-icon system" height={height} width={width} viewBox="0 0 24 24"><path fill-rule="evenodd" d="M20.5 12c0 4.69-3.81 8.5-8.5 8.5v-17c4.69 0 8.5 3.81 8.5 8.5M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10" clip-rule="evenodd"/></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" class="theme-icon light" height={height} width={width} viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="1.5" d="M12 3.29V1.77M5.84 18.16l-1.08 1.08M12 22.23v-1.52m7.24-15.95-1.08 1.08M20.71 12h1.52m-4.07 6.16 1.08 1.08M1.77 12h1.52m1.47-7.24 1.08 1.08m9.87 2.45a5.245 5.245 0 0 1 0 7.42 5.245 5.245 0 0 1-7.42 0 5.245 5.245 0 0 1 0-7.42 5.245 5.245 0 0 1 7.42 0Z"/></svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    fill="currentColor"
+    class="icono-tema sistema hidden"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M20.5 12c0 4.69-3.81 8.5-8.5 8.5v-17c4.69 0 8.5 3.81 8.5 8.5M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10"
+      clip-rule="evenodd"
+    ></path>
+  </svg>
+
+  <!-- Claro -->
+  <svg
+    class="icono-tema claro hidden"
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 3.29V1.77M5.84 18.16L4.76 19.24M12 22.23V20.71M19.24 4.76L18.16 5.84M20.71 12H22.23M18.16 18.16L19.24 19.24M1.77 12H3.29M4.76 4.76L5.84 5.84M15.71 8.29C17.76 10.34 17.76 13.66 15.71 15.71C13.66 17.76 10.34 17.76 8.29 15.71C6.24 13.66 6.24 10.34 8.29 8.29C10.34 6.24 13.66 6.24 15.71 8.29Z"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="square"
+      stroke-linejoin="round"
+    ></path>
+  </svg>
 
   <!-- Oscuro -->
   <svg
-    class="theme-icon dark"
+    class="icono-tema oscuro hidden"
     width={width}
     height={height}
     viewBox="0 0 24 24"
@@ -23,57 +54,97 @@ const { width = 25, height = 25 } = Astro.props;
     <path
       fill-rule="evenodd"
       clip-rule="evenodd"
-      d="M20.25 14.199A8.5 8.5 0 0 1 9.802 3.75A8.534 8.534 0 1 0 20.25 14.198"></path>
-    <path d="M16.333 5.333 17.5 3l1.167 2.333L21 6.5l-2.333 1.167L17.5 10l-1.167-2.333L14 6.5z"
+      d="M20.25 14.199A8.5 8.5 0 0 1 9.802 3.75A8.534 8.534 0 1 0 20.25 14.198"
     ></path>
+    <path d="M16.333 5.333 17.5 3l1.167 2.333L21 6.5l-2.333 1.167L17.5 10l-1.167-2.333L14 6.5z"></path>
   </svg>
 </button>
 
+<!-- Script inline para prevenir el FOUC -->
+<script is:inline>
+  (function() {
+    const temaGuardado = localStorage.theme;
+    const sistemaPrefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (temaGuardado === 'dark' || (!temaGuardado && sistemaPrefiereOscuro)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  })();
+</script>
+
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
+  // Funcionalidad de cambio de tema
+  function iniciarCambioDeTema() {
+    const boton = document.getElementById('cambiar-tema');
+    if (!boton) return;
 
     const html = document.documentElement;
-    const iconSystem = btn.querySelector('.theme-icon.system') as HTMLElement;
-    const iconLight = btn.querySelector('.theme-icon.light') as HTMLElement;
-    const iconDark = btn.querySelector('.theme-icon.dark') as HTMLElement;
+    const iconoSistema = boton.querySelector('.icono-tema.sistema');
+    const iconoClaro = boton.querySelector('.icono-tema.claro');
+    const iconoOscuro = boton.querySelector('.icono-tema.oscuro');
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
+    // Obtener tema actual
     function obtenerTemaActual() {
-      const saved = localStorage.getItem('theme');
-      return saved || 'system';
+      const guardado = localStorage.getItem('theme');
+      if (guardado === 'light' || guardado === 'dark' || guardado === 'system') {
+        return guardado;
+      }
+      return 'system';
     }
 
-    function aplicartema(theme: string) {
-      if (theme === 'dark') {
-        html.setAttribute('data-theme', 'dark');
-      } else if (theme === 'light') {
-        html.setAttribute('data-theme', 'light');
+    // Aplicar tema y actualizar íconos
+    function aplicarTema(tema: string) {
+      const sistemaPrefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (tema === 'system') {
+        localStorage.removeItem('theme');
       } else {
-        html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        localStorage.theme = tema;
       }
 
-      iconSystem.style.display = theme === 'system' ? 'block' : 'none';
-      iconLight.style.display = theme === 'light' ? 'block' : 'none';
-      iconDark.style.display = theme === 'dark' ? 'block' : 'none';
+      const debeSerOscuro = tema === 'dark' || (tema === 'system' && sistemaPrefiereOscuro);
+      html.classList.toggle('dark', debeSerOscuro);
+
+      // Mostrar/ocultar íconos
+      iconoSistema?.classList.toggle('hidden', tema !== 'system');
+      iconoClaro?.classList.toggle('hidden', tema !== 'light');
+      iconoOscuro?.classList.toggle('hidden', tema !== 'dark');
     }
 
-    let currentTheme = obtenerTemaActual();
-    aplicartema(currentTheme);
+    // Inicializar con el tema actual
+    let temaActual = obtenerTemaActual();
+    aplicarTema(temaActual);
 
-    btn.addEventListener('click', () => {
-      if (currentTheme === 'system') {
-        currentTheme = 'light';
-      } else if (currentTheme === 'light') {
-        currentTheme = 'dark';
+    // Cambiar tema al hacer click
+    boton.addEventListener('click', () => {
+      if (temaActual === 'system') {
+        temaActual = 'light';
+      } else if (temaActual === 'light') {
+        temaActual = 'dark';
       } else {
-        currentTheme = 'system';
+        temaActual = 'system';
       }
-
-      localStorage.setItem('theme', currentTheme);
-      aplicartema(currentTheme);
+      aplicarTema(temaActual);
     });
-  });
+
+    // Detectar cambios en el sistema cuando el modo es "system"
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', (e) => {
+      if (obtenerTemaActual() === 'system') {
+        html.classList.toggle('dark', e.matches);
+      }
+    });
+  }
+
+  // Inicializar al cargar el DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', iniciarCambioDeTema);
+  } else {
+    iniciarCambioDeTema();
+  }
+
+  // Re-inicializar después de transiciones de página en Astro
+  document.addEventListener('astro:page-load', iniciarCambioDeTema);
 </script>

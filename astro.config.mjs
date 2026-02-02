@@ -17,13 +17,6 @@ export default defineConfig({
   vite: {
     // @ts-ignore
     plugins: [tailwindcss()],
-    ssr: {
-      // Esto le dice a Vite que no trate el paquete como externo
-      noExternal: ['@midudev/tailwind-animations'],
-    },
-    optimizeDeps: {
-      include: ['@midudev/tailwind-animations'],
-    },
   },
   integrations: [
     mdx(),

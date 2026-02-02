@@ -1,7 +1,6 @@
 ---
-import '../estilos/estilos.css';
 import Analytics from '@vercel/analytics/astro';
-import Footer from '../components/utils/Footer.astro';
+import '../styles/global.css';
 ---
 
 <!doctype html>
@@ -14,29 +13,19 @@ import Footer from '../components/utils/Footer.astro';
     <meta name="generator" content={Astro.generator} />
     <title>¡Código - Código!</title>
   </head>
-  <script is:inline>
+   <script is:inline>
       (function() {
-        const userPreference = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.theme;
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
-        let theme;
-        if (userPreference === 'dark') {
-          theme = 'dark';
-        } else if (userPreference === 'light') {
-          theme = 'light';
-        } else {
-          // system o no definido
-          theme = prefersDark ? 'dark' : 'light';
+        if (theme === 'dark' || (!theme && systemPrefersDark)) {
+          document.documentElement.classList.add('dark');
         }
-        
-        document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
-  <body class="h-dvh  font-sans text-lg flex flex-col">
+  <body class="bg-white dark:bg-black dark:text-neutral-100">
     <Analytics />
-    <main class="flex-1">
+    
       <slot />
-    </main>
-    <Footer />
   </body>
 </html>

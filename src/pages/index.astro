@@ -1,28 +1,124 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CrearIssue from '../components/utils/CrearIssue.astro';
 import ThemeMode from '../components/utils/ThemeMode.astro';
+import Nav from '../components/utils/navegacion/Nav.astro';
+import Links from '../components/utils/navegacion/Links.astro';
 ---
 
 <Layout>
-  <ThemeMode />
-  <section class="flex flex-col justify-center items-center h-full text-center gap-4 home">
-    <h1 class="text-center animate-tada delay500">¡Código - Código!</h1>
-    <h2>
-      Aprenda en español a utilizar herramientas de React, Vue, Svelte, Preact, SolidJS y Astro 🚀
-    </h2>
+  <Nav>
+    <Links slot="center" href="/herramientas/" label="Herramientas" />
+    <Links slot="center" href="#" label="Sobre nosotros" />
+    <Links slot="center" href="#" label="Contacto" />
+    <ThemeMode slot="right" />
+  </Nav>
+    <section class="relative bg-white dark:bg-black min-h-[calc(90vh-5rem)] flex items-center overflow-hidden">
+    <!-- Efectos de fondo decorativos -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
+    </div>
 
-    <p class="text-lg">
-      Este proyecto nace de la necesidad de aprender sin tener que atravesar barreras idiomáticas.
-    </p>
-    <p class="text-lg mb-8">Aprenda más rápido, de manera contextualizada y en su idioma.</p>
-    <a
-      href="./herramientas/"
-      class="text-2xl mb-8 bg-amber-300! text-black! rounded-4xl py-6 px-4 border-2 border-white hover:bg-black hover:text-amber-300 transition-all duration-300"
-      >Ir al catálogo de herramientas</a
-    >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid lg:grid-cols-5 gap-8 lg:gap-12 xl:gap-16 items-center">
+        
+        <!-- Contenido principal -->
+        <div class="lg:col-span-3 flex flex-col text-center lg:text-left space-y-5 sm:space-y-6 lg:space-y-8 py-10 lg:py-0">
 
-    <CrearIssue />
-    <p><a href="https://github.com/Ariel-GonzAguer/codigo-codigo" target="_blank" rel="noopener noreferrer" class="text-amber-300! hover:underline">Dele una ⭐ en Github</a></p>
+          <!-- Título principal con animación -->
+          <h1 class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-gray-900 dark:text-white animate-fade-in-up">
+            ¡Código - Código!
+            <span class="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mt-2 sm:mt-3 lg:mt-4 font-normal animate-fade-in-up animation-delay-200">
+              Aprende en español
+            </span>
+          </h1>
+          
+          <!-- Descripción principal con mejor contraste -->
+          <p class="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed animate-fade-in-up animation-delay-400">
+            Aprende a utilizar herramientas de{' '}
+            <strong class="font-bold text-gray-900 dark:text-white">
+              React, Vue, Svelte, Preact, SolidJS y Astro
+            </strong>{' '}
+          </p>
+          
+          <!-- Descripción secundaria mejorada -->
+          <p class="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-600">
+            Este proyecto nace de la necesidad de aprender sin tener que atravesar barreras idiomáticas. 
+            Aprende más rápido, de manera contextualizada y en tu idioma.
+          </p>
+          
+          <!-- Botones de acción mejorados -->
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 animate-fade-in-up animation-delay-800">
+            <a 
+              href="/herramientas/"
+              class="group relative inline-flex items-center justify-center gap-2 py-3 sm:py-4 px-6 sm:px-8 rounded-xl bg-black dark:bg-white border-2 border-black dark:border-white text-white dark:text-black font-semibold text-base sm:text-lg overflow-hidden transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95"
+              aria-label="Ir al catálogo de herramientas"
+            >
+              <span class="relative z-10 flex items-center gap-2">
+                Ir al catálogo
+              </span>
+              <span class="absolute inset-0 bg-gradient-to-r from-gray-800 to-black dark:from-gray-200 dark:to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></span>
+            </a>
+            
+            <a 
+              href="https://github.com/Ariel-GonzAguer/codigo-codigo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center justify-center gap-2 py-3 sm:py-4 px-6 sm:px-8 rounded-xl bg-transparent border-2 border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 active:scale-95"
+              aria-label="Dar estrella en GitHub (se abre en nueva ventana)"
+            >
+              <span class="group-hover:scale-110 transition-transform duration-300" aria-hidden="true">⭐</span>
+              Estrella en GitHub
+            </a>
+          </div>
+          
+          <!-- Indicador de características -->
+          <div class="hidden sm:flex flex-wrap gap-4 pt-4 lg:pt-6 animate-fade-in-up animation-delay-1000">
+            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>100% en español</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Ejemplos prácticos</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Open Source</span>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Imagen decorativa -->
+        <div class="lg:flex lg:col-span-2 justify-center items-center hidden animate-fade-in-right">
+          <div class="relative group w-full max-w-md xl:max-w-lg">
+            <div class="absolute -inset-1 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-gray-200 dark:via-gray-400 dark:to-gray-200 rounded-2xl blur-lg opacity-25 group-hover:opacity-50 transition duration-500 animate-gradient" aria-hidden="true"></div>
+            <div class="relative overflow-hidden rounded-2xl">
+              <img 
+                src="/compu.jpg"
+                alt="Ilustración de código y desarrollo web"
+                class="relative w-full rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105"
+                width="500"
+                height="500"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>   
   </section>
 </Layout>

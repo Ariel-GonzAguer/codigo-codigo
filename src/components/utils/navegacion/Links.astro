@@ -1,0 +1,12 @@
+---
+const { href = "#", label = "Link", class_: clasesExtras = "", target = "_self" } = Astro.props;
+---
+
+<a 
+  href={href} 
+  target={target} 
+  class={`relative text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 group ${clasesExtras}`}
+>
+  {label}
+  <span class="absolute left-1/2 -bottom-1 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+</a>

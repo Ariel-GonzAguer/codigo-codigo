@@ -1,0 +1,40 @@
+---
+const { class: clasesExtras = "" } = Astro.props;
+---
+
+<nav class={`sticky-nav docs-nav sticky top-0 z-99 mx-auto h-fit px-4 py-8 transition-transform duration-300 xl:px-16 -translate-y-4 pb-4 ${clasesExtras}`}>
+
+  <!-- Contenedor principal -->
+  <div class="flex items-center justify-between gap-4 max-w-[1400px] mx-auto">
+
+    <!-- Logo -->
+  <div class="logo shrink-0">
+  <a 
+    href="/" 
+    class="flex flex-col gap-1.5 "
+    aria-label="Ir a la página principal - ¡Código - Código!"
+  >
+    <span class="text-xl font-bold text-gray-900 dark:text-white group-hover:scale-105 transition-transform origin-left">
+      ¡Código - Código!
+    </span>
+    <span 
+      class="h-1 w-16 bg-black dark:bg-white rounded-full group-hover:w-20 transition-all duration-300" 
+      aria-hidden="true"
+    ></span>
+  </a>
+</div>
+    <!-- Links centrados (desktop) -->
+    <div class="docs-nav-center hidden md:flex items-center gap-7 flex-1 justify-center">
+      <slot name="center" />
+    </div>
+
+    <!-- Elementos a la derecha -->
+    <div class="flex items-center gap-3 shrink-0">
+      <slot name="right" />
+    </div>
+
+    <!-- Slot por defecto (si necesitas flexibilidad extra) -->
+    <slot />
+
+  </div>
+</nav>
