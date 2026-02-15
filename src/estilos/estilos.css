@@ -1,5 +1,29 @@
 @import 'tailwindcss';
-@plugin "@midudev/tailwind-animations";
+
+/* Animación tada personalizada */
+@keyframes tada {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  10%, 20% {
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+  30%, 50%, 70%, 90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+  40%, 60%, 80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.animate-tada {
+  animation-name: tada;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
 
 h1 {
   @apply text-6xl font-bold mb-6 mt-8;
@@ -41,13 +65,9 @@ pre code {
   @apply text-left p-6 bg-[#24292e] rounded-lg border shadow-sm my-4;
 }
 
-/* Asegurar que las utilidades de delay de Tailwind apliquen sobre animaciones del plugin
-   Algunos plugins definen la propiedad `animation` mediante el shorthand, lo que puede
-   sobrescribir `animation-delay`. Esta regla específica fuerza el delay cuando se usa
-   la combinación `animate-tada delay-500`. Cambia o añade más selectores si necesitas
-   soportar otras combinaciones. */
+/* Clase para agregar delay a las animaciones */
 .delay500 {
-  animation-delay: 500ms !important;
+  animation-delay: 500ms;
 }
 
 /* Clase utilitaria para centrar listas puntadas en bloques de contenido
