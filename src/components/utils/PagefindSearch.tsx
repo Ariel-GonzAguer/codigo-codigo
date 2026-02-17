@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 
 declare global {
-  interface Window { PagefindUI?: any }
+  interface Window {
+    PagefindUI?: any;
+  }
 }
 
 export default function PagefindSearch(): React.ReactElement {
@@ -62,7 +64,14 @@ export default function PagefindSearch(): React.ReactElement {
         // Render Pagefind UI inside #search
         // showSubResults keeps previous behavior; translations keep the placeholder text
         // eslint-disable-next-line no-new
-        new PagefindUI({ element: '#search', showSubResults: true, translations: { placeholder: PLACEHOLDER_TEXT, zeroResults: 'No se encontraron resultados para [SEARCH_TERM]' } });
+        new PagefindUI({
+          element: '#search',
+          showSubResults: true,
+          translations: {
+            placeholder: PLACEHOLDER_TEXT,
+            zeroResults: 'No se encontraron resultados para [SEARCH_TERM]',
+          },
+        });
         return true;
       } catch (e) {
         // eslint-disable-next-line no-console
@@ -80,7 +89,7 @@ export default function PagefindSearch(): React.ReactElement {
         s.onload = () => {
           initPagefind();
         };
-        s.onerror = (err) => {
+        s.onerror = err => {
           // eslint-disable-next-line no-console
           console.error('Error cargando pagefind-ui.js', err);
         };
@@ -90,12 +99,25 @@ export default function PagefindSearch(): React.ReactElement {
   }, []);
 
   return (
-    <div id="search" className="pagefind-container max-w-lg mx-auto p-4 rounded-2xl shadow-lg bg-black text-white" role="search" aria-label={PLACEHOLDER_TEXT}>
+    <div
+      id="search"
+      className="pagefind-container max-w-lg mx-auto p-4 rounded-2xl shadow-lg bg-black text-white"
+      role="search"
+      aria-label={PLACEHOLDER_TEXT}
+    >
       <noscript>
         <div className="max-w-lg mx-auto p-4 rounded-2xl shadow-lg bg-black text-white">
           <form action="/search" method="get">
-            <label htmlFor="q" className="sr-only">{PLACEHOLDER_TEXT}</label>
-            <input id="q" name="q" type="search" placeholder={PLACEHOLDER_TEXT} className="w-full px-3 py-2 bg-black text-white placeholder-neutral-200 border border-neutral-700 rounded" />
+            <label htmlFor="q" className="sr-only">
+              {PLACEHOLDER_TEXT}
+            </label>
+            <input
+              id="q"
+              name="q"
+              type="search"
+              placeholder={PLACEHOLDER_TEXT}
+              className="w-full px-3 py-2 bg-black text-white placeholder-neutral-200 border border-neutral-700 rounded"
+            />
           </form>
         </div>
       </noscript>

@@ -14,8 +14,8 @@
     "test:vue": "vitest -c vitest.config.vue.ts",
     "test:svelte": "vitest -c vitest.config.svelte.ts",
     "test:preact": "vitest -c vitest.config.preact.ts",
-    "prettierCheck": "pnpm dlx prettier --check",
-    "prettierFix": "pnpm dlx prettier --write"
+    "prettierCheck": "pnpm dlx prettier --check src/ scripts/",
+    "prettierFix": "pnpm dlx prettier --write src/ scripts/"
   },
   "dependencies": {
     "@astrojs/mdx": "4.3.13",
