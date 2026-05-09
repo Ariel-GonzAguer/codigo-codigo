@@ -13,7 +13,7 @@ Para que todo funcione bien, desde el despliegue hasta los test, se deben seguir
 - Los componentes deben estar en `src/components/<Framework>/` y usar **PascalCase**. Ejemplo: `UseState.jsx`, `VueRouter.vue`.
 - En general no es necesario ni se recomienda agregar más archivos de estilos, pero si necesita agregar alguno, los archivos de estilo deben estar en `src/estilos/` y usar **kebab-case**, teniendo el framework como prefijo + el nombre del componente. Ejemplo: `react-UseState-boton.css`, `vue-VueRouter-boton.css`.
 - Los archivos de prueba deben estar en `src/__tests__/`, usar **PascalCase**, y usar el framework correspondiente como prefijo + el nombre del componente. Ejemplo: `Preact-UseState.test.jsx`, `Solid-CreateSignal.test.vue`.  
-El proyecto ya incluye configuración para cada framework. Puede ver los comandos disponibles en `package.json`.
+  El proyecto ya incluye configuración para cada framework. Puede ver los comandos disponibles en `package.json`.
 - Las imágenes deben estar en `public/img/` y usar **kebab-case**, usando el framework correspondiente como prefijo + el nombre del componente. Ejemplo: `react-ReduxToolkit-foto.png`, `vue-VueRouter-imagen-gato-rojo.png`.
 
 ---
@@ -48,11 +48,12 @@ El proyecto ya incluye configuración para cada framework. Puede ver los comando
   - No olvide la clase `bloqueCodigo` en el `div`.
   - Por favor vea [PLANTILLA_MDX.mdx](PLANTILLA_MDX.mdx) para tener una idea más clara, ya que la sintaxis exacta no se puede mostrar bien acá.
 
-```mdx
+````mdx
 <div className="bloqueCodigo">
 ```jsx
-// Código acá 
-``` 
+// Código acá
+````
+
 </div>
 ```
 
@@ -64,11 +65,14 @@ El proyecto ya incluye configuración para cada framework. Puede ver los comando
 - Listas numeradas con número, punto y espacio (`1. `).
 - Enlaces relativos: `[Texto](./RUTA)`.
 - Imágenes relativas: `![Alt](/imagen.png)`.
-- Use componentes importados para ejemplos interactivos, por ejemplo: 
+- Use componentes importados para ejemplos interactivos, por ejemplo:
+
   ```jsx
   <UseState client:load />
   ```
+
   - No olvide usar la directiva `client:load` para cargar el componente en el cliente:
+
 - Metadatos al inicio del archivo MDX:
 
   ```mdx

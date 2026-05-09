@@ -2,7 +2,7 @@
 name: Solicitud de Feature
 about: Sugerir una idea para este proyecto
 title: '[Arreglar | Agregar | Documentación | Mejorar | Estilos | Refactor | Test | Otros] ( Área | Framework): Descripción corta'
-labels: [ 'enhancement ']
+labels: ['enhancement ']
 assignees: []
 ---
 

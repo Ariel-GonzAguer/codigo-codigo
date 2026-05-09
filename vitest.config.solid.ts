@@ -8,6 +8,7 @@ export default defineConfig({
   },
   plugins: [
     solidPlugin({
+      hot: false,
       // Incluir tanto los componentes de Solid como los tests que usan Solid JSX
       include: /src\/(components\/SolidJS|__tests__)\/.*\.(jsx|tsx)$/,
     }),

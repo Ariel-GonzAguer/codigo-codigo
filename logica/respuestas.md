@@ -19,10 +19,6 @@ function esPar(num) {
   return num % 2 === 0 ? true : false;
 }
 
-
-
-
-
 // Versión aún más simplificada (recomendada)
 function esPar(num) {
   return num % 2 === 0;
@@ -90,26 +86,26 @@ for (let i = 0; i < 5; i++) {
 // == compara solo el valor (con conversión de tipo)
 // === compara valor Y tipo (comparación estricta)
 
-console.log(5 == '5');   // true (convierte '5' a número)
-console.log(5 === '5');  // false (diferentes tipos)
+console.log(5 == '5'); // true (convierte '5' a número)
+console.log(5 === '5'); // false (diferentes tipos)
 
-console.log(true == 1);  // true (convierte true a 1)
+console.log(true == 1); // true (convierte true a 1)
 console.log(true === 1); // false (diferentes tipos)
 
-console.log(null == undefined);  // true (caso especial)
+console.log(null == undefined); // true (caso especial)
 console.log(null === undefined); // false (diferentes tipos)
 ```
 
 **2.2 Evaluar expresiones:**
 
 ```js
-10 % 3        // Respuesta: 1 (resto de 10 / 3)
-2 ** 4        // Respuesta: 16 (2 elevado a la 4)
-'5' === 5     // Respuesta: false (string vs número)
-'5' == 5      // Respuesta: true (conversión automática)
-!true         // Respuesta: false (negación de true)
-true && false // Respuesta: false (AND: ambos deben ser true)
-true || false // Respuesta: true (OR: al menos uno debe ser true)
+10 % 3; // Respuesta: 1 (resto de 10 / 3)
+2 ** 4; // Respuesta: 16 (2 elevado a la 4)
+'5' === 5; // Respuesta: false (string vs número)
+'5' == 5; // Respuesta: true (conversión automática)
+!true; // Respuesta: false (negación de true)
+true && false; // Respuesta: false (AND: ambos deben ser true)
+true || false; // Respuesta: true (OR: al menos uno debe ser true)
 ```
 
 **2.3 Función para verificar si puede votar:**
@@ -120,8 +116,8 @@ function puedeVotar(edad, tieneDocumento) {
 }
 
 // Ejemplos de uso:
-console.log(puedeVotar(20, true));  // true
-console.log(puedeVotar(17, true));  // false
+console.log(puedeVotar(20, true)); // true
+console.log(puedeVotar(17, true)); // false
 console.log(puedeVotar(20, false)); // false
 ```
 
@@ -136,9 +132,9 @@ puntos = puntos - 25;
 
 // Respuesta: Versión simplificada
 let puntos = 100;
-puntos += 50;  // puntos = 150
-puntos *= 2;   // puntos = 300
-puntos -= 25;  // puntos = 275
+puntos += 50; // puntos = 150
+puntos *= 2; // puntos = 300
+puntos -= 25; // puntos = 275
 ```
 
 ## 3. Arrays (Arreglos)
@@ -194,7 +190,7 @@ console.log(palabrasLargas); // ['programación', 'computadora']
 
 ```js
 let numeros = [3, 7, 2, 9, 1, 5];
-let maximo = numeros.reduce((max, actual) => actual > max ? actual : max);
+let maximo = numeros.reduce((max, actual) => (actual > max ? actual : max));
 console.log(maximo); // 9
 
 // Alternativa más clara:
@@ -206,8 +202,8 @@ let maximo2 = numeros.reduce((max, actual) => Math.max(max, actual));
 ```js
 let edades = [15, 22, 17, 30, 16];
 
-edades.some(edad => edad >= 18)  // Respuesta: true (hay al menos uno >= 18)
-edades.every(edad => edad >= 18) // Respuesta: false (no todos son >= 18)
+edades.some(edad => edad >= 18); // Respuesta: true (hay al menos uno >= 18)
+edades.every(edad => edad >= 18); // Respuesta: false (no todos son >= 18)
 ```
 
 ## 4. Strings (Cadenas de texto)
@@ -221,10 +217,10 @@ function saludarEnMayusculas(nombre) {
 
 // Alternativa sin template literals:
 function saludarEnMayusculas(nombre) {
-  return ("Hola, " + nombre + "!").toUpperCase();
+  return ('Hola, ' + nombre + '!').toUpperCase();
 }
 
-console.log(saludarEnMayusculas("Ana")); // "HOLA, ANA!"
+console.log(saludarEnMayusculas('Ana')); // "HOLA, ANA!"
 ```
 
 **4.2 Contar letra 'a' en "programación":**
@@ -240,7 +236,7 @@ function contarLetraA(palabra) {
   return contador;
 }
 
-console.log(contarLetraA("programación")); // 2
+console.log(contarLetraA('programación')); // 2
 
 // Alternativa con for...of:
 function contarLetraA2(palabra) {
@@ -258,13 +254,13 @@ function contarLetraA2(palabra) {
 
 ```js
 // Verificar si "JavaScript" contiene "Script"
-console.log("JavaScript".includes("Script")); // true
+console.log('JavaScript'.includes('Script')); // true
 
 // Obtener las primeras 4 letras de "desarrollo"
-console.log("desarrollo".slice(0, 4)); // "desa"
+console.log('desarrollo'.slice(0, 4)); // "desa"
 
 // Convertir "HOLA mundo" a minúsculas
-console.log("HOLA mundo".toLowerCase()); // "hola mundo"
+console.log('HOLA mundo'.toLowerCase()); // "hola mundo"
 ```
 
 **4.4 Convertir frase a array de palabras:**
@@ -274,7 +270,7 @@ function fraseAArray(frase) {
   return frase.split(' ');
 }
 
-console.log(fraseAArray("Me gusta programar")); // ["Me", "gusta", "programar"]
+console.log(fraseAArray('Me gusta programar')); // ["Me", "gusta", "programar"]
 ```
 
 **4.5 Unir array con guiones:**
@@ -284,7 +280,7 @@ function unirConGuiones(palabras) {
   return palabras.join('-');
 }
 
-console.log(unirConGuiones(["hola", "mundo", "cruel"])); // "hola-mundo-cruel"
+console.log(unirConGuiones(['hola', 'mundo', 'cruel'])); // "hola-mundo-cruel"
 ```
 
 **4.6 Verificar palíndromo:**
@@ -296,15 +292,15 @@ function esPalindromo(palabra) {
   return palabraLimpia === palabraInvertida;
 }
 
-console.log(esPalindromo("radar")); // true
-console.log(esPalindromo("hola"));  // false
+console.log(esPalindromo('radar')); // true
+console.log(esPalindromo('hola')); // false
 
 // Alternativa sin métodos de array:
 function esPalindromo2(palabra) {
   const palabraLimpia = palabra.toLowerCase();
   let inicio = 0;
   let fin = palabraLimpia.length - 1;
-  
+
   while (inicio < fin) {
     if (palabraLimpia[inicio] !== palabraLimpia[fin]) {
       return false;
@@ -426,7 +422,7 @@ IMPLEMENTACIÓN:
 ```js
 function nombreMasLargo(nombres) {
   if (nombres.length === 0) return null;
-  
+
   let nombreMasLargo = nombres[0];
   for (let i = 1; i < nombres.length; i++) {
     if (nombres[i].length > nombreMasLargo.length) {
@@ -467,11 +463,11 @@ function promedio(numeros) {
   // 2. Array con un solo elemento → retornar ese elemento
   // 3. Array con números negativos → funciona normal
   // 4. Array con valores no numéricos → filtrar o lanzar error
-  
+
   if (numeros.length === 0) {
     return 0; // o throw new Error("Array vacío")
   }
-  
+
   const suma = numeros.reduce((acc, num) => acc + num, 0);
   return suma / numeros.length;
 }
@@ -483,7 +479,7 @@ function promedio(numeros) {
 function contarVocales(palabra) {
   let contador = 0;
   const vocales = ['a', 'e', 'i', 'o', 'u'];
-  
+
   for (const caracter of palabra.toLowerCase()) {
     if (vocales.includes(caracter)) {
       contador++;
@@ -492,7 +488,7 @@ function contarVocales(palabra) {
   return contador;
 }
 
-console.log(contarVocales("programación")); // 5
+console.log(contarVocales('programación')); // 5
 ```
 
 **6.5 Optimización del algoritmo de búsqueda:**
@@ -518,7 +514,7 @@ function existeNumero(array, numero) {
 function existeNumeroOrdenado(arrayOrdenado, numero) {
   let inicio = 0;
   let fin = arrayOrdenado.length - 1;
-  
+
   while (inicio <= fin) {
     const medio = Math.floor((inicio + fin) / 2);
     if (arrayOrdenado[medio] === numero) {
@@ -538,32 +534,32 @@ function existeNumeroOrdenado(arrayOrdenado, numero) {
 ```js
 function analizarEstudiantes(estudiantes) {
   // 1. Estudiante con calificación más alta
-  const mejorEstudiante = estudiantes.reduce((mejor, actual) => 
+  const mejorEstudiante = estudiantes.reduce((mejor, actual) =>
     actual.calificacion > mejor.calificacion ? actual : mejor
   );
-  
+
   // 2. Promedio de edad
-  const promedioEdad = estudiantes.reduce((suma, estudiante) => 
-    suma + estudiante.edad, 0) / estudiantes.length;
-  
+  const promedioEdad =
+    estudiantes.reduce((suma, estudiante) => suma + estudiante.edad, 0) / estudiantes.length;
+
   // 3. Nombres de estudiantes con calificación >= 80
   const estudiantesDestacados = estudiantes
     .filter(estudiante => estudiante.calificacion >= 80)
     .map(estudiante => estudiante.nombre);
-  
+
   return {
     mejorEstudiante,
     promedioEdad,
-    estudiantesDestacados
+    estudiantesDestacados,
   };
 }
 
 // Ejemplo de uso:
 const estudiantes = [
-  {nombre: "Ana", edad: 20, calificacion: 85},
-  {nombre: "Luis", edad: 22, calificacion: 78},
-  {nombre: "María", edad: 19, calificacion: 92},
-  {nombre: "Carlos", edad: 21, calificacion: 88}
+  { nombre: 'Ana', edad: 20, calificacion: 85 },
+  { nombre: 'Luis', edad: 22, calificacion: 78 },
+  { nombre: 'María', edad: 19, calificacion: 92 },
+  { nombre: 'Carlos', edad: 21, calificacion: 88 },
 ];
 
 console.log(analizarEstudiantes(estudiantes));

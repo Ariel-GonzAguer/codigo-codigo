@@ -60,7 +60,6 @@ Solución rápida (temporal): crea un archivo `.npmrc` en la raíz del proyecto 
 
 Solución recomendada (largo plazo): alinear las versiones de `vite` y de los plugins compatibles (actualizar plugins a versiones que soporten `vite@7` o fijar `vite@6` si es necesario) y regenerar el lockfile con `pnpm install`.
 
-
 ---
 
 ## Licencia

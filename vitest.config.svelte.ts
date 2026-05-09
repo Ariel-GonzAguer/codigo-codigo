@@ -9,15 +9,15 @@ export default defineConfig({
       hot: !process.env.VITEST,
       // Forzar compatibilidad con la API de componente legacy (Svelte 4 style)
       compilerOptions: {
-        compatibility: { componentApi: 4 }
-      }
+        compatibility: { componentApi: 4 },
+      },
     }),
-  // Integración de testing-library para Svelte (auto-cleanup, utilidades)
-  // Forzar casteo a PluginOption para evitar errores de tipos cuando hay múltiples
-  // versiones/instancias de Vite en node_modules (problema de tipos entre plugins).
-  // Si el proyecto no encuentra las declaraciones de 'vite', usar any evita
-  // errores de compilación manteniendo el casteo en tiempo de ejecución.
-  svelteTesting() as unknown as any,
+    // Integración de testing-library para Svelte (auto-cleanup, utilidades)
+    // Forzar casteo a PluginOption para evitar errores de tipos cuando hay múltiples
+    // versiones/instancias de Vite en node_modules (problema de tipos entre plugins).
+    // Si el proyecto no encuentra las declaraciones de 'vite', usar any evita
+    // errores de compilación manteniendo el casteo en tiempo de ejecución.
+    svelteTesting() as unknown as any,
   ],
   test: {
     environment: 'happy-dom',

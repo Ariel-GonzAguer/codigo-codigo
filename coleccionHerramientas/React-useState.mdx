@@ -24,6 +24,7 @@ function Contador() {
 const [count, setCount] = useState(0);
 
 return (
+
 <div>
 <p>Contador: {count}</p>
 <button onClick={() => setCount(count + 1)}>+1</button>
@@ -31,7 +32,7 @@ return (
 );
 }
 
-```
+````
 </div>
 
 <UseState client:load />
@@ -64,7 +65,7 @@ function MiComponente() {
     </div>
   );
 }
-```
+````
 
 </div>
 
@@ -248,7 +249,7 @@ const addItem = (item) => setItems(prev => [...prev, item]);
 const [form, setForm] = useState({ name: '', email: '' });
 const resetForm = () => setForm({ name: '', email: '' });
 
-```
+````
 </div>
 
 ## 4. Estado derivado y useEffect
@@ -286,7 +287,7 @@ function ProductList() {
     </div>
   );
 }
-```
+````
 
 </div>
 
@@ -325,6 +326,7 @@ if (error) return <div>Error: {error}</div>;
 if (!user) return <div>Usuario no encontrado</div>;
 
 return (
+
 <div>
 <h2>{user.name}</h2>
 <p>{user.email}</p>
@@ -332,7 +334,7 @@ return (
 );
 }
 
-```
+````
 </div>
 
 ## 5. Patrones avanzados
@@ -364,7 +366,7 @@ function TodoApp() {
   // ✅ Mejor con useReducer para lógica compleja
   // const [state, dispatch] = useReducer(todoReducer, initialState);
 }
-```
+````
 
 </div>
 
@@ -379,11 +381,11 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light');
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
-  };
+const toggleTheme = () => {
+setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+};
 
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
+return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
@@ -424,6 +426,7 @@ return items.filter(item => item.active).length;
 }, [items]);
 
 return (
+
 <div>
 <p>Count: {count}</p>
 <button onClick={() => setCount(c => c + 1)}>Increment</button>
@@ -438,7 +441,7 @@ return (
 );
 }
 
-```
+````
 </div>
 
 ## 7. Errores comunes
@@ -456,7 +459,7 @@ items.push(4); // Mutación directa - NO funciona
 // ✅ Hacer esto en su lugar
 setUser({ ...user, name: 'Carlos' });
 setItems([...items, 4]);
-```
+````
 
 </div>
 

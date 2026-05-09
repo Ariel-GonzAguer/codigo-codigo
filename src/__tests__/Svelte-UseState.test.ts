@@ -1,5 +1,4 @@
 import { render, screen, fireEvent } from '@testing-library/svelte';
-import '@testing-library/jest-dom';
 import UseState from '../components/Svelte/UseState.svelte';
 import { describe, test, expect, beforeEach, afterEach } from 'vitest';
 

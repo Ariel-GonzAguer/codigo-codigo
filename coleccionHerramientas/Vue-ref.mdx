@@ -371,21 +371,21 @@ import { ref, computed } from 'vue';
 export function useCounter(initialValue = 0) {
   const count = ref(initialValue);
 
-  const increment = () => count.value++;
-  const decrement = () => count.value--;
-  const reset = () => (count.value = initialValue);
+const increment = () => count.value++;
+const decrement = () => count.value--;
+const reset = () => (count.value = initialValue);
 
-  const isEven = computed(() => count.value % 2 === 0);
-  const isPositive = computed(() => count.value > 0);
+const isEven = computed(() => count.value % 2 === 0);
+const isPositive = computed(() => count.value > 0);
 
-  return {
-    count: readonly(count), // Opcional: hacer read-only
-    increment,
-    decrement,
-    reset,
-    isEven,
-    isPositive,
-  };
+return {
+count: readonly(count), // Opcional: hacer read-only
+increment,
+decrement,
+reset,
+isEven,
+isPositive,
+};
 }
 
 // composables/useLocalStorage.js
@@ -395,15 +395,15 @@ export function useLocalStorage(key, defaultValue) {
   const storedValue = localStorage.getItem(key);
   const value = ref(storedValue ? JSON.parse(storedValue) : defaultValue);
 
-  watch(
-    value,
-    newValue => {
-      localStorage.setItem(key, JSON.stringify(newValue));
-    },
-    { deep: true }
-  );
+watch(
+value,
+newValue => {
+localStorage.setItem(key, JSON.stringify(newValue));
+},
+{ deep: true }
+);
 
-  return value;
+return value;
 }
 
 // composables/useFetch.js
@@ -593,7 +593,7 @@ const selectedUser = ref(null);
 const data = ref({}); // ¿Qué tipo de data?
 const flag = ref(true); // ¿Qué flag?
 
-```
+````
 </div>
 
 ### 2. Inicialización defensiva
@@ -614,7 +614,7 @@ const isValidUser = computed(() => {
          currentUser.value.email &&
          currentUser.value.email.includes('@');
 });
-```
+````
 
 </div>
 

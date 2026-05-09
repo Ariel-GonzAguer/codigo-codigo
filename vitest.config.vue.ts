@@ -7,7 +7,11 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     // Incluir archivos .vue como tests (SFC) además de los patrones tradicionales
-    include: ['src/__tests__/**/*.vue', 'src/__tests__/**/*.spec.(ts|tsx|js|jsx)', 'src/__tests__/Vue*.test.*'],
+    include: [
+      'src/__tests__/**/*.vue',
+      'src/__tests__/**/*.spec.(ts|tsx|js|jsx)',
+      'src/__tests__/Vue*.test.*',
+    ],
     setupFiles: ['./src/__tests__/setup.ts'],
     globals: true,
   },

@@ -21,16 +21,18 @@ El hook `useState` en Preact funciona exactamente igual que en React, permitiend
 import { useState } from 'preact/hooks';
 
 function Contador() {
-  const [count, setCount] = useState(0);
-  
-  return (
-    <div>
-      <p>Contador: {count}</p>
-      <button onClick={() => setCount(count + 1)}>+1</button>
-    </div>
-  );
+const [count, setCount] = useState(0);
+
+return (
+
+<div>
+<p>Contador: {count}</p>
+<button onClick={() => setCount(count + 1)}>+1</button>
+</div>
+);
 }
-```
+
+````
 </div>
 
 <UseState client:load />
@@ -45,39 +47,43 @@ import { useState } from 'preact/hooks';
 function MiComponente() {
   // Declaración de estado con valor inicial
   const [state, setState] = useState(valorInicial);
-  
+
   return <div>{/* JSX */}</div>;
 }
-```
+````
+
 </div>
 
 ### Desestructuración del array
+
 <div className='bloqueCodigo'>
 ```tsx
 import { useState } from 'preact/hooks';
 
 function Ejemplo() {
-  // ✅ Nombres descriptivos
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState('');
-  const [isVisible, setIsVisible] = useState(true);
-  
-  return (
-    <div>
-      <p>Contador: {count}</p>
-      <input 
-        value={name} 
-        onInput={(e) => setName(e.target.value)} 
-        placeholder="Escribe tu nombre" 
-      />
-      {isVisible && <p>¡Hola {name}!</p>}
-      <button onClick={() => setIsVisible(!isVisible)}>
-        {isVisible ? 'Ocultar' : 'Mostrar'} saludo
-      </button>
-    </div>
-  );
+// ✅ Nombres descriptivos
+const [count, setCount] = useState(0);
+const [name, setName] = useState('');
+const [isVisible, setIsVisible] = useState(true);
+
+return (
+
+<div>
+<p>Contador: {count}</p>
+<input
+value={name}
+onInput={(e) => setName(e.target.value)}
+placeholder="Escribe tu nombre"
+/>
+{isVisible && <p>¡Hola {name}!</p>}
+<button onClick={() => setIsVisible(!isVisible)}>
+{isVisible ? 'Ocultar' : 'Mostrar'} saludo
+</button>
+</div>
+);
 }
-```
+
+````
 </div>
 
 ### Convenciones de nombres
@@ -99,20 +105,21 @@ function EstadoPrimitivos() {
   const [message, setMessage] = useState('Hola');  // string
   const [isActive, setIsActive] = useState(false); // boolean
   const [data, setData] = useState(null);          // null/undefined
-  
+
   return (
     <div>
       <p>Contador: {count}</p>
       <p>Mensaje: {message}</p>
       <p>Activo: {isActive ? 'Sí' : 'No'}</p>
       <p>Datos: {data ? 'Cargados' : 'Sin datos'}</p>
-      
+
       <button onClick={() => setCount(count + 1)}>Incrementar</button>
       <button onClick={() => setIsActive(!isActive)}>Toggle</button>
     </div>
   );
 }
-```
+````
+
 </div>
 
 ### Objetos
@@ -122,50 +129,52 @@ function EstadoPrimitivos() {
 import { useState } from 'preact/hooks';
 
 interface User {
-  name: string;
-  email: string;
-  age: number;
+name: string;
+email: string;
+age: number;
 }
 
 function EstadoObjeto() {
-  const [user, setUser] = useState<User>({
-    name: '',
-    email: '',
-    age: 0
-  });
-  
-  // ✅ Correcto - mantiene propiedades existentes
-  const updateName = () => {
-    setUser(prevUser => ({
-      ...prevUser,
-      name: 'Juan'
-    }));
-  };
-  
-  // ✅ También correcto - función de actualización
-  const incrementAge = () => {
-    setUser(prevUser => ({
-      ...prevUser,
-      age: prevUser.age + 1
-    }));
-  };
-  
-  // ❌ Incorrecto - sobrescribe todo el objeto
-  const wrongUpdate = () => {
-    setUser({ name: 'Ana' }); // Pierde email y age
-  };
-  
-  return (
-    <div>
-      <p>Nombre: {user.name}</p>
-      <p>Email: {user.email}</p>
-      <p>Edad: {user.age}</p>
-      <button onClick={updateName}>Cambiar nombre</button>
-      <button onClick={incrementAge}>Incrementar edad</button>
-    </div>
-  );
+const [user, setUser] = useState<User>({
+name: '',
+email: '',
+age: 0
+});
+
+// ✅ Correcto - mantiene propiedades existentes
+const updateName = () => {
+setUser(prevUser => ({
+...prevUser,
+name: 'Juan'
+}));
+};
+
+// ✅ También correcto - función de actualización
+const incrementAge = () => {
+setUser(prevUser => ({
+...prevUser,
+age: prevUser.age + 1
+}));
+};
+
+// ❌ Incorrecto - sobrescribe todo el objeto
+const wrongUpdate = () => {
+setUser({ name: 'Ana' }); // Pierde email y age
+};
+
+return (
+
+<div>
+<p>Nombre: {user.name}</p>
+<p>Email: {user.email}</p>
+<p>Edad: {user.age}</p>
+<button onClick={updateName}>Cambiar nombre</button>
+<button onClick={incrementAge}>Incrementar edad</button>
+</div>
+);
 }
-```
+
+````
 </div>
 
 ### Arrays
@@ -183,7 +192,7 @@ interface Task {
 function ListaTareas() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState('');
-  
+
   const addTask = () => {
     if (newTask.trim()) {
       setTasks(prevTasks => [
@@ -197,11 +206,11 @@ function ListaTareas() {
       setNewTask('');
     }
   };
-  
+
   const removeTask = (id: number) => {
     setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
   };
-  
+
   const toggleTask = (id: number) => {
     setTasks(prevTasks =>
       prevTasks.map(task =>
@@ -209,7 +218,7 @@ function ListaTareas() {
       )
     );
   };
-  
+
   return (
     <div>
       <input
@@ -218,12 +227,12 @@ function ListaTareas() {
         placeholder="Nueva tarea"
       />
       <button onClick={addTask}>Agregar</button>
-      
+
       <ul>
         {tasks.map(task => (
           <li key={task.id}>
-            <span style={{ 
-              textDecoration: task.completed ? 'line-through' : 'none' 
+            <span style={{
+              textDecoration: task.completed ? 'line-through' : 'none'
             }}>
               {task.text}
             </span>
@@ -237,7 +246,8 @@ function ListaTareas() {
     </div>
   );
 }
-```
+````
+
 </div>
 
 ## 3. Actualización del estado
@@ -249,42 +259,44 @@ function ListaTareas() {
 import { useState } from 'preact/hooks';
 
 function ActualizacionEstado() {
-  const [count, setCount] = useState(0);
-  
-  // ✅ Valor directo - para actualizaciones simples
-  const resetCounter = () => {
-    setCount(0);
-  };
-  
-  // ✅ Función - para actualizaciones basadas en estado anterior
-  const increment = () => {
-    setCount(prevCount => prevCount + 1);
-  };
-  
-  // ❌ Problemático en múltiples clics rápidos
-  const incrementWrong = () => {
-    setCount(count + 1); // Usa valor stale
-  };
-  
-  // ✅ Múltiples actualizaciones funcionales
-  const incrementByFive = () => {
-    setCount(prev => prev + 1);
-    setCount(prev => prev + 1);
-    setCount(prev => prev + 1);
-    setCount(prev => prev + 1);
-    setCount(prev => prev + 1);
-  };
-  
-  return (
-    <div>
-      <p>Contador: {count}</p>
-      <button onClick={increment}>+1</button>
-      <button onClick={incrementByFive}>+5</button>
-      <button onClick={resetCounter}>Reset</button>
-    </div>
-  );
+const [count, setCount] = useState(0);
+
+// ✅ Valor directo - para actualizaciones simples
+const resetCounter = () => {
+setCount(0);
+};
+
+// ✅ Función - para actualizaciones basadas en estado anterior
+const increment = () => {
+setCount(prevCount => prevCount + 1);
+};
+
+// ❌ Problemático en múltiples clics rápidos
+const incrementWrong = () => {
+setCount(count + 1); // Usa valor stale
+};
+
+// ✅ Múltiples actualizaciones funcionales
+const incrementByFive = () => {
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+};
+
+return (
+
+<div>
+<p>Contador: {count}</p>
+<button onClick={increment}>+1</button>
+<button onClick={incrementByFive}>+5</button>
+<button onClick={resetCounter}>Reset</button>
+</div>
+);
 }
-```
+
+````
 </div>
 
 ### Batching de actualizaciones
@@ -296,25 +308,25 @@ import { useState } from 'preact/hooks';
 function Batching() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState('');
-  
+
   console.log('Renderizado'); // Solo se ejecuta una vez por lote
-  
+
   const handleMultipleUpdates = () => {
     setCount(1);     // \
     setName('Juan'); //  } Batch automático - una sola renderización
     setCount(2);     // /
   };
-  
+
   const handleAsyncUpdates = async () => {
     setCount(1);     // Batch 1
     setName('Ana');  // Batch 1
-    
+
     await new Promise(resolve => setTimeout(resolve, 100));
-    
+
     setCount(2);     // Batch 2 (después del await)
     setName('Carlos'); // Batch 2
   };
-  
+
   return (
     <div>
       <p>Contador: {count}</p>
@@ -324,7 +336,8 @@ function Batching() {
     </div>
   );
 }
-```
+````
+
 </div>
 
 ## 4. Inicialización perezosa
@@ -336,36 +349,38 @@ function Batching() {
 import { useState } from 'preact/hooks';
 
 function cálculoCostoso() {
-  console.log('Cálculo costoso ejecutado');
-  return Array.from({ length: 1000 }, (_, i) => i);
+console.log('Cálculo costoso ejecutado');
+return Array.from({ length: 1000 }, (\_, i) => i);
 }
 
 function InicializacionPerezosa() {
-  // ❌ Se ejecuta en cada renderizado
-  const [data, setData] = useState(cálculoCostoso());
-  
-  // ✅ Solo se ejecuta en el primer renderizado
-  const [dataLazy, setDataLazy] = useState(() => cálculoCostoso());
-  
-  // ✅ También útil para localStorage
-  const [savedData, setSavedData] = useState(() => {
-    try {
-      const saved = localStorage.getItem('myData');
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
-  });
-  
-  return (
-    <div>
-      <p>Datos inicializados: {data.length} elementos</p>
-      <p>Datos lazy: {dataLazy.length} elementos</p>
-      <p>Datos guardados: {savedData.length} elementos</p>
-    </div>
-  );
+// ❌ Se ejecuta en cada renderizado
+const [data, setData] = useState(cálculoCostoso());
+
+// ✅ Solo se ejecuta en el primer renderizado
+const [dataLazy, setDataLazy] = useState(() => cálculoCostoso());
+
+// ✅ También útil para localStorage
+const [savedData, setSavedData] = useState(() => {
+try {
+const saved = localStorage.getItem('myData');
+return saved ? JSON.parse(saved) : [];
+} catch {
+return [];
 }
-```
+});
+
+return (
+
+<div>
+<p>Datos inicializados: {data.length} elementos</p>
+<p>Datos lazy: {dataLazy.length} elementos</p>
+<p>Datos guardados: {savedData.length} elementos</p>
+</div>
+);
+}
+
+````
 </div>
 
 ## 5. Estados derivados
@@ -379,11 +394,11 @@ import { useState, useMemo } from 'preact/hooks';
 function EstadosDerivados() {
   const [items, setItems] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [filter, setFilter] = useState('all');
-  
+
   // ✅ Estado derivado optimizado
   const filteredItems = useMemo(() => {
     console.log('Calculando filtros'); // Solo cuando cambian dependencias
-    
+
     switch (filter) {
       case 'even':
         return items.filter(item => item % 2 === 0);
@@ -393,12 +408,12 @@ function EstadosDerivados() {
         return items;
     }
   }, [items, filter]);
-  
+
   const addRandomItem = () => {
     const newItem = Math.floor(Math.random() * 100) + 1;
     setItems(prev => [...prev, newItem]);
   };
-  
+
   return (
     <div>
       <select value={filter} onChange={(e) => setFilter(e.target.value)}>
@@ -406,14 +421,15 @@ function EstadosDerivados() {
         <option value="even">Pares</option>
         <option value="odd">Impares</option>
       </select>
-      
+
       <button onClick={addRandomItem}>Agregar número</button>
-      
+
       <p>Items filtrados: {filteredItems.join(', ')}</p>
     </div>
   );
 }
-```
+````
+
 </div>
 
 ## 6. Efectos y useState
@@ -425,42 +441,45 @@ function EstadosDerivados() {
 import { useState, useEffect } from 'preact/hooks';
 
 function EfectosConEstado() {
-  const [count, setCount] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  
-  // ✅ Efecto que reacciona a cambios de estado
-  useEffect(() => {
-    document.title = `Contador: ${count}`;
-  }, [count]);
-  
-  // ✅ Efecto para timer con cleanup
-  useEffect(() => {
-    let interval: number;
-    
+const [count, setCount] = useState(0);
+const [isRunning, setIsRunning] = useState(false);
+
+// ✅ Efecto que reacciona a cambios de estado
+useEffect(() => {
+document.title = `Contador: ${count}`;
+}, [count]);
+
+// ✅ Efecto para timer con cleanup
+useEffect(() => {
+let interval: number;
+
     if (isRunning) {
       interval = setInterval(() => {
         setCount(prev => prev + 1);
       }, 1000);
     }
-    
+
     return () => {
       if (interval) {
         clearInterval(interval);
       }
     };
-  }, [isRunning]);
-  
-  return (
-    <div>
-      <p>Contador: {count}</p>
-      <button onClick={() => setIsRunning(!isRunning)}>
-        {isRunning ? 'Pausar' : 'Iniciar'}
-      </button>
-      <button onClick={() => setCount(0)}>Reset</button>
-    </div>
-  );
+
+}, [isRunning]);
+
+return (
+
+<div>
+<p>Contador: {count}</p>
+<button onClick={() => setIsRunning(!isRunning)}>
+{isRunning ? 'Pausar' : 'Iniciar'}
+</button>
+<button onClick={() => setCount(0)}>Reset</button>
+</div>
+);
 }
-```
+
+````
 </div>
 
 ## 7. Patrones avanzados
@@ -474,19 +493,19 @@ import { useState, useCallback } from 'preact/hooks';
 // ✅ Custom hook para contador
 function useCounter(initialValue = 0) {
   const [count, setCount] = useState(initialValue);
-  
+
   const increment = useCallback(() => {
     setCount(prev => prev + 1);
   }, []);
-  
+
   const decrement = useCallback(() => {
     setCount(prev => prev - 1);
   }, []);
-  
+
   const reset = useCallback(() => {
     setCount(initialValue);
   }, [initialValue]);
-  
+
   return {
     count,
     increment,
@@ -499,18 +518,18 @@ function useCounter(initialValue = 0) {
 // ✅ Custom hook para toggle
 function useToggle(initialValue = false) {
   const [value, setValue] = useState(initialValue);
-  
+
   const toggle = useCallback(() => {
     setValue(prev => !prev);
   }, []);
-  
+
   return [value, toggle, setValue] as const;
 }
 
 function ComponenteConCustomHooks() {
   const { count, increment, decrement, reset } = useCounter(0);
   const [isVisible, toggleVisible] = useToggle(true);
-  
+
   return (
     <div>
       {isVisible && <p>Contador: {count}</p>}
@@ -523,7 +542,8 @@ function ComponenteConCustomHooks() {
     </div>
   );
 }
-```
+````
+
 </div>
 
 ### Reducer pattern con useState
@@ -533,65 +553,68 @@ function ComponenteConCustomHooks() {
 import { useState } from 'preact/hooks';
 
 interface State {
-  count: number;
-  step: number;
+count: number;
+step: number;
 }
 
-type Action = 
-  | { type: 'increment' }
-  | { type: 'decrement' }
-  | { type: 'reset' }
-  | { type: 'setStep'; step: number };
+type Action =
+| { type: 'increment' }
+| { type: 'decrement' }
+| { type: 'reset' }
+| { type: 'setStep'; step: number };
 
 function reducer(state: State, action: Action): State {
-  switch (action.type) {
-    case 'increment':
-      return { ...state, count: state.count + state.step };
-    case 'decrement':
-      return { ...state, count: state.count - state.step };
-    case 'reset':
-      return { ...state, count: 0 };
-    case 'setStep':
-      return { ...state, step: action.step };
-    default:
-      return state;
-  }
+switch (action.type) {
+case 'increment':
+return { ...state, count: state.count + state.step };
+case 'decrement':
+return { ...state, count: state.count - state.step };
+case 'reset':
+return { ...state, count: 0 };
+case 'setStep':
+return { ...state, step: action.step };
+default:
+return state;
+}
 }
 
 function useReducerLike(initialState: State) {
-  const [state, setState] = useState(initialState);
-  
-  const dispatch = (action: Action) => {
-    setState(prevState => reducer(prevState, action));
-  };
-  
-  return [state, dispatch] as const;
+const [state, setState] = useState(initialState);
+
+const dispatch = (action: Action) => {
+setState(prevState => reducer(prevState, action));
+};
+
+return [state, dispatch] as const;
 }
 
 function ComponenteConReducer() {
-  const [state, dispatch] = useReducerLike({ count: 0, step: 1 });
-  
-  return (
-    <div>
-      <p>Contador: {state.count}</p>
-      <p>Paso: {state.step}</p>
-      
+const [state, dispatch] = useReducerLike({ count: 0, step: 1 });
+
+return (
+
+<div>
+<p>Contador: {state.count}</p>
+<p>Paso: {state.step}</p>
+
       <button onClick={() => dispatch({ type: 'increment' })}>+</button>
       <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
       <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
-      
+
       <input
         type="number"
         value={state.step}
-        onChange={(e) => dispatch({ 
-          type: 'setStep', 
-          step: parseInt(e.target.value) || 1 
+        onChange={(e) => dispatch({
+          type: 'setStep',
+          step: parseInt(e.target.value) || 1
         })}
       />
     </div>
-  );
+
+);
 }
-```
+
+````
 </div>
 
 ## 8. Optimización de rendimiento
@@ -608,7 +631,7 @@ const ExpensiveChild = memo(({ value, onUpdate }: {
   onUpdate: (value: number) => void;
 }) => {
   console.log('ExpensiveChild renderizado');
-  
+
   return (
     <div>
       <p>Valor: {value}</p>
@@ -622,17 +645,17 @@ const ExpensiveChild = memo(({ value, onUpdate }: {
 function OptimizacionRenderizado() {
   const [count, setCount] = useState(0);
   const [otherState, setOtherState] = useState('');
-  
+
   // ✅ Callback estable - no cambia en cada renderizado
   const handleUpdate = useCallback((newValue: number) => {
     setCount(newValue);
   }, []);
-  
+
   // ❌ Nueva función en cada renderizado
   const handleUpdateWrong = (newValue: number) => {
     setCount(newValue);
   };
-  
+
   return (
     <div>
       <input
@@ -640,12 +663,13 @@ function OptimizacionRenderizado() {
         onInput={(e) => setOtherState(e.target.value)}
         placeholder="Esto no debe re-renderizar el hijo"
       />
-      
+
       <ExpensiveChild value={count} onUpdate={handleUpdate} />
     </div>
   );
 }
-```
+````
+
 </div>
 
 ## 9. Errores comunes
@@ -657,45 +681,48 @@ function OptimizacionRenderizado() {
 import { useState } from 'preact/hooks';
 
 function ErroresMutacion() {
-  const [user, setUser] = useState({ name: 'Ana', age: 25 });
-  const [items, setItems] = useState([1, 2, 3]);
-  
-  // ❌ Mutación directa - NO funciona
-  const updateUserWrong = () => {
-    user.age = 26;      // Mutación directa
-    setUser(user);      // Misma referencia, no re-renderiza
-  };
-  
-  // ✅ Inmutabilidad - funciona correctamente  
-  const updateUserCorrect = () => {
-    setUser(prevUser => ({
-      ...prevUser,
-      age: 26
-    }));
-  };
-  
-  // ❌ Array mutado directamente
-  const addItemWrong = () => {
-    items.push(4);     // Mutación directa
-    setItems(items);   // Misma referencia
-  };
-  
-  // ✅ Nuevo array con spread
-  const addItemCorrect = () => {
-    setItems(prevItems => [...prevItems, 4]);
-  };
-  
-  return (
-    <div>
-      <p>Usuario: {user.name}, {user.age} años</p>
-      <p>Items: {items.join(', ')}</p>
-      
+const [user, setUser] = useState({ name: 'Ana', age: 25 });
+const [items, setItems] = useState([1, 2, 3]);
+
+// ❌ Mutación directa - NO funciona
+const updateUserWrong = () => {
+user.age = 26; // Mutación directa
+setUser(user); // Misma referencia, no re-renderiza
+};
+
+// ✅ Inmutabilidad - funciona correctamente  
+ const updateUserCorrect = () => {
+setUser(prevUser => ({
+...prevUser,
+age: 26
+}));
+};
+
+// ❌ Array mutado directamente
+const addItemWrong = () => {
+items.push(4); // Mutación directa
+setItems(items); // Misma referencia
+};
+
+// ✅ Nuevo array con spread
+const addItemCorrect = () => {
+setItems(prevItems => [...prevItems, 4]);
+};
+
+return (
+
+<div>
+<p>Usuario: {user.name}, {user.age} años</p>
+<p>Items: {items.join(', ')}</p>
+
       <button onClick={updateUserCorrect}>Cumplir años</button>
       <button onClick={addItemCorrect}>Agregar item</button>
     </div>
-  );
+
+);
 }
-```
+
+````
 </div>
 
 ### Estado stale en closures
@@ -706,28 +733,28 @@ import { useState, useCallback } from 'preact/hooks';
 
 function EstadoStale() {
   const [count, setCount] = useState(0);
-  
+
   // ❌ Closure stale - count queda "congelado"
   const incrementStale = () => {
     setTimeout(() => {
       setCount(count + 1); // Usa valor stale
     }, 1000);
   };
-  
+
   // ✅ Función de actualización - siempre usa el valor actual
   const incrementCorrect = () => {
     setTimeout(() => {
       setCount(prevCount => prevCount + 1);
     }, 1000);
   };
-  
+
   // ✅ useCallback con dependencias correctas
   const incrementCallback = useCallback(() => {
     setTimeout(() => {
       setCount(prevCount => prevCount + 1);
     }, 1000);
   }, []); // Sin dependencias porque usa función de actualización
-  
+
   return (
     <div>
       <p>Contador: {count}</p>
@@ -736,7 +763,8 @@ function EstadoStale() {
     </div>
   );
 }
-```
+````
+
 </div>
 
 ## 10. Testing
@@ -749,44 +777,48 @@ import { render, fireEvent, screen, waitFor } from '@testing-library/preact';
 import Contador from './Contador';
 
 describe('Contador', () => {
-  test('muestra el valor inicial', () => {
-    render(<Contador initialValue={5} />);
-    expect(screen.getByText(/contador: 5/i)).toBeInTheDocument();
-  });
-  
-  test('incrementa el contador al hacer click', async () => {
-    render(<Contador />);
-    
+test('muestra el valor inicial', () => {
+render(<Contador initialValue={5} />);
+expect(screen.getByText(/contador: 5/i)).toBeInTheDocument();
+});
+
+test('incrementa el contador al hacer click', async () => {
+render(<Contador />);
+
     const button = screen.getByText('+1');
     await fireEvent.click(button);
-    
+
     expect(screen.getByText(/contador: 1/i)).toBeInTheDocument();
-  });
-  
-  test('actualiza múltiples veces correctamente', async () => {
-    render(<Contador />);
-    
+
+});
+
+test('actualiza múltiples veces correctamente', async () => {
+render(<Contador />);
+
     const incrementButton = screen.getByText('+1');
-    
+
     await fireEvent.click(incrementButton);
     await fireEvent.click(incrementButton);
     await fireEvent.click(incrementButton);
-    
+
     expect(screen.getByText(/contador: 3/i)).toBeInTheDocument();
-  });
-  
-  test('resetea el contador', async () => {
-    render(<Contador />);
-    
+
+});
+
+test('resetea el contador', async () => {
+render(<Contador />);
+
     const incrementButton = screen.getByText('+1');
     const resetButton = screen.getByText('Reset');
-    
+
     await fireEvent.click(incrementButton);
     await fireEvent.click(resetButton);
-    
+
     expect(screen.getByText(/contador: 0/i)).toBeInTheDocument();
-  });
+
 });
+});
+
 ```
 </div>
 
@@ -803,3 +835,4 @@ El hook `useState` en Preact es:
 - **Testeable**: Se integra bien con testing libraries
 
 La clave del éxito con `useState` está en mantener la **inmutabilidad** y usar **funciones de actualización** cuando el nuevo estado depende del anterior. Preact ofrece toda la potencia de React hooks en un paquete más ligero.
+```

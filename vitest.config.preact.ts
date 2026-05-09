@@ -11,7 +11,7 @@ export default defineConfig({
       'src/__tests__/**/*-react.test.{ts,tsx}',
       'src/__tests__/**/*-vue.test.{ts,tsx}',
       'src/__tests__/**/*-svelte.test.{ts,tsx}',
-      'src/__tests__/**/*-solid.test.{js,jsx,ts,tsx}'
+      'src/__tests__/**/*-solid.test.{js,jsx,ts,tsx}',
     ],
     setupFiles: ['./src/__tests__/setup.ts'],
     globals: true,
@@ -22,8 +22,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      'react': 'preact/compat',
-      'react-dom': 'preact/compat'
-    }
-  }
+      react: 'preact/compat',
+      'react-dom': 'preact/compat',
+    },
+  },
 });

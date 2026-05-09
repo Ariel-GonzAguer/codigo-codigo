@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { describe, it, expect } from 'vitest';
 import { render, fireEvent } from '@solidjs/testing-library';
 import UseStateDemo from '../components/SolidJS/CreateSignal';

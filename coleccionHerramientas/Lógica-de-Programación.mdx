@@ -45,13 +45,14 @@ Las sentencias condicionales evalúan una condición booleana (`true` o `false`)
 let edad = 17;
 
 if (edad >= 18) {
-  console.log('Puede votar y tramitar su licencia.');
+console.log('Puede votar y tramitar su licencia.');
 } else if (edad >= 16) {
-  console.log('Puede tramitar su licencia de conducir con un adulto.');
+console.log('Puede tramitar su licencia de conducir con un adulto.');
 } else {
-  console.log('Es menor de edad. No puede tramitar su licencia.');
+console.log('Es menor de edad. No puede tramitar su licencia.');
 }
-```
+
+````
 </div>
 
 ### Operador ternario: condición ? valorSiTrue : valorSiFalse
@@ -66,7 +67,8 @@ Este es un atajo para una sentencia `if/else` simple. Es ideal para asignar un v
 let tieneDinero = true;
 let resultado = tieneDinero ? 'Puede comprar el helado.' : 'No puede comprar el helado.';
 console.log(resultado);
-```
+````
+
 </div>
 
 ### Bucles: for, while, do...while
@@ -91,10 +93,11 @@ for (let i = 0; i < 5; i++) {
 // Bucle while: cuenta del 5 al 1
 let contador = 5;
 while (contador > 0) {
-  console.log(contador);
-  contador--;
+console.log(contador);
+contador--;
 }
-```
+
+````
 </div>
 
 ### break y continue
@@ -116,7 +119,8 @@ for (let i = 0; i < 10; i++) {
   }
   console.log(i); // Imprime 0, 1, 2, 4, 5, 6
 }
-```
+````
+
 </div>
 
 ## 2. Operadores
@@ -134,11 +138,8 @@ Sirven para realizar cálculos.
 **Ejemplo (JavaScript):**
 
 <div className="bloqueCodigo">
-```javascript
-// Ejemplo de operadores matemáticos
-let resultado_math = 10 % 3; // El resultado es 1 (el resto de 10 / 3)
-let potencia_math = 2 ** 3; // El resultado es 8 (2 * 2 * 2)
-```
+  ```javascript // Ejemplo de operadores matemáticos let resultado_math = 10 % 3; // El resultado es
+  1 (el resto de 10 / 3) let potencia_math = 2 ** 3; // El resultado es 8 (2 * 2 * 2) ```
 </div>
 
 ### Operadores de comparación
@@ -150,6 +151,7 @@ Comparan dos valores y devuelven un booleano (`true` o `false`).
 - `<`, `<=`, `>`, `>=`: Menor que, menor o igual que, mayor que, mayor o igual que.
 
 **Ejemplo (JavaScript):**
+
 <div className="bloqueCodigo">
 ```javascript
 // Ejemplo de operadores de comparación
@@ -181,7 +183,8 @@ let esDiaLibre = true;
 let haceBuenTiempo = true;
 let podemosSalir = esDiaLibre || haceBuenTiempo; // true
 console.log(podemosSalir);
-```
+
+````
 </div>
 
 ### Operadores de asignación
@@ -200,7 +203,8 @@ let puntos = 10;
 puntos += 5; // puntos ahora es 15
 puntos *= 2; // puntos ahora es 30
 console.log(puntos);
-```
+````
+
 </div>
 
 ## 3. Arrays (Arreglos)
@@ -221,14 +225,15 @@ let frutas = ['manzana', 'banana', 'naranja'];
 
 // Recorrer con for tradicional
 for (let i = 0; i < frutas.length; i++) {
-  console.log(`Fruta en el índice ${i}: ${frutas[i]}`);
+console.log(`Fruta en el índice ${i}: ${frutas[i]}`);
 }
 
 // Recorrer con for...of (más simple)
 for (const fruta of frutas) {
-  console.log(fruta);
+console.log(fruta);
 }
-```
+
+````
 </div>
 
 ### Métodos útiles de arrays
@@ -267,7 +272,8 @@ console.log(sumaTotal); // 15
 // .some()
 const tieneNumeroGrande = numeros.some(num => num > 4); // true (el 5 cumple la condición)
 console.log(tieneNumeroGrande);
-```
+````
+
 </div>
 
 ## 4. Strings (Cadenas de texto)
@@ -301,7 +307,8 @@ let palabras = frase.split(' ');
 console.log(palabras); // ["El", "gato", "es", "un", "animal", "genial"]
 let nuevaFrase = palabras.join('-');
 console.log(nuevaFrase); // "El-gato-es-un-animal-genial"
-```
+
+````
 </div>
 
 ### Recorrer letra por letra
@@ -319,7 +326,8 @@ let palabra = 'Presentación';
 for (const letra of palabra) {
   console.log(letra); // Imprime 'P', 'r', 'e', 's', etc.
 }
-```
+````
+
 </div>
 
 ## 5. Funciones
@@ -343,15 +351,16 @@ function sumar(a, b) {
 
 // Función flecha
 const restar = (a, b) => {
-  return a - b;
+return a - b;
 };
 
 // Si la función flecha tiene una sola línea, se puede abreviar
-const multiplicar = (a, b) => a * b;
+const multiplicar = (a, b) => a \* b;
 
 console.log(sumar(5, 3)); // 8
 console.log(multiplicar(5, 3)); // 15
-```
+
+````
 </div>
 
 ### Parámetros con valores por defecto y retorno de valores
@@ -383,7 +392,8 @@ function factorial(n) {
 }
 
 console.log(factorial(4)); // 4 * 3 * 2 * 1 = 24
-```
+````
+
 </div>
 
 ## 6. Algoritmos (pensar en pasos)

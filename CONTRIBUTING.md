@@ -42,6 +42,7 @@ pnpm install
 - Asegúrese de seguir las buenas prácticas y el estilo del proyecto.
 
 #### 5.1 Archivos mínimos requeridos
+
 - MDX para la documentación/tutorial. Colocarlo en `/colleccionHerramientas`
 - Componente según corresponda el framework. Colocarlo en `/src/components/{Framework}`
 - Por favor revisar [Guía de Estilo](STYLE_GUIDE.md) para más detalles.

@@ -38,6 +38,7 @@ En Svelte, el estado local se maneja de forma muy directa con variables reactiva
 ## 1. Sintaxis básica
 
 ### Declaración y uso
+
 <div className='bloqueCodigo'>
 ```svelte
 <script>
@@ -268,11 +269,12 @@ export const count = writable(0);
 export const user = writable(null);
 
 // En el componente
-```
+
+````
 ```svelte
 <script>
   import { count } from './stores.js';
-  
+
   // ✅ Auto-suscripción con $
   // $count se actualiza automáticamente
 </script>
@@ -282,7 +284,8 @@ export const user = writable(null);
   <button on:click={() => $count++}>Incrementar</button>
   <button on:click={() => count.set(0)}>Reset</button>
 </div>
-```
+````
+
 </div>
 
 ### Stores derivados
@@ -294,10 +297,7 @@ import { writable, derived } from 'svelte/store';
 
 export const numbers = writable([1, 2, 3, 4, 5]);
 
-export const evenNumbers = derived(
-  numbers,
-  $numbers => $numbers.filter(n => n % 2 === 0)
-);
+export const evenNumbers = derived(numbers, $numbers => $numbers.filter(n => n % 2 === 0));
 
 export const sum = derived(
   numbers,
@@ -347,10 +347,8 @@ export const sum = derived(
 <input {value} on:input={handleInput} />
 
 <!-- Uso -->
-<script>
-  import CustomInput from './CustomInput.svelte';
-  let text = '';
-</script>
+
+<script>import CustomInput from './CustomInput.svelte'; let text = '';</script>
 
 <CustomInput bind:value={text} />
 <p>Texto: {text}</p>
@@ -414,7 +412,9 @@ export const sum = derived(
 </script>
 
 <!-- ✅ Con key para optimización -->
+
 {#each items as item (item.id)}
+
   <div>
     <input bind:value={item.name} />
     <span>{item.name}</span>
@@ -474,25 +474,26 @@ import { render, fireEvent, screen } from '@testing-library/svelte';
 import Contador from './Contador.svelte';
 
 test('incrementa el contador al hacer click', async () => {
-  render(Contador);
-  
-  const button = screen.getByText('+1');
-  const counter = screen.getByText(/contador: 0/i);
-  
-  await fireEvent.click(button);
-  
-  expect(screen.getByText(/contador: 1/i)).toBeInTheDocument();
+render(Contador);
+
+const button = screen.getByText('+1');
+const counter = screen.getByText(/contador: 0/i);
+
+await fireEvent.click(button);
+
+expect(screen.getByText(/contador: 1/i)).toBeInTheDocument();
 });
 
 test('binding funciona correctamente', async () => {
-  render(FormularioNombre);
-  
-  const input = screen.getByPlaceholderText('Escribe tu nombre');
-  
-  await fireEvent.input(input, { target: { value: 'Juan' } });
-  
-  expect(input.value).toBe('Juan');
+render(FormularioNombre);
+
+const input = screen.getByPlaceholderText('Escribe tu nombre');
+
+await fireEvent.input(input, { target: { value: 'Juan' } });
+
+expect(input.value).toBe('Juan');
 });
+
 ```
 </div>
 
@@ -509,3 +510,4 @@ El manejo de estado en Svelte es:
 - **Intuitivo**: Sintaxis cercana a JavaScript vanilla
 
 La clave está en recordar que Svelte usa **reasignación** para detectar cambios. Cuando modifique objetos o arrays, siempre reasigne la variable para activar la reactividad.
+```
