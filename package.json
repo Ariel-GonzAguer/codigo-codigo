@@ -41,7 +41,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "solid-js": "1.9.11",
-    "svelte": "5.55.5",
+    "svelte": "5.55.7",
     "tailwindcss": "4.1.18",
     "typescript": "5.9.3",
     "vitest": "4.0.18",

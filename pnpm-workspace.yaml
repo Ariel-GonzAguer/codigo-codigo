@@ -33,6 +33,8 @@ minimumReleaseAgeExclude:
   - vite@7.3.2
   - postcss@8.5.10
   - astro@6.1.6
+  - svelte@5.55.7
+  - devalue@5.8.1
 
 overrides:
   astro@<6.1.6: ^6.1.6
