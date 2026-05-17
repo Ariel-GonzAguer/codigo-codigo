@@ -17,8 +17,13 @@ Este artículo cubre todo lo que necesita saber sobre `ref` en Vue 3: desde lo b
 `ref` es la función principal para crear **estado reactivo** en Vue 3. Es el equivalente más cercano a `useState` de React, pero con una API diferente. Devuelve un objeto con una propiedad `.value` que contiene el valor y activa la reactividad cuando cambia.
 
 <div className="bloqueCodigo">
-  ```js import {ref} from 'vue'; const count = ref(0); console.log(count.value); // 0 count.value++;
-  // Dispara reactividad ```
+```js
+import {ref} from 'vue';
+
+const count = ref(0);
+console.log(count.value); // 0
+count.value++; // Dispara reactividad
+```
 </div>
 
 <Ref client:load />
@@ -559,7 +564,7 @@ import { ref, shallowRef, triggerRef, markRaw } from 'vue';
 
 // shallowRef: solo reactivo en el primer nivel
 const largeObject = shallowRef({
-data: new Array(10000).fill(0).map((\_, i) => ({ id: i, value: i \* 2 }))
+data: new Array(10000).fill(0).map((_, i) => ({ id: i, value: i * 2 }))
 });
 
 // Para actualizar después de mutar el objeto interno
@@ -658,14 +663,14 @@ import { ref } from 'vue';
 const count = ref(0);
 
 // Ver el objeto ref completo
-console.log(count); // RefImpl { \_value: 0, ... }
+console.log(count); // RefImpl { _value: 0, ... }
 
 // Ver solo el valor
 console.log(count.value); // 0
 
 // Agregar debug a computed
 const doubleCount = computed(() => {
-const result = count.value \* 2;
+const result = count.value * 2;
 console.log(`doubleCount calculado: ${result}`);
 return result;
 });

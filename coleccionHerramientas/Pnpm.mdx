@@ -63,17 +63,37 @@ framework: Otras
 
 1. Instale pnpm globalmente (opcional pero sugerido):
 
-<div className="bloqueCodigo">```bash npm i -g pnpm ```</div>
+<div className="bloqueCodigo">
+
+```bash
+npm i -g pnpm
+```
+
+</div>
 
 2. En un proyecto existente, simplemente ejecute:
 
-<div className="bloqueCodigo">```bash pnpm install ```</div>
+<div className="bloqueCodigo">
+
+```bash
+pnpm install
+```
+
+</div>
 
 pnpm detectará `package-lock.json`/`node_modules` y migrará el cache/instalación. Si quiere regenerar desde cero, elimine `node_modules` y el lockfile de npm (`package-lock.json`) y ejecute `pnpm install`.
 
 3. (Opcional) Añadir un archivo `pnpm-workspace.yaml` para monorepos:
 
-<div className="bloqueCodigo">```yaml packages: - 'packages/*' - 'apps/*' ```</div>
+<div className="bloqueCodigo">
+
+```yaml
+packages:
+  - 'packages/*'
+  - 'apps/*'
+```
+
+</div>
 
 ## Notas sobre diferencias importantes
 
@@ -98,7 +118,8 @@ pnpm detectará `package-lock.json`/`node_modules` y migrará el cache/instalaci
 ## Comandos útiles y flags
 
 - Forzar reintento de instalación limpia:
-  <div className="bloqueCodigo">
+
+<div className="bloqueCodigo">
 
 ```bash
 pnpm install --force
@@ -107,7 +128,8 @@ pnpm install --force
 </div>
 
 - Limpiar store global (caché):
-  <div className="bloqueCodigo">
+
+<div className="bloqueCodigo">
 
 ```bash
 pnpm store prune
@@ -116,7 +138,8 @@ pnpm store prune
 </div>
 
 - Instalar en modo global (instalar paquetes globales):
-  <div className="bloqueCodigo">
+
+<div className="bloqueCodigo">
 
 ```bash
 pnpm add -g typescript
@@ -125,7 +148,8 @@ pnpm add -g typescript
 </div>
 
 - Ejecutar en workspace (desde la raíz):
-  <div className="bloqueCodigo">
+
+<div className="bloqueCodigo">
 
 ```bash
 pnpm -w add -D eslint
@@ -136,12 +160,14 @@ pnpm -w add -D eslint
 ## Problemas comunes y soluciones rápidas
 
 <ul class="centered-list">
-	<li> `Error: "module not found"` después de migrar a pnpm: <br />
-	Asegúrese de que la dependencia está declarada en `package.json` del paquete que la usa. Con pnpm la omisión de declaraciones que en npm pasaban desapercibidas ahora falla.</li>
-
-    <li> Problema con binarios o scripts que buscan módulos en rutas absolutas: <br />
-    	Revise los scripts y evita hardcodear rutas dentro de `node_modules`. Usa `pnpm dlx` o `pnpm exec` cuando necesites ejecutar paquetes efímeros.</li>
-
+	<li>
+		`Error: "module not found"` después de migrar a pnpm: <br />
+		Asegúrese de que la dependencia está declarada en `package.json` del paquete que la usa. Con pnpm la omisión de declaraciones que en npm pasaban desapercibidas ahora falla.
+	</li>
+	<li>
+		Problema con binarios o scripts que buscan módulos en rutas absolutas: <br />
+		Revise los scripts y evita hardcodear rutas dentro de `node_modules`. Usa `pnpm dlx` o `pnpm exec` cuando necesites ejecutar paquetes efímeros.
+	</li>
 </ul>
 
 ## Recursos y lectura adicional
