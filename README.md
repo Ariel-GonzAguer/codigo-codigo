@@ -11,7 +11,10 @@ Usamos [Astro](https://astro.build/) como metaframework, ya que permite integrar
 - Ejemplos mínimos y patrones recomendados para integrarlas en proyectos.
 - Una colección de archivos en `coleccionHerramientas/` con guías por herramienta.
 
-Visite [el sitio en vivo aquí](https://codigo-codigo.vercel.app/) para ver la documentación y ejemplos.
+Visite [el sitio en vivo aquí](https://codigo-codigo.netlify.app/) para ver la documentación y ejemplos.
+
+> [!NOTE]
+> El despliegue se realiza en [Netlify](https://www.netlify.com/) mediante integración continua desde la rama `main`.
 
 ## Estructura principal del repositorio
 

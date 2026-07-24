@@ -9,7 +9,7 @@ import PagefindSearch from '../components/utils/PagefindSearch';
 ---
 
 <Layout>
-  <PagefindSearch client:load />
+  <PagefindSearch client:only="react" />
   <section class="text-center mx-auto my-8 px-4">
     {
       herramientas.length > 0 ? (
