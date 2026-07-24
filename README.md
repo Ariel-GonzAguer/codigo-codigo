@@ -1,5 +1,7 @@
 # Código - Código
 
+[![StandWithPalestine](https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg)](https://techforpalestine.org/learn-more)
+
 Este es un proyecto web que muestra cómo usar tecnologías y bibliotecas populares, pero explicado en español. El objetivo es ayudar a personas hispanohablantes a entender y aplicar estas herramientas mediante ejemplos concretos y documentación, sin tener que pasar por la barrera del idioma.
 
 Usamos [Astro](https://astro.build/) como metaframework, ya que permite integrar componentes en varios frameworks (React, Vue, Svelte, Preact, SolidJS), además de soportar MDX para documentación enriquecida y ser ligero y fácil de desplegar. #TeamAstro 🚀
